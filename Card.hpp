@@ -8,13 +8,21 @@
 
 namespace ariel{
 
+    /**
+     * @brief Card class represents a card in the game.
+    */
     class Card{
         private:
             int id;
             int type;
+            bool used;
         public:
+            /**
+             * @brief Construct a new Card object.
+            */
             Card(int id, int type);
             int getType();
             int getId();
+            void use();
     };
 }

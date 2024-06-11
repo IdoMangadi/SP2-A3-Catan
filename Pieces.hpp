@@ -1,33 +1,53 @@
+#ifndef PIECES_HPP
+#define PIECES_HPP
 
+#include "Player.hpp"
+#include "Pieces.hpp"
+#include "BoardElements.hpp"
+
+#define ROAD 0
+#define SETTLEMENT 1
+#define CITY 2
 
 namespace ariel{
 
+    /**
+     * @brief A class representing a piece on the board.
+    */
     class Piece{
         private:
-            int id;
-            Player owner;
+            int type;
+            Player& owner;
         public:
-            Piece(int id, Player owner);
-            Player getOwner();
-            int getId();
+            /**
+             * @brief Construct a new Piece object.
+             * param id The id of the piece.
+             * param owner The owner of the piece (reference to the player object)
+             */       
+            Piece(int type, Player& owner);
+            Player& getOwner();
+            int getType();
     };
 
+    /**
+     * @brief A class representing a road on the board.
+    */
     class Road : public Piece{
         private:
-            Edge edge;
+            int edge;
         public:
-            Road(int id, Player owner, Edge edge);
+            Road(Player& owner, int edge);
     };
 
+    /**
+     * @brief A class representing a settlement on the board.
+    */
     class Settlement : public Piece{
         private:
-            Vertex vertex;
+            int vertex;
         public:
-            Settlement(int id, Player owner, Vertex vertex);
-    };
-
-    class City : public Settlement{
-        public:
-            City(int id, Player owner, Vertex vertex);
+            Settlement(int type, Player& owner, int vertex);
     };
 }
+
+#endif  // PIECES_HPP
