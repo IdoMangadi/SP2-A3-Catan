@@ -58,13 +58,13 @@ namespace ariel{
     class Vertex{
         private:
             int id;
-            vector<Edge&> edges;
+            vector<Edge*> edges;
             Settlement* settlement;
 
         public:
             Vertex(int id, vector<Edge&> edges);
             int getId();
-            vector<Edge&> getEdges();
+            vector<Edge*> getEdges();
             bool hasSettlement();
             Settlement& getSettlement();
     };

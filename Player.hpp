@@ -17,14 +17,9 @@ namespace ariel{
             int id;
             int points;
             vector<int> resources;
-            vector<Settlement&> buildings;
-            vector<Road&> roads;
-            vector<Card&> cards;
-            int roads;
-            int settlements;
-            int cities;
-            int knights;
-            int longestPath;
+            vector<Road*> roads;
+            vector<Settlement*> buildings;
+            vector<Card*> cards;
         
         public:
             Player(string name, int id, int points);
@@ -36,19 +31,21 @@ namespace ariel{
 
             const vector<int>& getResources() const;
             void addResource(int resource);
-            void removeResource(int resource);
             bool canAfford(int buildingType);
-            Piece& buy(int buildingType);
 
-            const vector<Road&>& getRoads() const;
-            void addRoad(Road& road);  // TODO: add road to player and check if longest path is updated
-            void removeRoad(Road& road);
+            /**
+             * @brief Buy a building. Assuming controller checked if player can afford and board checked if position is valid.
+             * @param piece The piece to buy.
+             * @param pieceType The type of the piece (ROAD, SETTLEMENT, CITY).
+             * @param opCode The operation code (FREE or PAID).
+            */
+            bool buy(Piece* piece, int pieceType, int opCode);
 
-            const vector<Settlement&>& getBuildings() const;
-            void addBuilding(Settlement& building);
-            void removeBuilding(Settlement& building);
+            const vector<Road>& getRoads() const;
 
-            const vector<Card&>& getCards() const;
+            const vector<Settlement>& getBuildings() const;
+
+            const vector<Card>& getCards() const;
             void addCard(Card& card);
             void removeCard(Card& card);
             void useCard(Card& card);

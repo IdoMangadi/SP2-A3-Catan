@@ -5,6 +5,9 @@
 #include "Pieces.hpp"
 #include "BoardElements.hpp"
 
+#define FREE 0
+#define PAID 1
+
 #define ROAD 0
 #define SETTLEMENT 1
 #define CITY 2
@@ -27,6 +30,7 @@ namespace ariel{
             Piece(int type, Player& owner);
             Player& getOwner();
             int getType();
+            void setType(int type);
     };
 
     /**
@@ -37,6 +41,7 @@ namespace ariel{
             int edge;
         public:
             Road(Player& owner, int edge);
+            int getEdge();
     };
 
     /**
@@ -47,6 +52,8 @@ namespace ariel{
             int vertex;
         public:
             Settlement(int type, Player& owner, int vertex);
+            int getVertex();
+            void upgrade();
     };
 }
 

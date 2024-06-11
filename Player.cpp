@@ -1,5 +1,8 @@
 
 #include "Player.hpp"
+#include <stdexcept>
+
+using namespace std;
 
 namespace ariel{
     // Constructor:
@@ -30,9 +33,6 @@ namespace ariel{
     void Player::addResource(int resource){
         this->resources[resource]++;
     }
-    void Player::removeResource(int resource){
-        this->resources[resource]--;
-    }
     bool Player::canAfford(int buildingType){
         if(buildingType == ROAD){
             return this->resources[WOOD] >= 1 && this->resources[BRICK] >= 1;
@@ -44,31 +44,55 @@ namespace ariel{
             return this->resources[WHEAT] >= 2 && this->resources[ORE] >= 3;
         }
     }
-    bool Player::buy(int buildingType){
-        if(buildingType == ROAD && this->canAfford(ROAD)){
-            this->resources[WOOD]--;
-            this->resources[BRICK]--;
-            return true;
+    bool Player::buy(Piece* piece, int pieceType, int opCode){
+        if((opCode != FREE && opCode != PAID) || (pieceType != ROAD && pieceType != SETTLEMENT && pieceType != CITY)){
+            return false;
         }
-        else if(buildingType == SETTLEMENT && this->canAfford(SETTLEMENT)){
+        // handling roads:
+        if(pieceType == ROAD){
+            if(opCode == PAID){
+                this->resources[WOOD]--;
+                this->resources[BRICK]--;
+            }
+            this->roads.push_back((Road*)piece);
+        }
+        // handling settlements:
+        else if(pieceType == SETTLEMENT){
             this->resources[WOOD]--;
             this->resources[BRICK]--;
             this->resources[WHEAT]--;
             this->resources[WOOL]--;
-            return true;
+            this->buildings.push_back((Settlement*)piece);
         }
-        else if(buildingType == CITY && this->canAfford(CITY)){
+        // handling cities:
+        else if(pieceType == CITY){
             this->resources[WHEAT] -= 2;
             this->resources[ORE] -= 3;
-            return true;
+            for(int i = 0; i < this->buildings.size(); i++){  // find the settlement to upgrade
+                if(this->buildings[i]->getVertex() == ((Settlement*)piece)->getVertex()){ // if the settlement is found
+                    this->buildings[i].upgrade();  // upgrade the settlement to a city
+                    break;
+                }
+            }
         }
-        return false;
+        return true;
     }
-
+    
     // Roads:
-    const vector<Road&>& Player::getRoads() const{
+    const vector<Road>& Player::getRoads() const{
         return this->roads;
     }
+
+    // Buildings:
+    const vector<Settlement>& Player::getBuildings() const{
+        return this->buildings;
+    }
+
+    // Cards:
+    const vector<Card>& Player::getCards() const{
+        return this->cards;
+    }
+
 
 
 
