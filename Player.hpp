@@ -39,16 +39,15 @@ namespace ariel{
              * @param pieceType The type of the piece (ROAD, SETTLEMENT, CITY).
              * @param opCode The operation code (FREE or PAID).
             */
-            bool buy(Piece* piece, int pieceType, int opCode);
+            bool buy(Piece* piece, int itemType, int opCode);
 
-            const vector<Road>& getRoads() const;
+            const vector<Road*>& getRoads() const;
 
-            const vector<Settlement>& getBuildings() const;
+            const vector<Settlement*>& getBuildings() const;
 
-            const vector<Card>& getCards() const;
-            void addCard(Card& card);
-            void removeCard(Card& card);
-            void useCard(Card& card);
+            const vector<Card*>& getCards() const;
+            bool hasCard(int type);
+            void useCard(Card* card);
     };
 }
 

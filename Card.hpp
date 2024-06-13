@@ -1,5 +1,7 @@
 #include <string>
 
+#define CARD 010
+
 #define VICTORYPOINT 011
 #define KNIGHT 012
 #define ROADBUILDING 013
@@ -23,6 +25,7 @@ namespace ariel{
             Card(int id, int type);
             int getType();
             int getId();
+            bool isUsed();
             void use();
     };
 }

@@ -44,144 +44,95 @@ namespace ariel{
             return this->resources[WHEAT] >= 2 && this->resources[ORE] >= 3;
         }
     }
-    bool Player::buy(Piece* piece, int pieceType, int opCode){
-        if((opCode != FREE && opCode != PAID) || (pieceType != ROAD && pieceType != SETTLEMENT && pieceType != CITY)){
+    bool Player::buy(Piece* item, int itemType, int opCode){
+        if((opCode != FREE && opCode != PAID) || (itemType != ROAD && itemType != SETTLEMENT && itemType != CITY)){
             return false;
         }
         // handling roads:
-        if(pieceType == ROAD){
+        if(itemType == ROAD){
             if(opCode == PAID){
                 this->resources[WOOD]--;
                 this->resources[BRICK]--;
             }
-            this->roads.push_back((Road*)piece);
+            this->roads.push_back((Road*)item);
         }
         // handling settlements:
-        else if(pieceType == SETTLEMENT){
+        else if(itemType == SETTLEMENT){
             this->resources[WOOD]--;
             this->resources[BRICK]--;
             this->resources[WHEAT]--;
             this->resources[WOOL]--;
-            this->buildings.push_back((Settlement*)piece);
+            this->buildings.push_back((Settlement*)item);
         }
         // handling cities:
-        else if(pieceType == CITY){
+        else if(itemType == CITY){
             this->resources[WHEAT] -= 2;
             this->resources[ORE] -= 3;
-            for(int i = 0; i < this->buildings.size(); i++){  // find the settlement to upgrade
-                if(this->buildings[i]->getVertex() == ((Settlement*)piece)->getVertex()){ // if the settlement is found
-                    this->buildings[i].upgrade();  // upgrade the settlement to a city
-                    break;
-                }
-            }
+        }
+        else if  (itemType == CARD){
+            this->resources[WHEAT]--;
+            this->resources[ORE]--;
+            this->resources[WOOL]--;
+            this->cards.push_back((Card*)item);
         }
         return true;
     }
     
     // Roads:
-    const vector<Road>& Player::getRoads() const{
+    const vector<Road*>& Player::getRoads() const{
         return this->roads;
     }
 
     // Buildings:
-    const vector<Settlement>& Player::getBuildings() const{
+    const vector<Settlement*>& Player::getBuildings() const{
         return this->buildings;
     }
 
     // Cards:
-    const vector<Card>& Player::getCards() const{
+    const vector<Card*>& Player::getCards() const{
         return this->cards;
     }
-
-
-
-
-
-    void Player::addPiece(Piece piece){
-        this->pieces.push_back(piece);
-    }
-
-    void Player::removePiece(Piece piece){
-        for(int i = 0; i < this->pieces.size(); i++){
-            if(this->pieces[i].getId() == piece.getId()){
-                this->pieces.erase(this->pieces.begin() + i);
-                break;
-            }
-        }
-    }
-
-    void Player::addPoints(int points){
-        this->points += points;
-    }
-
-    void Player::removePoints(int points){
-        this->points -= points;
-    }
-
-    int Player::getId(){
-        return this->id;
-    }
-
-    string Player::getName(){
-        return this->name;
-    }
-
-    int Player::getPoints(){
-        return this->points;
-    }
-
-    vector<Piece> Player::getPieces(){
-        return this->pieces;
-    }
-
-    bool Player::hasPiece(Piece piece){
-        for(int i = 0; i < this->pieces.size(); i++){
-            if(this->pieces[i].getId() == piece.getId()){
+    bool Player::hasCard(int type){
+        for(int i = 0; i < this->cards.size(); i++){
+            if(this->cards[i]->getType() == type && this->cards[i]->isUsed() == false){
                 return true;
             }
         }
         return false;
     }
 
-    bool Player::operator==(const Player& player){
-        return this->id == player.id;
-    }
+    // bool Player::operator==(const Player& player){
+    //     return this->id == player.id;
+    // }
 
-    bool Player::operator!=(const Player& player){
-        return this->id != player.id;
-    }
+    // bool Player::operator!=(const Player& player){
+    //     return this->id != player.id;
+    // }
 
-    bool Player::operator<(const Player& player){
-        return this->id < player.id;
-    }
+    // bool Player::operator<(const Player& player){
+    //     return this->id < player.id;
+    // }
 
-    bool Player::operator>(const Player& player){
-        return this->id > player.id;
-    }
+    // bool Player::operator>(const Player& player){
+    //     return this->id > player.id;
+    // }
 
-    bool Player::operator<=(const Player& player){
-        return this->id <= player.id;
-    }
+    // bool Player::operator<=(const Player& player){
+    //     return this->id <= player.id;
+    // }
 
-    bool Player::operator>=(const Player& player){
-        return this->id >= player.id;
-    }
+    // bool Player::operator>=(const Player& player){
+    //     return this->id >= player.id;
+    // }
 
-    ostream& operator<<(ostream& os, const Player& player){
-        os << "Player " << player.id << " - " << player.name << " - " << player.points << " points";
-        return os;
-    }
+    // ostream& operator<<(ostream& os, const Player& player){
+    //     os << "Player " << player.id << " - " << player.name << " - " << player.points << " points";
+    //     return os;
+    // }
 
-    istream& operator>>(istream& is, Player& player){
-        is >> player.id >> player.name >> player.points;
-        return is;
-    }
-
-
-
-
-
-
-
+    // istream& operator>>(istream& is, Player& player){
+    //     is >> player.id >> player.name >> player.points;
+    //     return is;
+    // }
 
 }

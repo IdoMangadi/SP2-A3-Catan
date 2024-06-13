@@ -12,7 +12,9 @@ namespace ariel{
     int Card::getId(){
         return this->id;
     }
-
+    bool Card::isUsed(){
+        return this->used;
+    }
     void Card::use(){
         this->used = true;
     }
