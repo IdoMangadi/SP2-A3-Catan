@@ -2,7 +2,7 @@
 #include "Card.hpp"
 
 namespace ariel{
-    Card::Card(int id, int type) : id(id), type(type), used(false){
+    Card::Card(int id, int type) : id(id), type(type), bought(false), used(false){
     }
 
     int Card::getType(){

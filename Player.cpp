@@ -1,6 +1,5 @@
 
 #include "Player.hpp"
-#include <stdexcept>
 
 using namespace std;
 

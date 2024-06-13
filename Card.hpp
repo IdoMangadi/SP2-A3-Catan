@@ -17,6 +17,7 @@ namespace ariel{
         private:
             int id;
             int type;
+            bool bought;
             bool used;
         public:
             /**

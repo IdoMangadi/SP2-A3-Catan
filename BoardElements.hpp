@@ -16,21 +16,27 @@ using namespace std;
 
 namespace ariel{
 
+    class Edge;
+    class Vertex;
+
     /**
      * @brief A class representing a hexagon on the board.
     */
     class Hexagon{
         private:
-            int type;
             int id;
+            int type;
             int diceNum;
             bool hasRobber;
+            vector<Vertex*> vertices;
         public:
-            Hexagon(int type, int id, int diceNum, bool hasRobber);
+            Hexagon(int id, int type, int diceNum, bool hasRobber);
             int getType();
             int getId();
+            int getDiceNum();
             bool getHasRobber();
             void setHasRobber(bool hasRobber);
+            void addVertex(Vertex* vertex);
     };
 
     /**
@@ -39,17 +45,20 @@ namespace ariel{
     class Edge{
         private:
             int id;
-            Vertex& vertex1;
-            Vertex& vertex2;
+            Vertex* vertex1;
+            Vertex* vertex2;
             Road* road;
 
         public:
-            Edge(int id, Vertex& vertex1, Vertex& vertex2);
+            Edge(int id, Vertex* vertex1, Vertex* vertex2);
             int getId();
-            Vertex& getVertex1();
-            Vertex& getVertex2();
+
+            Vertex* getVertex1();
+            Vertex* getVertex2();
+
             bool hasRoad();
-            Road& getRoad();
+            Road* getRoad();
+            void setRoad(Road* road);
     };
 
     /**
@@ -62,11 +71,15 @@ namespace ariel{
             Settlement* settlement;
 
         public:
-            Vertex(int id, vector<Edge&> edges);
+            Vertex(int id);
             int getId();
+
+            void addEdge(Edge* edge);
             vector<Edge*> getEdges();
+            
+            void setSettlement(Settlement* settlement);
             bool hasSettlement();
-            Settlement& getSettlement();
+            Settlement* getSettlement();
     };
 }
 
