@@ -30,7 +30,7 @@ namespace ariel{
         return this->resources;
     }
     void Player::addResource(int resource, int amount){
-        this->resources[resource] += amount;
+        if(resource >= 0 && resource < 5) this->resources[resource] += amount;
     }
     bool Player::canAfford(int buildingType){
         if(buildingType == ROAD){

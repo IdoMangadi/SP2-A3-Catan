@@ -5,19 +5,23 @@ namespace ariel{
 
     Hexagon::Hexagon(int id, int type, int diceNum, bool hasRobber) : id(id), type(type), diceNum(diceNum), hasRobber(hasRobber){}
 
-    int Hexagon::getType(){
-        return this->type;
+    int Hexagon::getDiceNum(){
+        return this->diceNum;
     }
     int Hexagon::getId(){
         return this->id;
     }
-    int Hexagon::getDiceNum(){
-        return this->diceNum;
+    int Hexagon::getType(){
+        return this->type;
+    }
+    int Hexagon::getResourceType(){  // the type of the resource the hexagon produces (hexagon type / 100 - 1)
+        if(this->type > 0) return (this->type / 100) - 1;
+        return -1;
     }
     bool Hexagon::getHasRobber(){
         return this->hasRobber;
     }
-    void Hexagon::setHasRobber(bool hasRobber){
+    void Hexagon::setRobber(bool hasRobber){
         this->hasRobber = hasRobber;
     }
     void Hexagon::addVertex(Vertex* vertex){

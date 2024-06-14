@@ -314,10 +314,10 @@ namespace ariel{
                         int settelemtType = this->hexagons[i].getVertices()->at(j)->getSettlement()->getType();
                         // distribute resources to the player:
                         if(settelemtType == CITY){
-                            this->players[this->hexagons[i].getVertices()->at(j)->getSettlement()->getOwner().getId()]->addResource(this->hexagons[i].getType(), 2);
+                            this->players[this->hexagons[i].getVertices()->at(j)->getSettlement()->getOwner().getId()]->addResource(this->hexagons[i].getResourceType(), 2);
                         }
                         else{
-                            this->players[this->hexagons[i].getVertices()->at(j)->getSettlement()->getOwner().getId()]->addResource(this->hexagons[i].getType(), 1);
+                            this->players[this->hexagons[i].getVertices()->at(j)->getSettlement()->getOwner().getId()]->addResource(this->hexagons[i].getResourceType(), 1);
                         }
                     }
                 }

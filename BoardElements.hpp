@@ -5,7 +5,7 @@
 #include <vector>
 #include "Pieces.hpp"
 
-#define DESERT 000  
+#define DESERT -1
 #define FOREST 100  // dark green
 #define HILLS 200  // red
 #define AGRICULTURAL 300  // yellow
@@ -31,11 +31,12 @@ namespace ariel{
             vector<Vertex*> vertices;
         public:
             Hexagon(int id, int type, int diceNum, bool hasRobber);
-            int getType();
             int getId();
             int getDiceNum();
+            int getType();
+            int getResourceType();
             bool getHasRobber();
-            void setHasRobber(bool hasRobber);
+            void setRobber(bool hasRobber);
             void addVertex(Vertex* vertex);
             vector<Vertex*>* getVertices(); 
     };
