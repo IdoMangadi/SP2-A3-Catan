@@ -30,7 +30,7 @@ namespace ariel{
             void addPoints(int points);
 
             const vector<int>& getResources() const;
-            void addResource(int resource);
+            void addResource(int resource, int amount);
             bool canAfford(int buildingType);
 
             /**

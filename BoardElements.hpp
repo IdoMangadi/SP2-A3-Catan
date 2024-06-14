@@ -37,6 +37,7 @@ namespace ariel{
             bool getHasRobber();
             void setHasRobber(bool hasRobber);
             void addVertex(Vertex* vertex);
+            vector<Vertex*>* getVertices(); 
     };
 
     /**

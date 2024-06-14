@@ -29,8 +29,8 @@ namespace ariel{
     const vector<int>& Player::getResources() const{
         return this->resources;
     }
-    void Player::addResource(int resource){
-        this->resources[resource]++;
+    void Player::addResource(int resource, int amount){
+        this->resources[resource] += amount;
     }
     bool Player::canAfford(int buildingType){
         if(buildingType == ROAD){
@@ -57,10 +57,12 @@ namespace ariel{
         }
         // handling settlements:
         else if(itemType == SETTLEMENT){
-            this->resources[WOOD]--;
-            this->resources[BRICK]--;
-            this->resources[WHEAT]--;
-            this->resources[WOOL]--;
+            if(opCode == PAID){
+                this->resources[WOOD]--;
+                this->resources[BRICK]--;
+                this->resources[WHEAT]--;
+                this->resources[WOOL]--;
+            }
             this->buildings.push_back((Settlement*)item);
         }
         // handling cities:

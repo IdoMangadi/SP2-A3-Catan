@@ -3,6 +3,8 @@
 #include "Board.hpp"
 #include "../../../../usr/include/c++/11/bits/algorithmfwd.h"
 
+using namespace std;
+
 namespace ariel{
 
     Board::Board(Player* player1, Player* player2, Player* player3) : players({player1, player2, player3}){
@@ -280,6 +282,8 @@ namespace ariel{
         }
         // shuffle the cards:
         random_shuffle(this->cards.begin(), this->cards.end());
+
+        // TODO: create the pieces (roads, settlements, cities)
     }
 
     Player* Board::hasWinner(){
@@ -290,6 +294,40 @@ namespace ariel{
         }
         return nullptr;
     }
+    vector<Player*>* Board::getPlayers(){
+        return &this->players;
+    }
+
+    vector<int>* Board::rollDice(){
+        // roll the dice:
+        this->diceNums.clear();  // clear the previous dice numbers
+        this->diceNums.push_back(rand() % 6 + 1);  // roll the dice twice
+        this->diceNums.push_back(rand() % 6 + 1);
+        return &this->diceNums;  // return the dice numbers
+        int sum = this->diceNums[0] + this->diceNums[1];
+
+        // distribute resources to players:
+        for(size_t i=0; i<19; i++){  // iterate over the hexagons
+            if(this->hexagons[i].getDiceNum() == sum && !this->hexagons[i].getHasRobber()){  // if the dice number matches the hexagon's dice number
+                for(size_t j=0; j<6; j++){  // iterate over the hexagon's vertices
+                    if(this->hexagons[i].getVertices()->at(j)->hasSettlement()){  // if the vertex has a settlement
+                        int settelemtType = this->hexagons[i].getVertices()->at(j)->getSettlement()->getType();
+                        // distribute resources to the player:
+                        if(settelemtType == CITY){
+                            this->players[this->hexagons[i].getVertices()->at(j)->getSettlement()->getOwner().getId()]->addResource(this->hexagons[i].getType(), 2);
+                        }
+                        else{
+                            this->players[this->hexagons[i].getVertices()->at(j)->getSettlement()->getOwner().getId()]->addResource(this->hexagons[i].getType(), 1);
+                        }
+                    }
+                }
+            }
+        }
+
+
+    }
+
+
 
 
 

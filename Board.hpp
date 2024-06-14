@@ -18,6 +18,7 @@ namespace ariel{
             vector<Vertex> vertices;
             vector<Edge> edges;
 
+            vector<int> diceNums;
             vector<Card> cards;
 
             vector<Road> roadsPlayer1;
@@ -32,9 +33,17 @@ namespace ariel{
             int largestArmy;
 
         public:
-            Board(Player* player1, Player* player2, Player* player3);
+            Board(Player* player1, Player* player2, Player* player3);  // constructor
 
-            Player* hasWinner();
+            Player* hasWinner();  // return the player with the most points, or nullptr if no winner
+            vector<Player*>* getPlayers();  // return the players
+
+            vector<int>* rollDice();  // roll the dice and return the numbers, distribute resources to players
+
+
+
+
+
 
     };
 }

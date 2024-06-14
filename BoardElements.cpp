@@ -23,6 +23,9 @@ namespace ariel{
     void Hexagon::addVertex(Vertex* vertex){
         this->vertices.push_back(vertex);
     }
+    vector<Vertex*>* Hexagon::getVertices(){
+        return &this->vertices;
+    }
 
     Edge::Edge(int id, Vertex* vertex1, Vertex* vertex2) : id(id), vertex1(vertex1), vertex2(vertex2){
         this->road = nullptr;
