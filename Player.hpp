@@ -15,6 +15,7 @@ namespace ariel{
         private:
             string name;
             int id;
+            string color;
             int points;
             vector<int> resources;
             vector<Road*> roads;
@@ -22,9 +23,10 @@ namespace ariel{
             vector<Card*> cards;
         
         public:
-            Player(string name, int id, int points);
+            Player(string name, int id, string color, int points);
             string getName();
             int getId();
+            string getColor();
 
             int getPoints();
             void addPoints(int points);

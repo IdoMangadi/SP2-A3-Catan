@@ -5,7 +5,7 @@ using namespace std;
 
 namespace ariel{
     // Constructor:
-    Player::Player(string name, int id, int points) : name(name), id(id), points(points){
+    Player::Player(string name, int id, string color, int points) : name(name), id(id), color(color), points(points){
         this->resources = vector<int>(5, 0);
     }
 
@@ -15,6 +15,9 @@ namespace ariel{
     }
     string Player::getName(){
         return this->name;
+    }
+    string Player::getColor(){
+        return this->color;
     }
 
     // Points:

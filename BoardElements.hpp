@@ -1,16 +1,10 @@
 #ifndef BOARD_ELEMENTS_HPP
 #define BOARD_ELEMENTS_HPP
 
+#include <iostream>
 #include <string>
 #include <vector>
 #include "Pieces.hpp"
-
-#define DESERT -1
-#define FOREST 100  // dark green
-#define HILLS 200  // red
-#define AGRICULTURAL 300  // yellow
-#define PASTURE 400  // light green
-#define MOUNTAINS 500  // gray
 
 using namespace std;
 
@@ -25,20 +19,22 @@ namespace ariel{
     class Hexagon{
         private:
             int id;
-            int type;
+            string type;
             int diceNum;
             bool hasRobber;
             vector<Vertex*> vertices;
         public:
-            Hexagon(int id, int type, int diceNum, bool hasRobber);
+            Hexagon(int id, string type, int diceNum, bool hasRobber);
             int getId();
             int getDiceNum();
-            int getType();
+            string getType();
             int getResourceType();
             bool getHasRobber();
             void setRobber(bool hasRobber);
             void addVertex(Vertex* vertex);
             vector<Vertex*>* getVertices(); 
+
+            friend ostream& operator<<(ostream& os, const Hexagon& hexagon);
     };
 
     /**
@@ -47,13 +43,17 @@ namespace ariel{
     class Edge{
         private:
             int id;
+            int pose; // 0 = '|' , 1 = '/' , 2 = '\'
+            string color;
             Vertex* vertex1;
             Vertex* vertex2;
             Road* road;
 
         public:
-            Edge(int id, Vertex* vertex1, Vertex* vertex2);
+            Edge(int id, int pose, Vertex* vertex1, Vertex* vertex2);
             int getId();
+
+            void setColor(string color);
 
             Vertex* getVertex1();
             Vertex* getVertex2();
@@ -61,6 +61,8 @@ namespace ariel{
             bool hasRoad();
             Road* getRoad();
             void setRoad(Road* road);
+
+            friend ostream& operator<<(ostream& os, const Edge& edge);
     };
 
     /**
@@ -69,6 +71,7 @@ namespace ariel{
     class Vertex{
         private:
             int id;
+            string shape;
             vector<Edge*> edges;
             Settlement* settlement;
 
@@ -82,6 +85,8 @@ namespace ariel{
             void setSettlement(Settlement* settlement);
             bool hasSettlement();
             Settlement* getSettlement();
+
+            friend ostream& operator<<(ostream& os, const Vertex& vertex);
     };
 }
 

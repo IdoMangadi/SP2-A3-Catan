@@ -12,29 +12,29 @@ namespace ariel{
         this->largestArmy = 0;
 
         // Create the hexagons:
-        this->hexagons.push_back(Hexagon(0, MOUNTAINS, 10, false));
-        this->hexagons.push_back(Hexagon(1, PASTURE, 2, false));
-        this->hexagons.push_back(Hexagon(2, FOREST, 9, false));
+        this->hexagons.push_back(Hexagon(0, MOUNTAINS_EMOJI, 10, false));
+        this->hexagons.push_back(Hexagon(1, PASTURE_EMOJI, 2, false));
+        this->hexagons.push_back(Hexagon(2, FOREST_EMOJI, 9, false));
 
-        this->hexagons.push_back(Hexagon(3, AGRICULTURAL, 12, false));
-        this->hexagons.push_back(Hexagon(4, HILLS, 6, false));
-        this->hexagons.push_back(Hexagon(5, PASTURE, 4, false));
-        this->hexagons.push_back(Hexagon(6, HILLS, 10, false));
+        this->hexagons.push_back(Hexagon(3, AGRICULTURAL_EMOJI, 12, false));
+        this->hexagons.push_back(Hexagon(4, HILLS_EMOJI, 6, false));
+        this->hexagons.push_back(Hexagon(5, PASTURE_EMOJI, 4, false));
+        this->hexagons.push_back(Hexagon(6, HILLS_EMOJI, 10, false));
 
-        this->hexagons.push_back(Hexagon(7, AGRICULTURAL, 9, false));
-        this->hexagons.push_back(Hexagon(8, FOREST, 11, false));
-        this->hexagons.push_back(Hexagon(9, DESERT, 0, true));
-        this->hexagons.push_back(Hexagon(10, FOREST, 3, false));
-        this->hexagons.push_back(Hexagon(11, MOUNTAINS, 8, false));
+        this->hexagons.push_back(Hexagon(7, AGRICULTURAL_EMOJI, 9, false));
+        this->hexagons.push_back(Hexagon(8, FOREST_EMOJI, 11, false));
+        this->hexagons.push_back(Hexagon(9, DESERT_EMOJI, 0, true));
+        this->hexagons.push_back(Hexagon(10, FOREST_EMOJI, 3, false));
+        this->hexagons.push_back(Hexagon(11, MOUNTAINS_EMOJI, 8, false));
 
-        this->hexagons.push_back(Hexagon(12, FOREST, 8, false));
-        this->hexagons.push_back(Hexagon(13, MOUNTAINS, 3, false));
-        this->hexagons.push_back(Hexagon(14, AGRICULTURAL, 4, false));
-        this->hexagons.push_back(Hexagon(15, PASTURE, 5, false));
+        this->hexagons.push_back(Hexagon(12, FOREST_EMOJI, 8, false));
+        this->hexagons.push_back(Hexagon(13, MOUNTAINS_EMOJI, 3, false));
+        this->hexagons.push_back(Hexagon(14, AGRICULTURAL_EMOJI, 4, false));
+        this->hexagons.push_back(Hexagon(15, PASTURE_EMOJI, 5, false));
 
-        this->hexagons.push_back(Hexagon(16, HILLS, 5, false));
-        this->hexagons.push_back(Hexagon(17, AGRICULTURAL, 6, false));
-        this->hexagons.push_back(Hexagon(18, PASTURE, 11, false));
+        this->hexagons.push_back(Hexagon(16, HILLS_EMOJI, 5, false));
+        this->hexagons.push_back(Hexagon(17, AGRICULTURAL_EMOJI, 6, false));
+        this->hexagons.push_back(Hexagon(18, PASTURE_EMOJI, 11, false));
 
         // Create the vertices:
         for(int i=0; i<54; i++){
@@ -175,88 +175,88 @@ namespace ariel{
         this->hexagons[18].addVertex(&this->vertices[53]);
 
         // Create the edges (connected to the vertices):
-        this->edges.push_back(Edge(0, &this->vertices[0], &this->vertices[3]));
-        this->edges.push_back(Edge(1, &this->vertices[0], &this->vertices[4]));
-        this->edges.push_back(Edge(2, &this->vertices[1], &this->vertices[4]));
-        this->edges.push_back(Edge(3, &this->vertices[1], &this->vertices[5]));
-        this->edges.push_back(Edge(4, &this->vertices[2], &this->vertices[5]));
-        this->edges.push_back(Edge(5, &this->vertices[2], &this->vertices[6]));
+        this->edges.push_back(Edge(0, 1, &this->vertices[0], &this->vertices[3]));
+        this->edges.push_back(Edge(1, 2, &this->vertices[0], &this->vertices[4]));
+        this->edges.push_back(Edge(2, 1, &this->vertices[1], &this->vertices[4]));
+        this->edges.push_back(Edge(3, 2, &this->vertices[1], &this->vertices[5]));
+        this->edges.push_back(Edge(4, 1, &this->vertices[2], &this->vertices[5]));
+        this->edges.push_back(Edge(5, 2, &this->vertices[2], &this->vertices[6]));
 
-        this->edges.push_back(Edge(6, &this->vertices[3], &this->vertices[7]));
-        this->edges.push_back(Edge(7, &this->vertices[4], &this->vertices[8]));
-        this->edges.push_back(Edge(8, &this->vertices[5], &this->vertices[9]));
-        this->edges.push_back(Edge(9, &this->vertices[6], &this->vertices[10]));
+        this->edges.push_back(Edge(6, 0, &this->vertices[3], &this->vertices[7]));
+        this->edges.push_back(Edge(7, 0, &this->vertices[4], &this->vertices[8]));
+        this->edges.push_back(Edge(8, 0, &this->vertices[5], &this->vertices[9]));
+        this->edges.push_back(Edge(9, 0, &this->vertices[6], &this->vertices[10]));
 
-        this->edges.push_back(Edge(10, &this->vertices[7], &this->vertices[11]));
-        this->edges.push_back(Edge(11, &this->vertices[7], &this->vertices[12]));
-        this->edges.push_back(Edge(12, &this->vertices[8], &this->vertices[12]));
-        this->edges.push_back(Edge(13, &this->vertices[8], &this->vertices[13]));
-        this->edges.push_back(Edge(14, &this->vertices[9], &this->vertices[13]));
-        this->edges.push_back(Edge(15, &this->vertices[9], &this->vertices[14]));
-        this->edges.push_back(Edge(16, &this->vertices[10], &this->vertices[14]));
-        this->edges.push_back(Edge(17, &this->vertices[10], &this->vertices[15]));
+        this->edges.push_back(Edge(10,1, &this->vertices[7], &this->vertices[11]));
+        this->edges.push_back(Edge(11,2, &this->vertices[7], &this->vertices[12]));
+        this->edges.push_back(Edge(12,1, &this->vertices[8], &this->vertices[12]));
+        this->edges.push_back(Edge(13,2, &this->vertices[8], &this->vertices[13]));
+        this->edges.push_back(Edge(14,1, &this->vertices[9], &this->vertices[13]));
+        this->edges.push_back(Edge(15,2, &this->vertices[9], &this->vertices[14]));
+        this->edges.push_back(Edge(16,1, &this->vertices[10], &this->vertices[14]));
+        this->edges.push_back(Edge(17,2, &this->vertices[10], &this->vertices[15]));
 
-        this->edges.push_back(Edge(18, &this->vertices[11], &this->vertices[16]));
-        this->edges.push_back(Edge(19, &this->vertices[12], &this->vertices[17]));
-        this->edges.push_back(Edge(20, &this->vertices[13], &this->vertices[18]));
-        this->edges.push_back(Edge(21, &this->vertices[14], &this->vertices[19]));
-        this->edges.push_back(Edge(22, &this->vertices[15], &this->vertices[20]));
+        this->edges.push_back(Edge(18,0, &this->vertices[11], &this->vertices[16]));
+        this->edges.push_back(Edge(19,0, &this->vertices[12], &this->vertices[17]));
+        this->edges.push_back(Edge(20,0, &this->vertices[13], &this->vertices[18]));
+        this->edges.push_back(Edge(21,0, &this->vertices[14], &this->vertices[19]));
+        this->edges.push_back(Edge(22,0, &this->vertices[15], &this->vertices[20]));
 
-        this->edges.push_back(Edge(23, &this->vertices[16], &this->vertices[21]));
-        this->edges.push_back(Edge(24, &this->vertices[16], &this->vertices[22]));
-        this->edges.push_back(Edge(25, &this->vertices[17], &this->vertices[22]));
-        this->edges.push_back(Edge(26, &this->vertices[17], &this->vertices[23]));
-        this->edges.push_back(Edge(27, &this->vertices[18], &this->vertices[23]));
-        this->edges.push_back(Edge(28, &this->vertices[18], &this->vertices[24]));
-        this->edges.push_back(Edge(29, &this->vertices[19], &this->vertices[24]));
-        this->edges.push_back(Edge(30, &this->vertices[19], &this->vertices[25]));
-        this->edges.push_back(Edge(31, &this->vertices[20], &this->vertices[25]));
-        this->edges.push_back(Edge(32, &this->vertices[20], &this->vertices[26]));
+        this->edges.push_back(Edge(23,1, &this->vertices[16], &this->vertices[21]));
+        this->edges.push_back(Edge(24,2, &this->vertices[16], &this->vertices[22]));
+        this->edges.push_back(Edge(25,1, &this->vertices[17], &this->vertices[22]));
+        this->edges.push_back(Edge(26,2, &this->vertices[17], &this->vertices[23]));
+        this->edges.push_back(Edge(27,1, &this->vertices[18], &this->vertices[23]));
+        this->edges.push_back(Edge(28,2, &this->vertices[18], &this->vertices[24]));
+        this->edges.push_back(Edge(29,1, &this->vertices[19], &this->vertices[24]));
+        this->edges.push_back(Edge(30,2, &this->vertices[19], &this->vertices[25]));
+        this->edges.push_back(Edge(31,1, &this->vertices[20], &this->vertices[25]));
+        this->edges.push_back(Edge(32,2, &this->vertices[20], &this->vertices[26]));
 
-        this->edges.push_back(Edge(33, &this->vertices[21], &this->vertices[27]));
-        this->edges.push_back(Edge(34, &this->vertices[22], &this->vertices[28]));
-        this->edges.push_back(Edge(35, &this->vertices[23], &this->vertices[29]));
-        this->edges.push_back(Edge(36, &this->vertices[24], &this->vertices[30]));
-        this->edges.push_back(Edge(37, &this->vertices[25], &this->vertices[31]));
-        this->edges.push_back(Edge(38, &this->vertices[26], &this->vertices[32]));
+        this->edges.push_back(Edge(33,0, &this->vertices[21], &this->vertices[27]));
+        this->edges.push_back(Edge(34,0, &this->vertices[22], &this->vertices[28]));
+        this->edges.push_back(Edge(35,0, &this->vertices[23], &this->vertices[29]));
+        this->edges.push_back(Edge(36,0, &this->vertices[24], &this->vertices[30]));
+        this->edges.push_back(Edge(37,0, &this->vertices[25], &this->vertices[31]));
+        this->edges.push_back(Edge(38,0, &this->vertices[26], &this->vertices[32]));
 
-        this->edges.push_back(Edge(39, &this->vertices[27], &this->vertices[33]));
-        this->edges.push_back(Edge(40, &this->vertices[28], &this->vertices[33]));
-        this->edges.push_back(Edge(41, &this->vertices[28], &this->vertices[34]));
-        this->edges.push_back(Edge(42, &this->vertices[29], &this->vertices[34]));
-        this->edges.push_back(Edge(43, &this->vertices[29], &this->vertices[35]));
-        this->edges.push_back(Edge(44, &this->vertices[30], &this->vertices[35]));
-        this->edges.push_back(Edge(45, &this->vertices[30], &this->vertices[36]));
-        this->edges.push_back(Edge(46, &this->vertices[31], &this->vertices[36]));
-        this->edges.push_back(Edge(47, &this->vertices[31], &this->vertices[37]));
-        this->edges.push_back(Edge(48, &this->vertices[32], &this->vertices[37]));
+        this->edges.push_back(Edge(39,1, &this->vertices[27], &this->vertices[33]));
+        this->edges.push_back(Edge(40,2, &this->vertices[28], &this->vertices[33]));
+        this->edges.push_back(Edge(41,1, &this->vertices[28], &this->vertices[34]));
+        this->edges.push_back(Edge(42,2, &this->vertices[29], &this->vertices[34]));
+        this->edges.push_back(Edge(43,1, &this->vertices[29], &this->vertices[35]));
+        this->edges.push_back(Edge(44,2, &this->vertices[30], &this->vertices[35]));
+        this->edges.push_back(Edge(45,1, &this->vertices[30], &this->vertices[36]));
+        this->edges.push_back(Edge(46,2, &this->vertices[31], &this->vertices[36]));
+        this->edges.push_back(Edge(47,1, &this->vertices[31], &this->vertices[37]));
+        this->edges.push_back(Edge(48,2, &this->vertices[32], &this->vertices[37]));
 
-        this->edges.push_back(Edge(49, &this->vertices[33], &this->vertices[38]));
-        this->edges.push_back(Edge(50, &this->vertices[34], &this->vertices[39]));
-        this->edges.push_back(Edge(51, &this->vertices[35], &this->vertices[40]));
-        this->edges.push_back(Edge(52, &this->vertices[36], &this->vertices[41]));
-        this->edges.push_back(Edge(53, &this->vertices[37], &this->vertices[42]));
+        this->edges.push_back(Edge(49,0, &this->vertices[33], &this->vertices[38]));
+        this->edges.push_back(Edge(50,0, &this->vertices[34], &this->vertices[39]));
+        this->edges.push_back(Edge(51,0, &this->vertices[35], &this->vertices[40]));
+        this->edges.push_back(Edge(52,0, &this->vertices[36], &this->vertices[41]));
+        this->edges.push_back(Edge(53,0, &this->vertices[37], &this->vertices[42]));
 
-        this->edges.push_back(Edge(54, &this->vertices[38], &this->vertices[43]));
-        this->edges.push_back(Edge(55, &this->vertices[39], &this->vertices[43]));
-        this->edges.push_back(Edge(56, &this->vertices[39], &this->vertices[44]));
-        this->edges.push_back(Edge(57, &this->vertices[40], &this->vertices[44]));
-        this->edges.push_back(Edge(58, &this->vertices[40], &this->vertices[45]));
-        this->edges.push_back(Edge(59, &this->vertices[41], &this->vertices[45]));
-        this->edges.push_back(Edge(60, &this->vertices[41], &this->vertices[46]));
-        this->edges.push_back(Edge(61, &this->vertices[42], &this->vertices[46]));
+        this->edges.push_back(Edge(54,1, &this->vertices[38], &this->vertices[43]));
+        this->edges.push_back(Edge(55,2, &this->vertices[39], &this->vertices[43]));
+        this->edges.push_back(Edge(56,1, &this->vertices[39], &this->vertices[44]));
+        this->edges.push_back(Edge(57,2, &this->vertices[40], &this->vertices[44]));
+        this->edges.push_back(Edge(58,1, &this->vertices[40], &this->vertices[45]));
+        this->edges.push_back(Edge(59,2, &this->vertices[41], &this->vertices[45]));
+        this->edges.push_back(Edge(60,1, &this->vertices[41], &this->vertices[46]));
+        this->edges.push_back(Edge(61,2, &this->vertices[42], &this->vertices[46]));
 
-        this->edges.push_back(Edge(62, &this->vertices[43], &this->vertices[47]));
-        this->edges.push_back(Edge(63, &this->vertices[44], &this->vertices[48]));
-        this->edges.push_back(Edge(64, &this->vertices[45], &this->vertices[49]));
-        this->edges.push_back(Edge(65, &this->vertices[46], &this->vertices[50]));
+        this->edges.push_back(Edge(62,0, &this->vertices[43], &this->vertices[47]));
+        this->edges.push_back(Edge(63,0, &this->vertices[44], &this->vertices[48]));
+        this->edges.push_back(Edge(64,0, &this->vertices[45], &this->vertices[49]));
+        this->edges.push_back(Edge(65,0, &this->vertices[46], &this->vertices[50]));
 
-        this->edges.push_back(Edge(66, &this->vertices[47], &this->vertices[51]));
-        this->edges.push_back(Edge(67, &this->vertices[48], &this->vertices[51]));
-        this->edges.push_back(Edge(68, &this->vertices[48], &this->vertices[52]));
-        this->edges.push_back(Edge(69, &this->vertices[49], &this->vertices[52]));
-        this->edges.push_back(Edge(70, &this->vertices[49], &this->vertices[53]));
-        this->edges.push_back(Edge(71, &this->vertices[50], &this->vertices[53]));
+        this->edges.push_back(Edge(66,1, &this->vertices[47], &this->vertices[51]));
+        this->edges.push_back(Edge(67,2, &this->vertices[48], &this->vertices[51]));
+        this->edges.push_back(Edge(68,1, &this->vertices[48], &this->vertices[52]));
+        this->edges.push_back(Edge(69,2, &this->vertices[49], &this->vertices[52]));
+        this->edges.push_back(Edge(70,1, &this->vertices[49], &this->vertices[53]));
+        this->edges.push_back(Edge(71,2, &this->vertices[50], &this->vertices[53]));
 
         // connect the edges to the vertices:
         for(int i=0; i<72; i++){
