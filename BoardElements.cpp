@@ -41,7 +41,7 @@ namespace ariel{
         return &this->vertices;
     }
     ostream& operator<<(ostream& os, const Hexagon& hexagon){
-        os << hexagon.type << hexagon.diceNum;
+        os << hexagon.type << " " << hexagon.diceNum;
         return os;
     }
 

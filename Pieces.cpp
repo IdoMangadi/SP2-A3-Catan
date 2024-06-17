@@ -14,7 +14,7 @@ namespace ariel{
     int Piece::getType(){
         return this->type;
     }
-    void Piece::setType(int type){
+    void Piece::setType(int type){ 
         this->type = type;
     }
     string Piece::getVisualDisplay(){

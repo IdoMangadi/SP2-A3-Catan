@@ -224,16 +224,16 @@ namespace ariel{
         this->edges.push_back(Edge(37,0, &this->vertices[25], &this->vertices[31]));
         this->edges.push_back(Edge(38,0, &this->vertices[26], &this->vertices[32]));
 
-        this->edges.push_back(Edge(39,1, &this->vertices[27], &this->vertices[33]));
-        this->edges.push_back(Edge(40,2, &this->vertices[28], &this->vertices[33]));
-        this->edges.push_back(Edge(41,1, &this->vertices[28], &this->vertices[34]));
-        this->edges.push_back(Edge(42,2, &this->vertices[29], &this->vertices[34]));
-        this->edges.push_back(Edge(43,1, &this->vertices[29], &this->vertices[35]));
-        this->edges.push_back(Edge(44,2, &this->vertices[30], &this->vertices[35]));
-        this->edges.push_back(Edge(45,1, &this->vertices[30], &this->vertices[36]));
-        this->edges.push_back(Edge(46,2, &this->vertices[31], &this->vertices[36]));
-        this->edges.push_back(Edge(47,1, &this->vertices[31], &this->vertices[37]));
-        this->edges.push_back(Edge(48,2, &this->vertices[32], &this->vertices[37]));
+        this->edges.push_back(Edge(39,2, &this->vertices[27], &this->vertices[33]));
+        this->edges.push_back(Edge(40,1, &this->vertices[28], &this->vertices[33]));
+        this->edges.push_back(Edge(41,2, &this->vertices[28], &this->vertices[34]));
+        this->edges.push_back(Edge(42,1, &this->vertices[29], &this->vertices[34]));
+        this->edges.push_back(Edge(43,2, &this->vertices[29], &this->vertices[35]));
+        this->edges.push_back(Edge(44,1, &this->vertices[30], &this->vertices[35]));
+        this->edges.push_back(Edge(45,2, &this->vertices[30], &this->vertices[36]));
+        this->edges.push_back(Edge(46,1, &this->vertices[31], &this->vertices[36]));
+        this->edges.push_back(Edge(47,2, &this->vertices[31], &this->vertices[37]));
+        this->edges.push_back(Edge(48,1, &this->vertices[32], &this->vertices[37]));
 
         this->edges.push_back(Edge(49,0, &this->vertices[33], &this->vertices[38]));
         this->edges.push_back(Edge(50,0, &this->vertices[34], &this->vertices[39]));
@@ -241,26 +241,26 @@ namespace ariel{
         this->edges.push_back(Edge(52,0, &this->vertices[36], &this->vertices[41]));
         this->edges.push_back(Edge(53,0, &this->vertices[37], &this->vertices[42]));
 
-        this->edges.push_back(Edge(54,1, &this->vertices[38], &this->vertices[43]));
-        this->edges.push_back(Edge(55,2, &this->vertices[39], &this->vertices[43]));
-        this->edges.push_back(Edge(56,1, &this->vertices[39], &this->vertices[44]));
-        this->edges.push_back(Edge(57,2, &this->vertices[40], &this->vertices[44]));
-        this->edges.push_back(Edge(58,1, &this->vertices[40], &this->vertices[45]));
-        this->edges.push_back(Edge(59,2, &this->vertices[41], &this->vertices[45]));
-        this->edges.push_back(Edge(60,1, &this->vertices[41], &this->vertices[46]));
-        this->edges.push_back(Edge(61,2, &this->vertices[42], &this->vertices[46]));
+        this->edges.push_back(Edge(54,2, &this->vertices[38], &this->vertices[43]));
+        this->edges.push_back(Edge(55,1, &this->vertices[39], &this->vertices[43]));
+        this->edges.push_back(Edge(56,2, &this->vertices[39], &this->vertices[44]));
+        this->edges.push_back(Edge(57,1, &this->vertices[40], &this->vertices[44]));
+        this->edges.push_back(Edge(58,2, &this->vertices[40], &this->vertices[45]));
+        this->edges.push_back(Edge(59,1, &this->vertices[41], &this->vertices[45]));
+        this->edges.push_back(Edge(60,2, &this->vertices[41], &this->vertices[46]));
+        this->edges.push_back(Edge(61,1, &this->vertices[42], &this->vertices[46]));
 
         this->edges.push_back(Edge(62,0, &this->vertices[43], &this->vertices[47]));
         this->edges.push_back(Edge(63,0, &this->vertices[44], &this->vertices[48]));
         this->edges.push_back(Edge(64,0, &this->vertices[45], &this->vertices[49]));
         this->edges.push_back(Edge(65,0, &this->vertices[46], &this->vertices[50]));
 
-        this->edges.push_back(Edge(66,1, &this->vertices[47], &this->vertices[51]));
-        this->edges.push_back(Edge(67,2, &this->vertices[48], &this->vertices[51]));
-        this->edges.push_back(Edge(68,1, &this->vertices[48], &this->vertices[52]));
-        this->edges.push_back(Edge(69,2, &this->vertices[49], &this->vertices[52]));
-        this->edges.push_back(Edge(70,1, &this->vertices[49], &this->vertices[53]));
-        this->edges.push_back(Edge(71,2, &this->vertices[50], &this->vertices[53]));
+        this->edges.push_back(Edge(66,2, &this->vertices[47], &this->vertices[51]));
+        this->edges.push_back(Edge(67,1, &this->vertices[48], &this->vertices[51]));
+        this->edges.push_back(Edge(68,2, &this->vertices[48], &this->vertices[52]));
+        this->edges.push_back(Edge(69,1, &this->vertices[49], &this->vertices[52]));
+        this->edges.push_back(Edge(70,2, &this->vertices[49], &this->vertices[53]));
+        this->edges.push_back(Edge(71,1, &this->vertices[50], &this->vertices[53]));
 
         // connect the edges to the vertices:
         for(size_t i=0; i<72; i++){
@@ -339,12 +339,36 @@ namespace ariel{
     }
 
 
-
+ 
     void Board::display(){
-        cout<<"                "<<this->vertices[0]<<"    "<<this->vertices[1]<<"    "<<this->vertices[2]<<endl;
-        cout<<"               "<<this->edges[0]<<"  "<<this->edges[1]<<" "<<this->edges[2]<<"  "<<this->edges[3]<<" "<<this->edges[4]<<"  "<<this->edges[5]<<endl;
-        cout<<"              "<<this->vertices[3]<<"    "<<this->vertices[4]<<"    "<<this->vertices[5]<<"    "<<this->vertices[6]<<endl;
-        cout<<"              "<<this->edges[6]<<" "<<this->hexagons[0]<<" "<<this->edges[7]<<" "<<this->hexagons[1]<<" "<<this->edges[8]<<" "<<this->hexagons[2]<<" "<<this->edges[9]<<endl;
+        cout<<"                     "<<this->vertices[0]<<"       "<<this->vertices[1]<<"       "<<this->vertices[2]<<endl;
+        cout<<"                   "<<this->edges[0]<<"   "<<this->edges[1]<<"   "<<this->edges[2]<<"   "<<this->edges[3]<<"   "<<this->edges[4]<<"   "<<this->edges[5]<<endl;
+        cout<<"                 "<<this->vertices[3]<<"       "<<this->vertices[4]<<"       "<<this->vertices[5]<<"       "<<this->vertices[6]<<endl;
+        cout<<"                 "<<this->edges[6]<<" "<<this->hexagons[0]<<"  "<<this->edges[7]<<" "<<this->hexagons[1]<<"  "<<this->edges[8]<<"  "<<this->hexagons[2]<<" "<<this->edges[9]<<endl;
+        cout<<"                 "<<this->vertices[7]<<"       "<<this->vertices[8]<<"       "<<this->vertices[9]<<"       "<<this->vertices[10]<<endl;
+        cout<<"               "<<this->edges[10]<<"   "<<this->edges[11]<<"   "<<this->edges[12]<<"   "<<this->edges[13]<<"   "<<this->edges[14]<<"   "<<this->edges[15]<<"   "<<this->edges[16]<<"   "<<this->edges[17]<<endl;
+        cout<<"             "<<this->vertices[11]<<"       "<<this->vertices[12]<<"       "<<this->vertices[13]<<"       "<<this->vertices[14]<<"       "<<this->vertices[15]<<endl;
+        cout<<"             "<<this->edges[18]<<" "<<this->hexagons[3]<<" "<<this->edges[19]<<" "<<this->hexagons[4]<<"  "<<this->edges[20]<<" "<<this->hexagons[5]<<"  "<<this->edges[21]<<" "<<this->hexagons[6]<<" "<<this->edges[22]<<endl;
+        cout<<"             "<<this->vertices[16]<<"       "<<this->vertices[17]<<"       "<<this->vertices[18]<<"       "<<this->vertices[19]<<"       "<<this->vertices[20]<<endl;
+        cout<<"           "<<this->edges[23]<<"   "<<this->edges[24]<<"   "<<this->edges[25]<<"   "<<this->edges[26]<<"   "<<this->edges[27]<<"   "<<this->edges[28]<<"   "<<this->edges[29]<<"   "<<this->edges[30]<<"   "<<this->edges[31]<<"   "<<this->edges[32]<<endl;
+        cout<<"         "<<this->vertices[21]<<"       "<<this->vertices[22]<<"       "<<this->vertices[23]<<"       "<<this->vertices[24]<<"       "<<this->vertices[25]<<"       "<<this->vertices[26]<<endl;
+        cout<<"         "<<this->edges[33]<<" "<<this->hexagons[7]<<"  "<<this->edges[34]<<" "<<this->hexagons[8]<<" "<<this->edges[35]<<"  "<<this->hexagons[9]<<"  "<<this->edges[36]<<" "<<this->hexagons[10]<<"  "<<this->edges[37]<<"  "<<this->hexagons[11]<<"  "<<this->edges[38]<<endl;
+        cout<<"         "<<this->vertices[27]<<"       "<<this->vertices[28]<<"       "<<this->vertices[29]<<"       "<<this->vertices[30]<<"       "<<this->vertices[31]<<"       "<<this->vertices[32]<<endl;
+        cout<<"           "<<this->edges[39]<<"   "<<this->edges[40]<<"   "<<this->edges[41]<<"   "<<this->edges[42]<<"   "<<this->edges[43]<<"   "<<this->edges[44]<<"   "<<this->edges[45]<<"   "<<this->edges[46]<<"   "<<this->edges[47]<<"   "<<this->edges[48]<<endl;
+        cout<<"             "<<this->vertices[33]<<"       "<<this->vertices[34]<<"       "<<this->vertices[35]<<"       "<<this->vertices[36]<<"       "<<this->vertices[37]<<endl;
+        cout<<"             "<<this->edges[49]<<" "<<this->hexagons[12]<<"  "<<this->edges[50]<<"  "<<this->hexagons[13]<<"  "<<this->edges[51]<<"  "<<this->hexagons[14]<<" "<<this->edges[52]<<"  "<<this->hexagons[15]<<" "<<this->edges[53]<<endl;
+        cout<<"             "<<this->vertices[38]<<"       "<<this->vertices[39]<<"       "<<this->vertices[40]<<"       "<<this->vertices[41]<<"       "<<this->vertices[42]<<endl;
+        cout<<"               "<<this->edges[54]<<"   "<<this->edges[55]<<"   "<<this->edges[56]<<"   "<<this->edges[57]<<"   "<<this->edges[58]<<"   "<<this->edges[59]<<"   "<<this->edges[60]<<"   "<<this->edges[61]<<endl;
+        cout<<"                 "<<this->vertices[43]<<"       "<<this->vertices[44]<<"       "<<this->vertices[45]<<"       "<<this->vertices[46]<<endl;
+        cout<<"                 "<<this->edges[62]<<" "<<this->hexagons[16]<<"  "<<this->edges[63]<<" "<<this->hexagons[17]<<"  "<<this->edges[64]<<" "<<this->hexagons[18]<<"  "<<this->edges[65]<<endl;
+        cout<<"                 "<<this->vertices[47]<<"       "<<this->vertices[48]<<"       "<<this->vertices[49]<<"       "<<this->vertices[50]<<endl;
+        cout<<"                   "<<this->edges[66]<<"   "<<this->edges[67]<<"   "<<this->edges[68]<<"   "<<this->edges[69]<<"   "<<this->edges[70]<<"   "<<this->edges[71]<<endl;
+        cout<<"                     "<<this->vertices[51]<<"       "<<this->vertices[52]<<"       "<<this->vertices[53]<<endl;
+
+        // cout<<"   "<<EMPTY_VERTEX<<endl;
+        // cout<<"   "<<RED_SETTLEMENT<<endl;
+        // cout<<"   "<<RED_CITY<<endl;
+
     }
     
 } // namespace ariel

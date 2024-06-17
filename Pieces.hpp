@@ -21,7 +21,7 @@
 #define PASTURE_EMOJI "🐑"
 #define MOUNTAINS_EMOJI "🏔️"
 
-#define EMPTY_VERTEX "△"
+#define EMPTY_VERTEX "⚪"
 #define RED_SETTLEMENT "🔴"
 #define GREEN_SETTLEMENT "🟢"
 #define YELLOW_SETTLEMENT "🟡"

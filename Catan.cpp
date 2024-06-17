@@ -79,7 +79,7 @@ int main(int argc , char* argv[]){
 
     // initialize players and board:
     Player player1(player1Name, 1,RED, 0);
-    Player player2(player2Name, 2, GREEN, 0);
+    Player player2(player2Name, 2, GREEN, 0); 
     Player player3(player3Name, 3, YELLOW, 0);
 
     Board board(&player1, &player2, &player3); 
