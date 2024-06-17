@@ -4,14 +4,17 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "Pieces.hpp"
 
 using namespace std;
 
 namespace ariel{
-
+    
+    // forward declarations:
     class Edge;
     class Vertex;
+    class Road;
+    class Settlement;
+
 
     /**
      * @brief A class representing a hexagon on the board.

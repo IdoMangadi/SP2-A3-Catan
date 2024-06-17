@@ -2,12 +2,22 @@
 #ifndef BOARD_HPP
 #define BOARD_HPP
 
-#include "BoardElements.hpp"
-#include "Player.hpp"
-#include "Card.hpp"
-#include "Pieces.hpp"
+#include <iostream>
+#include <string>
+#include <vector>
+
+using namespace std;
 
 namespace ariel{
+
+    // forward declarations:
+    class Player;
+    class Hexagon;
+    class Vertex;
+    class Edge;
+    class Road;
+    class Settlement;
+    class Card;
 
     class Board{
         private:
@@ -42,8 +52,7 @@ namespace ariel{
 
 
 
-
-
+            void display();  // display the board
 
     };
 }

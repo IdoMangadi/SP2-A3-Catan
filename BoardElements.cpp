@@ -1,5 +1,8 @@
 
 #include "BoardElements.hpp"
+#include "Pieces.hpp"
+#include "Player.hpp"
+
 
 using namespace std;
 
@@ -23,7 +26,7 @@ namespace ariel{
         if (this->type == AGRICULTURAL_EMOJI) return WHEAT;
         if (this->type == PASTURE_EMOJI) return WOOL;
         if (this->type == MOUNTAINS_EMOJI) return ORE;
-
+        return -1;
     }
     bool Hexagon::getHasRobber(){
         return this->hasRobber;
@@ -100,9 +103,9 @@ namespace ariel{
     }
     ostream& operator<<(ostream& os, const Vertex& vertex){
         if(vertex.settlement != nullptr){  // if there is a settlement on the vertex
-            os << vertex.settlement;
+            os << *(vertex.settlement);
         }
-        else{
+        else{  // if there is no settlement on the vertex
             os << vertex.shape;
         }
         return os;

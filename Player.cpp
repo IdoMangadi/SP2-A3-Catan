@@ -1,16 +1,20 @@
 
+
 #include "Player.hpp"
+#include "Pieces.hpp"
+#include "Card.hpp"
 
 using namespace std;
 
 namespace ariel{
+
     // Constructor:
-    Player::Player(string name, int id, string color, int points) : name(name), id(id), color(color), points(points){
+    Player::Player(string name, size_t id, string color, int points) : name(name), id(id), color(color), points(points){
         this->resources = vector<int>(5, 0);
     }
 
     // Cardentials:
-    int Player::getId(){
+    size_t Player::getId(){
         return this->id;
     }
     string Player::getName(){
@@ -33,7 +37,7 @@ namespace ariel{
         return this->resources;
     }
     void Player::addResource(int resource, int amount){
-        if(resource >= 0 && resource < 5) this->resources[resource] += amount;
+        if(resource >= 0 && resource < 5) this->resources[(size_t)resource] += amount;
     }
     bool Player::canAfford(int buildingType){
         if(buildingType == ROAD){
@@ -45,6 +49,7 @@ namespace ariel{
         else if(buildingType == CITY){
             return this->resources[WHEAT] >= 2 && this->resources[ORE] >= 3;
         }
+        return false;
     }
     bool Player::buy(Piece* item, int itemType, int opCode){
         if((opCode != FREE && opCode != PAID) || (itemType != ROAD && itemType != SETTLEMENT && itemType != CITY)){
@@ -97,7 +102,7 @@ namespace ariel{
         return this->cards;
     }
     bool Player::hasCard(int type){
-        for(int i = 0; i < this->cards.size(); i++){
+        for(size_t i = 0; i < this->cards.size(); i++){
             if(this->cards[i]->getType() == type && this->cards[i]->isUsed() == false){
                 return true;
             }

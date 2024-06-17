@@ -1,8 +1,9 @@
 #ifndef PLAYER_HPP
 #define PLAYER_HPP
 
-#include "Pieces.hpp"
-#include "Card.hpp"
+#include <iostream>
+#include <string>
+#include <vector>
 
 #define WOOD 0  // dark green
 #define BRICK 1  // red
@@ -10,11 +11,20 @@
 #define WOOL 3  // light green
 #define ORE 4  // gray
 
+using namespace std;
+
 namespace ariel{
+
+    // Forward declarations:
+    class Piece;
+    class Road;
+    class Settlement;
+    class Card;
+
     class Player{
         private:
             string name;
-            int id;
+            size_t id;
             string color;
             int points;
             vector<int> resources;
@@ -23,9 +33,9 @@ namespace ariel{
             vector<Card*> cards;
         
         public:
-            Player(string name, int id, string color, int points);
+            Player(string name, size_t id, string color, int points);
             string getName();
-            int getId();
+            size_t getId();
             string getColor();
 
             int getPoints();

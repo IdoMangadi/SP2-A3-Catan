@@ -1,6 +1,10 @@
 
 
 #include "Board.hpp"
+#include "BoardElements.hpp"
+#include "Player.hpp"
+#include "Card.hpp"
+#include "Pieces.hpp"
 #include "../../../../usr/include/c++/11/bits/algorithmfwd.h"
 
 using namespace std;
@@ -259,7 +263,7 @@ namespace ariel{
         this->edges.push_back(Edge(71,2, &this->vertices[50], &this->vertices[53]));
 
         // connect the edges to the vertices:
-        for(int i=0; i<72; i++){
+        for(size_t i=0; i<72; i++){
             this->edges[i].getVertex1()->addEdge(&this->edges[i]);
             this->edges[i].getVertex2()->addEdge(&this->edges[i]);
         }
@@ -281,13 +285,22 @@ namespace ariel{
             this->cards.push_back(Card(4, YEAROFPLENTY));
         }
         // shuffle the cards:
-        random_shuffle(this->cards.begin(), this->cards.end());
+        srand(time(0));  // Seed the random number generator
+
+        for (size_t i = cards.size() - 1; i > 0; --i) {
+            size_t j = (size_t)rand() % (i + 1);  // Get a random index from 0 to i
+
+            // Swap cards[i] with the element at random index
+            Card temp = cards[i];
+            cards[i] = cards[j];
+            cards[j] = temp;
+        }
 
         // TODO: create the pieces (roads, settlements, cities)
     }
 
     Player* Board::hasWinner(){
-        for(int i=0; i<3; i++){
+        for(size_t i=0; i<3; i++){
             if(this->players[i]->getPoints() >= 10){
                 return this->players[i];
             }
@@ -323,15 +336,15 @@ namespace ariel{
                 }
             }
         }
-
-
     }
 
 
 
-
-
-
-
+    void Board::display(){
+        cout<<"                "<<this->vertices[0]<<"    "<<this->vertices[1]<<"    "<<this->vertices[2]<<endl;
+        cout<<"               "<<this->edges[0]<<"  "<<this->edges[1]<<" "<<this->edges[2]<<"  "<<this->edges[3]<<" "<<this->edges[4]<<"  "<<this->edges[5]<<endl;
+        cout<<"              "<<this->vertices[3]<<"    "<<this->vertices[4]<<"    "<<this->vertices[5]<<"    "<<this->vertices[6]<<endl;
+        cout<<"              "<<this->edges[6]<<" "<<this->hexagons[0]<<" "<<this->edges[7]<<" "<<this->hexagons[1]<<" "<<this->edges[8]<<" "<<this->hexagons[2]<<" "<<this->edges[9]<<endl;
+    }
     
 } // namespace ariel
