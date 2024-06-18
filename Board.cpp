@@ -300,7 +300,12 @@ namespace ariel{
             cards[j] = temp;
         }
 
-        // TODO: create the pieces (roads, settlements, cities)
+        // creating 15 roads for each player:
+        for(size_t i=0; i<3; i++){
+            for(size_t j=0; j<15; j++){
+                this->playersRoads[i].push_back(Road(*this->players[i], j));
+            }
+        }
     }
 
     Player* Board::hasWinner(){
@@ -319,34 +324,74 @@ namespace ariel{
 
         if(opCode != FREE && opCode != PAID && opCode != STAGE_ONE) return false;  // invalid input
 
-        // handling settlements:
-        if(itemType == SETTLEMENT){
+        if(itemType == SETTLEMENT){  // handling settlements:
+
             for(size_t i=0; i<this->vertices[position].getEdges().size(); i++){  // iterate over the vertex's adjacents and check if there is a settlement on one of them
                 if(this->vertices[position].getEdges()[i]->getVertex1()->hasSettlement() || this->vertices[position].getEdges()[i]->getVertex2()->hasSettlement()){
                     return false;
                 }
             }
+            bool hasRoad = false;
             if(opCode != STAGE_ONE){  // if its not the first stage make sure there is a road of the current player that connected to the vertex
-                bool hasRoad = false;
                 for(size_t i=0; i<this->vertices[position].getEdges().size(); i++){  // iterate over the vertex's edges and check if there is a road of the current player
                     if(this->vertices[position].getEdges()[i]->hasRoad() && this->vertices[position].getEdges()[i]->getRoad()->getOwner().getId() == player->getId()){
                         hasRoad = true;
                         break;
                     }
                 }
-                if(!hasRoad){
-                    return false;  // if there is no road of the current player that connected to the vertex
+            }
+            if(opCode == STAGE_ONE || (hasRoad && player->canAfford(itemType))){  // if the player can afford the settlement
+                Settlement* currSettlement = &(this->playersSettlements[player->getId()][player->getBuildings().size()]);
+                this->vertices[position].setSettlement(currSettlement);  // set the settlement on the vertex
+                opCode = (opCode == STAGE_ONE) ? FREE : PAID;  // if its the first stage the settlement is free 
+                return player->buy(currSettlement, itemType, opCode);  // buy the settlement
+            }
+        }
+
+        if(itemType == CITY){ // handling cities:
+            // check if there is a settlement of the player on this vertex:
+            if(this->vertices[position].hasSettlement() && this->vertices[position].getSettlement()->getOwner().getId() == player->getId()){
+                if(player->canAfford(CITY)) this->vertices[position].getSettlement()->upgrade();
+                return player->buy(this->vertices[position].getSettlement(), itemType, opCode);
+            }
+        }
+
+        if(itemType == ROAD){  // handling roads:
+
+            if(this->edges[position].hasRoad()) return false;  // if there is already a road on the edge
+
+            bool hasConnection = false;
+            Edge* currEdge = &(this->edges[position]);
+            if(opCode != STAGE_ONE){  // if its not the first stage make sure there is a road of the current player that connected to the edge
+
+                if(currEdge->getVertex1()->hasSettlement() == false){  // if the first vertex of the edge doesn't have a settlement check if there is a road connected to it
+                    for(size_t i=0; i<currEdge->getVertex1()->getEdges().size(); i++){
+                        if(currEdge->getVertex1()->getEdges()[i]->hasRoad() == true) hasConnection = true;
+                    }
                 }
-                if(player->canAfford(itemType)){  // if the player can afford the settlement
-                    Settlement settlement(*player, position);  // create the settlement
-                    this->playersSettlements[player->getId()].push_back(settlement);  // add the settlement to the player's settlements
-                    return player->buy(&settlement, itemType, opCode);  // buy the settlement
+                else if(currEdge->getVertex1()->getSettlement()->getOwner().getId() == player->getId()) hasConnection = true;  // if the first vertex of the edge has a settlement check if it belongs to the current player
+
+                if(currEdge->getVertex2()->hasSettlement() == false){  // if the second vertex of the edge doesn't have a settlement check if there is a road connected to it
+                    for(size_t i=0; i<currEdge->getVertex2()->getEdges().size(); i++){
+                        if(currEdge->getVertex2()->getEdges()[i]->hasRoad() == true) hasConnection = true;
+                    }
                 }
+                else if(currEdge->getVertex2()->getSettlement()->getOwner().getId() == player->getId()) hasConnection = true;  // if the second vertex of the edge has a settlement check if it belongs to the current player
             }
             else{  // if its the first stage
-                Settlement settlement(*player, position);  // create the settlement
-                this->playersSettlements[player->getId()].push_back(settlement);  // add the settlement to the player's settlements
-                return player->buy(&settlement, itemType, FREE);  // buy the settlement
+                // if(there is a settlement on the vertex1 && the settlement belongs to the current player && the settlement is the last settlement the player built)
+                if(currEdge->getVertex1()->hasSettlement() && currEdge->getVertex1()->getSettlement()->getOwner().getId() == player->getId() && currEdge->getVertex1()->getSettlement() == player->getBuildings()[player->getBuildings().size()-1]){
+                    hasConnection = true;
+                }
+                // if(there is a settlement on the vertex2 && the settlement belongs to the current player && the settlement is the last settlement the player built)
+                else if(currEdge->getVertex2()->hasSettlement() && currEdge->getVertex2()->getSettlement()->getOwner().getId() == player->getId() && currEdge->getVertex2()->getSettlement() == player->getBuildings()[player->getBuildings().size()-1]){
+                    hasConnection = true;
+                }
+            }
+            if(hasConnection){  // if there is a road of the current player that connected to the edge
+                Road* road = &(this->playersRoads[player->getId()][player->getRoads().size()]);  // get the last road the player built
+                this->edges[position].setRoad(road);  // set the road on the edge
+                return player->buy(road, itemType, opCode);  // buy the road
             }
         }
         return false;

@@ -24,8 +24,8 @@ namespace ariel{
         this->visualDisplay = visualDisplay;
     }
 
-    Road::Road(Player& owner, int edge) : Piece(ROAD, owner.getColor(), owner), edge(edge){}
-    int Road::getEdge(){
+    Road::Road(Player& owner, size_t edge) : Piece(ROAD, owner.getColor(), owner), edge(edge){}
+    size_t Road::getEdge(){
         return this->edge;
     }
     ostream& operator<<(ostream& os, Road& road){
@@ -33,8 +33,8 @@ namespace ariel{
         return os;
     }
 
-    Settlement::Settlement(Player& owner, int vertex) : Piece(SETTLEMENT, SETTLEMENT_EMOJI, owner), vertex(vertex){}
-    int Settlement::getVertex(){
+    Settlement::Settlement(Player& owner, size_t vertex) : Piece(SETTLEMENT, SETTLEMENT_EMOJI, owner), vertex(vertex){}
+    size_t Settlement::getVertex(){
         return this->vertex;
     }
     void Settlement::upgrade(){

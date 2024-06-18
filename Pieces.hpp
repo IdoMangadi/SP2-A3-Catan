@@ -48,14 +48,14 @@ namespace ariel{
         protected:
             int type;
             string visualDisplay;
-            Player& owner;
+            Player* owner;
         public:
             /**
              * @brief Construct a new Piece object.
              * param id The id of the piece.
              * param owner The owner of the piece (reference to the player object)
              */       
-            Piece(int type, string visualDisplay, Player& owner);
+            Piece(int type, string visualDisplay, Player* owner);
             void setType(int type);
             int getType();
             Player& getOwner();
@@ -68,10 +68,10 @@ namespace ariel{
     */
     class Road : public Piece{
         private:
-            int edge;
+            size_t edge;
         public:
-            Road(Player& owner, int edge);
-            int getEdge();
+            Road(Player* owner, size_t edge);
+            size_t getEdge();
             friend ostream& operator<<(ostream& os, const Road& road);
     };
 
@@ -80,10 +80,10 @@ namespace ariel{
     */
     class Settlement : public Piece{
         private:
-            int vertex;
+            size_t vertex;
         public:
-            Settlement(Player& owner, int vertex);
-            int getVertex();
+            Settlement(Player* owner, size_t vertex);
+            size_t getVertex();
             void upgrade();
             friend ostream& operator<<(ostream& os, Settlement& settlement);
     };
