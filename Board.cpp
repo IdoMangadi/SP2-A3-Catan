@@ -12,8 +12,12 @@ using namespace std;
 namespace ariel{
 
     Board::Board(Player* player1, Player* player2, Player* player3) : players({player1, player2, player3}){
-        this->longestRoad = 0;
-        this->largestArmy = 0;
+
+        this->playersRoads = vector<vector<Road>>(3, vector<Road>()); // initialize the players' roads
+        this->playersSettlements = vector<vector<Settlement>>(3, vector<Settlement>());  // initialize the players' settlements
+
+        this->longestRoad = 0;  // initialize the longest road
+        this->largestArmy = 0;  // initialize the largest army
 
         // Create the hexagons:
         this->hexagons.push_back(Hexagon(0, MOUNTAINS_EMOJI, 10, false));
@@ -311,6 +315,43 @@ namespace ariel{
         return &this->players;
     }
 
+    bool Board::buy(Player* player, int itemType, size_t position, int opCode){
+
+        if(opCode != FREE && opCode != PAID && opCode != STAGE_ONE) return false;  // invalid input
+
+        // handling settlements:
+        if(itemType == SETTLEMENT){
+            for(size_t i=0; i<this->vertices[position].getEdges().size(); i++){  // iterate over the vertex's adjacents and check if there is a settlement on one of them
+                if(this->vertices[position].getEdges()[i]->getVertex1()->hasSettlement() || this->vertices[position].getEdges()[i]->getVertex2()->hasSettlement()){
+                    return false;
+                }
+            }
+            if(opCode != STAGE_ONE){  // if its not the first stage make sure there is a road of the current player that connected to the vertex
+                bool hasRoad = false;
+                for(size_t i=0; i<this->vertices[position].getEdges().size(); i++){  // iterate over the vertex's edges and check if there is a road of the current player
+                    if(this->vertices[position].getEdges()[i]->hasRoad() && this->vertices[position].getEdges()[i]->getRoad()->getOwner().getId() == player->getId()){
+                        hasRoad = true;
+                        break;
+                    }
+                }
+                if(!hasRoad){
+                    return false;  // if there is no road of the current player that connected to the vertex
+                }
+                if(player->canAfford(itemType)){  // if the player can afford the settlement
+                    Settlement settlement(*player, position);  // create the settlement
+                    this->playersSettlements[player->getId()].push_back(settlement);  // add the settlement to the player's settlements
+                    return player->buy(&settlement, itemType, opCode);  // buy the settlement
+                }
+            }
+            else{  // if its the first stage
+                Settlement settlement(*player, position);  // create the settlement
+                this->playersSettlements[player->getId()].push_back(settlement);  // add the settlement to the player's settlements
+                return player->buy(&settlement, itemType, FREE);  // buy the settlement
+            }
+        }
+        return false;
+    }
+
     vector<int>* Board::rollDice(){
         // roll the dice:
         this->diceNums.clear();  // clear the previous dice numbers
@@ -324,6 +365,7 @@ namespace ariel{
             if(this->hexagons[i].getDiceNum() == sum && !this->hexagons[i].getHasRobber()){  // if the dice number matches the hexagon's dice number
                 for(size_t j=0; j<6; j++){  // iterate over the hexagon's vertices
                     if(this->hexagons[i].getVertices()->at(j)->hasSettlement()){  // if the vertex has a settlement
+                        
                         int settelemtType = this->hexagons[i].getVertices()->at(j)->getSettlement()->getType();
                         // distribute resources to the player:
                         if(settelemtType == CITY){
@@ -337,6 +379,20 @@ namespace ariel{
             }
         }
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
  
@@ -360,14 +416,10 @@ namespace ariel{
         cout<<"             "<<this->vertices[38]<<"       "<<this->vertices[39]<<"       "<<this->vertices[40]<<"       "<<this->vertices[41]<<"       "<<this->vertices[42]<<endl;
         cout<<"               "<<this->edges[54]<<"   "<<this->edges[55]<<"   "<<this->edges[56]<<"   "<<this->edges[57]<<"   "<<this->edges[58]<<"   "<<this->edges[59]<<"   "<<this->edges[60]<<"   "<<this->edges[61]<<endl;
         cout<<"                 "<<this->vertices[43]<<"       "<<this->vertices[44]<<"       "<<this->vertices[45]<<"       "<<this->vertices[46]<<endl;
-        cout<<"                 "<<this->edges[62]<<" "<<this->hexagons[16]<<"  "<<this->edges[63]<<" "<<this->hexagons[17]<<"  "<<this->edges[64]<<" "<<this->hexagons[18]<<"  "<<this->edges[65]<<endl;
+        cout<<"                 "<<this->edges[62]<<" "<<this->hexagons[16]<<"  "<<this->edges[63]<<" "<<this->hexagons[17]<<"  "<<this->edges[64]<<" "<<this->hexagons[18]<<" "<<this->edges[65]<<endl;
         cout<<"                 "<<this->vertices[47]<<"       "<<this->vertices[48]<<"       "<<this->vertices[49]<<"       "<<this->vertices[50]<<endl;
         cout<<"                   "<<this->edges[66]<<"   "<<this->edges[67]<<"   "<<this->edges[68]<<"   "<<this->edges[69]<<"   "<<this->edges[70]<<"   "<<this->edges[71]<<endl;
         cout<<"                     "<<this->vertices[51]<<"       "<<this->vertices[52]<<"       "<<this->vertices[53]<<endl;
-
-        // cout<<"   "<<EMPTY_VERTEX<<endl;
-        // cout<<"   "<<RED_SETTLEMENT<<endl;
-        // cout<<"   "<<RED_CITY<<endl;
 
     }
     

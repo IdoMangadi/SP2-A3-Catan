@@ -69,13 +69,14 @@ namespace ariel{
     }
     void Edge::setRoad(Road* road){
         this->road = road;
+        this->color = road->getVisualDisplay();
     }
     ostream& operator<<(ostream& os, const Edge& edge){
         string pose;  
         if (edge.pose == 0) pose = "|";
         else if (edge.pose == 1) pose = "/";
         else pose = "\\";
-        os << edge.color << pose;
+        os << edge.color << pose << RESET_COLOR;
         return os;
     }
 

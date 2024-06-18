@@ -52,7 +52,7 @@ namespace ariel{
         return false;
     }
     bool Player::buy(Piece* item, int itemType, int opCode){
-        if((opCode != FREE && opCode != PAID) || (itemType != ROAD && itemType != SETTLEMENT && itemType != CITY)){
+        if((opCode != FREE && opCode != PAID) || (itemType != ROAD && itemType != SETTLEMENT && itemType != CITY)){  // invalid input
             return false;
         }
         // handling roads:

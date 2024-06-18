@@ -7,6 +7,7 @@
 
 #define FREE 0
 #define PAID 1
+#define STAGE_ONE 100 
 
 // building types:
 #define ROAD 0
@@ -21,15 +22,13 @@
 #define PASTURE_EMOJI "🐑"
 #define MOUNTAINS_EMOJI "🏔️"
 
-#define EMPTY_VERTEX "⚪"
-#define RED_SETTLEMENT "🔴"
-#define GREEN_SETTLEMENT "🟢"
-#define YELLOW_SETTLEMENT "🟡"
-#define RED_CITY "🟥"
-#define GREEN_CITY "🟩"
-#define YELLOW_CITY "🟨"
+#define EMPTY_VERTEX "△"
+#define SETTLEMENT_EMOJI "▲"
+#define CITY_EMOJI "●"
 
 // colors:
+#define RESET_COLOR "\033[0m"
+#define BOLD "\033[1m"
 #define WHITE "\033[37m"
 #define RED "\033[31m"
 #define GREEN "\033[32m"
@@ -46,7 +45,7 @@ namespace ariel{
      * @brief A class representing a piece on the board.
     */
     class Piece{
-        private:
+        protected:
             int type;
             string visualDisplay;
             Player& owner;

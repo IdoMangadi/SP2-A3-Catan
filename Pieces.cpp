@@ -33,23 +33,17 @@ namespace ariel{
         return os;
     }
 
-    Settlement::Settlement(Player& owner, int vertex) : Piece(SETTLEMENT, "", owner), vertex(vertex){
-        if(owner.getColor() == "red") this->setVisualDisplay(RED_SETTLEMENT);
-        else if(owner.getColor() == "green") this->setVisualDisplay(GREEN_SETTLEMENT);
-        else if(owner.getColor() == "yellow") this->setVisualDisplay(YELLOW_SETTLEMENT);
-    }
+    Settlement::Settlement(Player& owner, int vertex) : Piece(SETTLEMENT, SETTLEMENT_EMOJI, owner), vertex(vertex){}
     int Settlement::getVertex(){
         return this->vertex;
     }
     void Settlement::upgrade(){
         // if settlement, upgrade to city according to color
         this->setType(CITY);
-        if(this->getVisualDisplay() == RED_SETTLEMENT) this->setVisualDisplay(RED_CITY);
-        else if(this->getVisualDisplay() == GREEN_SETTLEMENT) this->setVisualDisplay(GREEN_CITY);
-        else if(this->getVisualDisplay() == YELLOW_SETTLEMENT) this->setVisualDisplay(YELLOW_CITY);
+        this->visualDisplay = CITY_EMOJI;
     }
     ostream& operator<<(ostream& os, Settlement& settlement){
-        os << settlement.getVisualDisplay();
+        os << settlement.owner.getColor() << settlement.getVisualDisplay() << RESET_COLOR;
         return os;
     }
 

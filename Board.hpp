@@ -31,13 +31,8 @@ namespace ariel{
             vector<int> diceNums;
             vector<Card> cards;
 
-            vector<Road> roadsPlayer1;
-            vector<Road> roadsPlayer2;
-            vector<Road> roadsPlayer3;
-
-            vector<Settlement> settlementsPlayer1;
-            vector<Settlement> settlementsPlayer2;
-            vector<Settlement> settlementsPlayer3;
+            vector<vector<Road>> playersRoads; // to store the concrete roads of each player
+            vector<vector<Settlement>> playersSettlements; // to store the concrete settlements of each player
 
             int longestRoad;
             int largestArmy;
@@ -48,7 +43,10 @@ namespace ariel{
             Player* hasWinner();  // return the player with the most points, or nullptr if no winner
             vector<Player*>* getPlayers();  // return the players
 
-            vector<int>* rollDice();  // roll the dice and return the numbers, distribute resources to players
+            bool buy(Player* player, int itemType, size_t position, int opCode);  // buy a building or a road
+
+            vector<int>* rollDice();  // roll the dice and return the numbers, distribute resources to players by the board and not by the settlement class.
+
 
 
 
