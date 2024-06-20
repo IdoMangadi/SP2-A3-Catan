@@ -306,6 +306,13 @@ namespace ariel{
                 this->playersRoads[i].push_back(Road(*this->players[i], j));
             }
         }
+
+        // creating 9 settlements for each player:
+        for(size_t i=0; i<3; i++){
+            for(size_t j=0; j<9; j++){
+                this->playersSettlements[i].push_back(Settlement(*this->players[i], j));
+            }
+        }
     }
 
     Player* Board::hasWinner(){
@@ -326,6 +333,8 @@ namespace ariel{
 
         if(itemType == SETTLEMENT){  // handling settlements:
 
+            if(player->getSettlements().size() >= 5) return false;  // if the player already has 5 settlements
+
             for(size_t i=0; i<this->vertices[position].getEdges().size(); i++){  // iterate over the vertex's adjacents and check if there is a settlement on one of them
                 if(this->vertices[position].getEdges()[i]->getVertex1()->hasSettlement() || this->vertices[position].getEdges()[i]->getVertex2()->hasSettlement()){
                     return false;
@@ -340,10 +349,13 @@ namespace ariel{
                     }
                 }
             }
+            // buying and setting the settlement:
             if(opCode == STAGE_ONE || (hasRoad && player->canAfford(itemType))){  // if the player can afford the settlement
-                Settlement* currSettlement = &(this->playersSettlements[player->getId()][player->getBuildings().size()]);
+                size_t playerBuildings = player->getSettlements().size() + player->getCities().size();  // get the number of buildings the player has
+                Settlement* currSettlement = &(this->playersSettlements[player->getId()][playerBuildings]);
                 this->vertices[position].setSettlement(currSettlement);  // set the settlement on the vertex
                 opCode = (opCode == STAGE_ONE) ? FREE : PAID;  // if its the first stage the settlement is free 
+                if(playerBuildings == 1) distributeResources(this->hexagons[position].getDiceNum());  // if its the second settlement distribute resources
                 return player->buy(currSettlement, itemType, opCode);  // buy the settlement
             }
         }
@@ -351,7 +363,7 @@ namespace ariel{
         if(itemType == CITY){ // handling cities:
             // check if there is a settlement of the player on this vertex:
             if(this->vertices[position].hasSettlement() && this->vertices[position].getSettlement()->getOwner().getId() == player->getId()){
-                if(player->canAfford(CITY)) this->vertices[position].getSettlement()->upgrade();
+                if(player->canAfford(CITY)) this->vertices[position].getSettlement()->upgrade();  // upgrade the settlement to a city
                 return player->buy(this->vertices[position].getSettlement(), itemType, opCode);
             }
         }
@@ -380,34 +392,27 @@ namespace ariel{
             }
             else{  // if its the first stage
                 // if(there is a settlement on the vertex1 && the settlement belongs to the current player && the settlement is the last settlement the player built)
-                if(currEdge->getVertex1()->hasSettlement() && currEdge->getVertex1()->getSettlement()->getOwner().getId() == player->getId() && currEdge->getVertex1()->getSettlement() == player->getBuildings()[player->getBuildings().size()-1]){
+                if(currEdge->getVertex1()->hasSettlement() && currEdge->getVertex1()->getSettlement()->getOwner().getId() == player->getId() && currEdge->getVertex1()->getSettlement() == player->getSettlements()[player->getSettlements().size()-1]){
                     hasConnection = true;
                 }
                 // if(there is a settlement on the vertex2 && the settlement belongs to the current player && the settlement is the last settlement the player built)
-                else if(currEdge->getVertex2()->hasSettlement() && currEdge->getVertex2()->getSettlement()->getOwner().getId() == player->getId() && currEdge->getVertex2()->getSettlement() == player->getBuildings()[player->getBuildings().size()-1]){
+                else if(currEdge->getVertex2()->hasSettlement() && currEdge->getVertex2()->getSettlement()->getOwner().getId() == player->getId() && currEdge->getVertex2()->getSettlement() == player->getSettlements()[player->getSettlements().size()-1]){
                     hasConnection = true;
                 }
             }
             if(hasConnection){  // if there is a road of the current player that connected to the edge
                 Road* road = &(this->playersRoads[player->getId()][player->getRoads().size()]);  // get the last road the player built
                 this->edges[position].setRoad(road);  // set the road on the edge
+                opCode = (opCode == STAGE_ONE) ? FREE : PAID;  // if its the first stage the road is free
                 return player->buy(road, itemType, opCode);  // buy the road
             }
         }
         return false;
     }
 
-    vector<int>* Board::rollDice(){
-        // roll the dice:
-        this->diceNums.clear();  // clear the previous dice numbers
-        this->diceNums.push_back(rand() % 6 + 1);  // roll the dice twice
-        this->diceNums.push_back(rand() % 6 + 1);
-        return &this->diceNums;  // return the dice numbers
-        int sum = this->diceNums[0] + this->diceNums[1];
-
-        // distribute resources to players:
+    void Board::distributeResources(size_t diceSum){
         for(size_t i=0; i<19; i++){  // iterate over the hexagons
-            if(this->hexagons[i].getDiceNum() == sum && !this->hexagons[i].getHasRobber()){  // if the dice number matches the hexagon's dice number
+            if(this->hexagons[i].getDiceNum() == diceSum && !this->hexagons[i].getHasRobber()){  // if the dice number matches the hexagon's dice number
                 for(size_t j=0; j<6; j++){  // iterate over the hexagon's vertices
                     if(this->hexagons[i].getVertices()->at(j)->hasSettlement()){  // if the vertex has a settlement
                         
@@ -423,6 +428,17 @@ namespace ariel{
                 }
             }
         }
+    }
+
+    vector<size_t>* Board::rollDice(){
+
+        this->diceNums.clear();  // clear the previous dice numbers
+        this->diceNums.push_back((size_t)rand() % 6 + 1);  // roll the dice twice
+        this->diceNums.push_back((size_t)rand() % 6 + 1);
+        size_t diceSum = this->diceNums[0] + this->diceNums[1];  // get the sum of the dice numbers
+
+        distributeResources(diceSum);  // distribute the resources
+        return &this->diceNums;  // return the dice numbers
     }
 
 
@@ -442,30 +458,39 @@ namespace ariel{
 
  
     void Board::display(){
-        cout<<"                     "<<this->vertices[0]<<"       "<<this->vertices[1]<<"       "<<this->vertices[2]<<endl;
-        cout<<"                   "<<this->edges[0]<<"   "<<this->edges[1]<<"   "<<this->edges[2]<<"   "<<this->edges[3]<<"   "<<this->edges[4]<<"   "<<this->edges[5]<<endl;
-        cout<<"                 "<<this->vertices[3]<<"       "<<this->vertices[4]<<"       "<<this->vertices[5]<<"       "<<this->vertices[6]<<endl;
-        cout<<"                 "<<this->edges[6]<<" "<<this->hexagons[0]<<"  "<<this->edges[7]<<" "<<this->hexagons[1]<<"  "<<this->edges[8]<<"  "<<this->hexagons[2]<<" "<<this->edges[9]<<endl;
-        cout<<"                 "<<this->vertices[7]<<"       "<<this->vertices[8]<<"       "<<this->vertices[9]<<"       "<<this->vertices[10]<<endl;
-        cout<<"               "<<this->edges[10]<<"   "<<this->edges[11]<<"   "<<this->edges[12]<<"   "<<this->edges[13]<<"   "<<this->edges[14]<<"   "<<this->edges[15]<<"   "<<this->edges[16]<<"   "<<this->edges[17]<<endl;
-        cout<<"             "<<this->vertices[11]<<"       "<<this->vertices[12]<<"       "<<this->vertices[13]<<"       "<<this->vertices[14]<<"       "<<this->vertices[15]<<endl;
-        cout<<"             "<<this->edges[18]<<" "<<this->hexagons[3]<<" "<<this->edges[19]<<" "<<this->hexagons[4]<<"  "<<this->edges[20]<<" "<<this->hexagons[5]<<"  "<<this->edges[21]<<" "<<this->hexagons[6]<<" "<<this->edges[22]<<endl;
-        cout<<"             "<<this->vertices[16]<<"       "<<this->vertices[17]<<"       "<<this->vertices[18]<<"       "<<this->vertices[19]<<"       "<<this->vertices[20]<<endl;
-        cout<<"           "<<this->edges[23]<<"   "<<this->edges[24]<<"   "<<this->edges[25]<<"   "<<this->edges[26]<<"   "<<this->edges[27]<<"   "<<this->edges[28]<<"   "<<this->edges[29]<<"   "<<this->edges[30]<<"   "<<this->edges[31]<<"   "<<this->edges[32]<<endl;
-        cout<<"         "<<this->vertices[21]<<"       "<<this->vertices[22]<<"       "<<this->vertices[23]<<"       "<<this->vertices[24]<<"       "<<this->vertices[25]<<"       "<<this->vertices[26]<<endl;
-        cout<<"         "<<this->edges[33]<<" "<<this->hexagons[7]<<"  "<<this->edges[34]<<" "<<this->hexagons[8]<<" "<<this->edges[35]<<"  "<<this->hexagons[9]<<"  "<<this->edges[36]<<" "<<this->hexagons[10]<<"  "<<this->edges[37]<<"  "<<this->hexagons[11]<<"  "<<this->edges[38]<<endl;
-        cout<<"         "<<this->vertices[27]<<"       "<<this->vertices[28]<<"       "<<this->vertices[29]<<"       "<<this->vertices[30]<<"       "<<this->vertices[31]<<"       "<<this->vertices[32]<<endl;
-        cout<<"           "<<this->edges[39]<<"   "<<this->edges[40]<<"   "<<this->edges[41]<<"   "<<this->edges[42]<<"   "<<this->edges[43]<<"   "<<this->edges[44]<<"   "<<this->edges[45]<<"   "<<this->edges[46]<<"   "<<this->edges[47]<<"   "<<this->edges[48]<<endl;
-        cout<<"             "<<this->vertices[33]<<"       "<<this->vertices[34]<<"       "<<this->vertices[35]<<"       "<<this->vertices[36]<<"       "<<this->vertices[37]<<endl;
-        cout<<"             "<<this->edges[49]<<" "<<this->hexagons[12]<<"  "<<this->edges[50]<<"  "<<this->hexagons[13]<<"  "<<this->edges[51]<<"  "<<this->hexagons[14]<<" "<<this->edges[52]<<"  "<<this->hexagons[15]<<" "<<this->edges[53]<<endl;
-        cout<<"             "<<this->vertices[38]<<"       "<<this->vertices[39]<<"       "<<this->vertices[40]<<"       "<<this->vertices[41]<<"       "<<this->vertices[42]<<endl;
-        cout<<"               "<<this->edges[54]<<"   "<<this->edges[55]<<"   "<<this->edges[56]<<"   "<<this->edges[57]<<"   "<<this->edges[58]<<"   "<<this->edges[59]<<"   "<<this->edges[60]<<"   "<<this->edges[61]<<endl;
-        cout<<"                 "<<this->vertices[43]<<"       "<<this->vertices[44]<<"       "<<this->vertices[45]<<"       "<<this->vertices[46]<<endl;
-        cout<<"                 "<<this->edges[62]<<" "<<this->hexagons[16]<<"  "<<this->edges[63]<<" "<<this->hexagons[17]<<"  "<<this->edges[64]<<" "<<this->hexagons[18]<<" "<<this->edges[65]<<endl;
-        cout<<"                 "<<this->vertices[47]<<"       "<<this->vertices[48]<<"       "<<this->vertices[49]<<"       "<<this->vertices[50]<<endl;
-        cout<<"                   "<<this->edges[66]<<"   "<<this->edges[67]<<"   "<<this->edges[68]<<"   "<<this->edges[69]<<"   "<<this->edges[70]<<"   "<<this->edges[71]<<endl;
-        cout<<"                     "<<this->vertices[51]<<"       "<<this->vertices[52]<<"       "<<this->vertices[53]<<endl;
+        cout << "------------------------------------------------------------------------------------------------------------------------" << endl;
+        // display players stats:
+        for(size_t i=0; i<3; i++){
+            Player* currPlayer = this->players[i];
+            cout << BOLD << currPlayer->getColor() << currPlayer->getName() << RESET_COLOR << BOLD << ": Points: " << RESET_COLOR << currPlayer->getPoints() << BOLD <<" Resources: " << RESET_COLOR << WOOD_EMOJI << ": " << currPlayer->getResources()[0] << " " << BRICK_EMOJI << ": " << currPlayer->getResources()[1] << " " << WOOL_EMOJI << ": " << currPlayer->getResources()[2] << " " << WHEAT_EMOJI << ": " << currPlayer->getResources()[3] << " " << STONE_EMOJI << ": " << currPlayer->getResources()[4] << " " << endl;
+        }
 
+        // display the board:
+        cout<<"                                                               "<<this->vertices[0]<<"       "<<this->vertices[1]<<"       "<<this->vertices[2]<<endl;
+        cout<<"                                                             "<<this->edges[0]<<"   "<<this->edges[1]<<"   "<<this->edges[2]<<"   "<<this->edges[3]<<"   "<<this->edges[4]<<"   "<<this->edges[5]<<endl;
+        cout<<"                                                           "<<this->vertices[3]<<"       "<<this->vertices[4]<<"       "<<this->vertices[5]<<"       "<<this->vertices[6]<<endl;
+        cout<<"                                                           "<<this->edges[6]<<" "<<this->hexagons[0]<<"  "<<this->edges[7]<<" "<<this->hexagons[1]<<"  "<<this->edges[8]<<"  "<<this->hexagons[2]<<" "<<this->edges[9]<<endl;
+        cout<<"                                                           "<<this->vertices[7]<<"       "<<this->vertices[8]<<"       "<<this->vertices[9]<<"       "<<this->vertices[10]<<endl;
+        cout<<"                                                         "<<this->edges[10]<<"   "<<this->edges[11]<<"   "<<this->edges[12]<<"   "<<this->edges[13]<<"   "<<this->edges[14]<<"   "<<this->edges[15]<<"   "<<this->edges[16]<<"   "<<this->edges[17]<<endl;
+        cout<<"                                                       "<<this->vertices[11]<<"       "<<this->vertices[12]<<"       "<<this->vertices[13]<<"       "<<this->vertices[14]<<"       "<<this->vertices[15]<<endl;
+        cout<<"                                                       "<<this->edges[18]<<" "<<this->hexagons[3]<<" "<<this->edges[19]<<" "<<this->hexagons[4]<<"  "<<this->edges[20]<<" "<<this->hexagons[5]<<"  "<<this->edges[21]<<" "<<this->hexagons[6]<<" "<<this->edges[22]<<endl;
+        cout<<"                                                       "<<this->vertices[16]<<"       "<<this->vertices[17]<<"       "<<this->vertices[18]<<"       "<<this->vertices[19]<<"       "<<this->vertices[20]<<endl;
+        cout<<"                                                     "<<this->edges[23]<<"   "<<this->edges[24]<<"   "<<this->edges[25]<<"   "<<this->edges[26]<<"   "<<this->edges[27]<<"   "<<this->edges[28]<<"   "<<this->edges[29]<<"   "<<this->edges[30]<<"   "<<this->edges[31]<<"   "<<this->edges[32]<<endl;
+        cout<<"                                                   "<<this->vertices[21]<<"       "<<this->vertices[22]<<"       "<<this->vertices[23]<<"       "<<this->vertices[24]<<"       "<<this->vertices[25]<<"       "<<this->vertices[26]<<endl;
+        cout<<"                                                   "<<this->edges[33]<<" "<<this->hexagons[7]<<"  "<<this->edges[34]<<" "<<this->hexagons[8]<<" "<<this->edges[35]<<"  "<<this->hexagons[9]<<"  "<<this->edges[36]<<" "<<this->hexagons[10]<<"  "<<this->edges[37]<<"  "<<this->hexagons[11]<<"  "<<this->edges[38]<<endl;
+        cout<<"                                                   "<<this->vertices[27]<<"       "<<this->vertices[28]<<"       "<<this->vertices[29]<<"       "<<this->vertices[30]<<"       "<<this->vertices[31]<<"       "<<this->vertices[32]<<endl;
+        cout<<"                                                     "<<this->edges[39]<<"   "<<this->edges[40]<<"   "<<this->edges[41]<<"   "<<this->edges[42]<<"   "<<this->edges[43]<<"   "<<this->edges[44]<<"   "<<this->edges[45]<<"   "<<this->edges[46]<<"   "<<this->edges[47]<<"   "<<this->edges[48]<<endl;
+        cout<<"                                                       "<<this->vertices[33]<<"       "<<this->vertices[34]<<"       "<<this->vertices[35]<<"       "<<this->vertices[36]<<"       "<<this->vertices[37]<<endl;
+        cout<<"                                                       "<<this->edges[49]<<" "<<this->hexagons[12]<<"  "<<this->edges[50]<<"  "<<this->hexagons[13]<<"  "<<this->edges[51]<<"  "<<this->hexagons[14]<<" "<<this->edges[52]<<"  "<<this->hexagons[15]<<" "<<this->edges[53]<<endl;
+        cout<<"                                                       "<<this->vertices[38]<<"       "<<this->vertices[39]<<"       "<<this->vertices[40]<<"       "<<this->vertices[41]<<"       "<<this->vertices[42]<<endl;
+        cout<<"                                                         "<<this->edges[54]<<"   "<<this->edges[55]<<"   "<<this->edges[56]<<"   "<<this->edges[57]<<"   "<<this->edges[58]<<"   "<<this->edges[59]<<"   "<<this->edges[60]<<"   "<<this->edges[61]<<endl;
+        cout<<"                                                           "<<this->vertices[43]<<"       "<<this->vertices[44]<<"       "<<this->vertices[45]<<"       "<<this->vertices[46]<<endl;
+        cout<<"                                                           "<<this->edges[62]<<" "<<this->hexagons[16]<<"  "<<this->edges[63]<<" "<<this->hexagons[17]<<"  "<<this->edges[64]<<" "<<this->hexagons[18]<<" "<<this->edges[65]<<endl;
+        cout<<"                                                           "<<this->vertices[47]<<"       "<<this->vertices[48]<<"       "<<this->vertices[49]<<"       "<<this->vertices[50]<<endl;
+        cout<<"                                                             "<<this->edges[66]<<"   "<<this->edges[67]<<"   "<<this->edges[68]<<"   "<<this->edges[69]<<"   "<<this->edges[70]<<"   "<<this->edges[71]<<endl;
+        cout<<"                                                               "<<this->vertices[51]<<"       "<<this->vertices[52]<<"       "<<this->vertices[53]<<endl;
+
+        cout << "------------------------------------------------------------------------------------------------------------------------" << endl;
     }
     
 } // namespace ariel

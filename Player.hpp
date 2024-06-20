@@ -29,7 +29,8 @@ namespace ariel{
             int points;
             vector<int> resources;
             vector<Road*> roads;
-            vector<Settlement*> buildings;
+            vector<Settlement*> settlements;
+            vector<Settlement*> cities;
             vector<Card*> cards;
         
         public:
@@ -55,7 +56,8 @@ namespace ariel{
 
             const vector<Road*>& getRoads() const;
 
-            const vector<Settlement*>& getBuildings() const;
+            const vector<Settlement*>& getSettlements() const;
+            const vector<Settlement*>& getCities() const;
 
             const vector<Card*>& getCards() const;
             bool hasCard(int type);

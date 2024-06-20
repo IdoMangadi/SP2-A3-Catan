@@ -10,6 +10,10 @@ VALGRIND_FLAGS = -v --leak-check=full --show-leak-kinds=all  --error-exitcode=99
 SOURCES = Player.cpp Card.cpp Pieces.cpp BoardElements.cpp Board.cpp Catan.cpp
 OBJECTS = $(subst .cpp,.o,$(SOURCES))
 
+.PHONY: all clean valgrind cps
+
+all: catan
+
 catan: $(OBJECTS)
 	$(CXX) $(CXXFLAGS) $(OBJECTS) -o $@
 

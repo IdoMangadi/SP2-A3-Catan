@@ -8,9 +8,9 @@ using namespace std;
 
 namespace ariel{
 
-    Hexagon::Hexagon(int id, string type, int diceNum, bool hasRobber) : id(id), type(type), diceNum(diceNum), hasRobber(hasRobber){}
+    Hexagon::Hexagon(int id, string type, size_t diceNum, bool hasRobber) : id(id), type(type), diceNum(diceNum), hasRobber(hasRobber){}
 
-    int Hexagon::getDiceNum(){
+    size_t Hexagon::getDiceNum(){
         return this->diceNum;
     }
     int Hexagon::getId(){

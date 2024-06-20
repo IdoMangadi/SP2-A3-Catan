@@ -1,4 +1,5 @@
 
+#include <algorithm>
 
 #include "Player.hpp"
 #include "Pieces.hpp"
@@ -71,12 +72,16 @@ namespace ariel{
                 this->resources[WHEAT]--;
                 this->resources[WOOL]--;
             }
-            this->buildings.push_back((Settlement*)item);
+            this->settlements.push_back((Settlement*)item);
+            this->points++;
         }
         // handling cities:
         else if(itemType == CITY){
             this->resources[WHEAT] -= 2;
             this->resources[ORE] -= 3;
+            this->settlements.erase(remove(this->settlements.begin(), this->settlements.end(), (Settlement*)item), this->settlements.end());  // remove the settlement
+            this->cities.push_back((Settlement*)item);  // add the settlement as a city
+            this->points++;
         }
         else if  (itemType == CARD){
             this->resources[WHEAT]--;
@@ -93,8 +98,11 @@ namespace ariel{
     }
 
     // Buildings:
-    const vector<Settlement*>& Player::getBuildings() const{
-        return this->buildings;
+    const vector<Settlement*>& Player::getSettlements() const{
+        return this->settlements;
+    }
+    const vector<Settlement*>& Player::getCities() const{
+        return this->cities;
     }
 
     // Cards:

@@ -6,6 +6,8 @@
 #include <string>
 #include <vector>
 
+#define INVALID_POSITION 100
+
 using namespace std;
 
 namespace ariel{
@@ -28,7 +30,7 @@ namespace ariel{
             vector<Vertex> vertices;
             vector<Edge> edges;
 
-            vector<int> diceNums;
+            vector<size_t> diceNums;
             vector<Card> cards;
 
             vector<vector<Road>> playersRoads; // to store the concrete roads of each player
@@ -45,7 +47,9 @@ namespace ariel{
 
             bool buy(Player* player, int itemType, size_t position, int opCode);  // buy a building or a road
 
-            vector<int>* rollDice();  // roll the dice and return the numbers, distribute resources to players by the board and not by the settlement class.
+            void distributeResources(size_t diceNum);  // distribute resources to players by the settlement class
+
+            vector<size_t>* rollDice();  // roll the dice and return the numbers, distribute resources to players by the board and not by the settlement class.
 
 
 

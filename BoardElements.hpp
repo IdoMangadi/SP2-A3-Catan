@@ -23,13 +23,13 @@ namespace ariel{
         private:
             int id;
             string type;
-            int diceNum;
+            size_t diceNum;
             bool hasRobber;
             vector<Vertex*> vertices;
         public:
-            Hexagon(int id, string type, int diceNum, bool hasRobber);
+            Hexagon(int id, string type, size_t diceNum, bool hasRobber);
             int getId();
-            int getDiceNum();
+            size_t getDiceNum();
             string getType();
             int getResourceType();
             bool getHasRobber();

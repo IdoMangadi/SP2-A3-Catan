@@ -22,6 +22,12 @@
 #define PASTURE_EMOJI "🐑"
 #define MOUNTAINS_EMOJI "🏔️"
 
+#define WOOD_EMOJI "🪵"
+#define BRICK_EMOJI "🧱"
+#define WHEAT_EMOJI "🌾"
+#define WOOL_EMOJI "🐑"
+#define STONE_EMOJI "🪨"
+
 #define EMPTY_VERTEX "△"
 #define SETTLEMENT_EMOJI "▲"
 #define CITY_EMOJI "●"
@@ -48,14 +54,14 @@ namespace ariel{
         protected:
             int type;
             string visualDisplay;
-            Player* owner;
+            Player& owner;
         public:
             /**
              * @brief Construct a new Piece object.
              * param id The id of the piece.
              * param owner The owner of the piece (reference to the player object)
              */       
-            Piece(int type, string visualDisplay, Player* owner);
+            Piece(int type, string visualDisplay, Player& owner);
             void setType(int type);
             int getType();
             Player& getOwner();
@@ -70,7 +76,7 @@ namespace ariel{
         private:
             size_t edge;
         public:
-            Road(Player* owner, size_t edge);
+            Road(Player& owner, size_t edge);
             size_t getEdge();
             friend ostream& operator<<(ostream& os, const Road& road);
     };
@@ -82,7 +88,7 @@ namespace ariel{
         private:
             size_t vertex;
         public:
-            Settlement(Player* owner, size_t vertex);
+            Settlement(Player& owner, size_t vertex);
             size_t getVertex();
             void upgrade();
             friend ostream& operator<<(ostream& os, Settlement& settlement);
