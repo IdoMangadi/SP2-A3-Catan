@@ -355,7 +355,6 @@ namespace ariel{
                 Settlement* currSettlement = &(this->playersSettlements[player->getId()][playerBuildings]);
                 this->vertices[position].setSettlement(currSettlement);  // set the settlement on the vertex
                 opCode = (opCode == STAGE_ONE) ? FREE : PAID;  // if its the first stage the settlement is free 
-                if(playerBuildings == 1) distributeResources(this->hexagons[position].getDiceNum());  // if its the second settlement distribute resources
                 return player->buy(currSettlement, itemType, opCode);  // buy the settlement
             }
         }
@@ -430,6 +429,21 @@ namespace ariel{
         }
     }
 
+    void Board::stageOneResourcesDistribution(){
+        for(size_t i =0; i<19; i++){  // iterate over the hexagons
+            for(size_t j=0; j<6; j++){ // iterate over the hexagon's vertices
+                Settlement* settlement = this->hexagons[i].getVertices()->at(j)->getSettlement();
+                if(settlement != nullptr){  // if the vertex has a settlement
+                    Player& owner = settlement->getOwner();
+                    if(settlement == owner.getSettlements()[owner.getSettlements().size()-1]){  // if the settlement is the last settlement the player built
+                        owner.addResource(this->hexagons[i].getResourceType(), 1);
+                    }
+                }
+            }
+
+        }
+    }
+
     vector<size_t>* Board::rollDice(){
 
         this->diceNums.clear();  // clear the previous dice numbers
@@ -461,8 +475,8 @@ namespace ariel{
         cout << "------------------------------------------------------------------------------------------------------------------------" << endl;
         // display players stats:
         for(size_t i=0; i<3; i++){
-            Player* currPlayer = this->players[i];
-            cout << BOLD << currPlayer->getColor() << currPlayer->getName() << RESET_COLOR << BOLD << ": Points: " << RESET_COLOR << currPlayer->getPoints() << BOLD <<" Resources: " << RESET_COLOR << WOOD_EMOJI << ": " << currPlayer->getResources()[0] << " " << BRICK_EMOJI << ": " << currPlayer->getResources()[1] << " " << WOOL_EMOJI << ": " << currPlayer->getResources()[2] << " " << WHEAT_EMOJI << ": " << currPlayer->getResources()[3] << " " << STONE_EMOJI << ": " << currPlayer->getResources()[4] << " " << endl;
+            // printing player stats:
+            cout << *(this->players[i]) << endl;
         }
 
         // display the board:

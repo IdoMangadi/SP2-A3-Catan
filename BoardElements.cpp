@@ -19,7 +19,7 @@ namespace ariel{
     string Hexagon::getType(){
         return this->type;
     }
-    int Hexagon::getResourceType(){  // the type of the resource the hexagon produces (hexagon type / 100 - 1)
+    int Hexagon::getResourceType(){  // the type of the resource the hexagon produces
         if (this->type == DESERT_EMOJI) return -1;
         if (this->type == FOREST_EMOJI) return WOOD;
         if (this->type == HILLS_EMOJI) return BRICK;

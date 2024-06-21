@@ -11,7 +11,7 @@ namespace ariel{
 
     // Constructor:
     Player::Player(string name, size_t id, string color, int points) : name(name), id(id), color(color), points(points){
-        this->resources = vector<int>(5, 0);
+        this->resources = vector<int>(5, 0);  // initialize resources vector with 0
     }
 
     // Cardentials:
@@ -118,38 +118,9 @@ namespace ariel{
         return false;
     }
 
-    // bool Player::operator==(const Player& player){
-    //     return this->id == player.id;
-    // }
-
-    // bool Player::operator!=(const Player& player){
-    //     return this->id != player.id;
-    // }
-
-    // bool Player::operator<(const Player& player){
-    //     return this->id < player.id;
-    // }
-
-    // bool Player::operator>(const Player& player){
-    //     return this->id > player.id;
-    // }
-
-    // bool Player::operator<=(const Player& player){
-    //     return this->id <= player.id;
-    // }
-
-    // bool Player::operator>=(const Player& player){
-    //     return this->id >= player.id;
-    // }
-
-    // ostream& operator<<(ostream& os, const Player& player){
-    //     os << "Player " << player.id << " - " << player.name << " - " << player.points << " points";
-    //     return os;
-    // }
-
-    // istream& operator>>(istream& is, Player& player){
-    //     is >> player.id >> player.name >> player.points;
-    //     return is;
-    // }
+    ostream& operator<<(ostream& os, Player& player){
+        os << BOLD << player.getColor() << player.getName() << RESET_COLOR << BOLD << ": Points: " << RESET_COLOR << player.getPoints() << BOLD <<" Resources: " << RESET_COLOR << WOOD_EMOJI << ": " << player.getResources()[0] << " " << BRICK_EMOJI << ": " << player.getResources()[1] << " " << WHEAT_EMOJI << ": " << player.getResources()[2] << " " << WOOL_EMOJI << ": " << player.getResources()[3] << " " << STONE_EMOJI << ": " << player.getResources()[4] << " ";
+        return os;
+    }
 
 }

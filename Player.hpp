@@ -62,6 +62,8 @@ namespace ariel{
             const vector<Card*>& getCards() const;
             bool hasCard(int type);
             void useCard(Card* card);
+
+            friend ostream& operator<<(ostream& os, Player& player);  // printing player stats (name, points, resources)
     };
 }
 

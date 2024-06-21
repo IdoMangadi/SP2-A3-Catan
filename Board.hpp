@@ -49,6 +49,8 @@ namespace ariel{
 
             void distributeResources(size_t diceNum);  // distribute resources to players by the settlement class
 
+            void stageOneResourcesDistribution(); // distribute resources to players after the first stage of the game
+
             vector<size_t>* rollDice();  // roll the dice and return the numbers, distribute resources to players by the board and not by the settlement class.
 
 

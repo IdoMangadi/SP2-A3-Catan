@@ -85,8 +85,10 @@ void stageOne(Board* board){
             cout << playerName << ", choose edge to place road. Enter an edge number between 0 and 71: " << endl;
             edgeId = getEdgeFromUser();
         } while(board->buy(currPlayer, ROAD, edgeId, STAGE_ONE) == false);
-        board->display();
+        if(i < 5) board->display();
     }
+    board->stageOneResourcesDistribution();
+    board->display();
 }
 /**
  * @brief Split a string into tokens by spaces.
@@ -156,7 +158,7 @@ int main(int argc , char* argv[]){
         string action;
         // dice roll:
         do{
-            cout << BOLD << players[turn].getColor() << "Turn: " << players[turn].getName()<< ": " << RESET_COLOR << "Roll the dice! <roll>" << endl;
+            cout << BOLD << players[turn].getColor() << "Turn " << players[turn].getName()<< ": " << RESET_COLOR << "Roll the dice! <roll>" << endl;
             cin >> action;
         } while(action != "roll");
         vector<size_t>* diceNums = board.rollDice();
@@ -174,8 +176,12 @@ int main(int argc , char* argv[]){
                 if(mainBuy(&board, &players[turn], &actionTokens) == false) continue;
             }
 
+            // continue from here...
+
             break;
         }
+
+        board.display();
         turn = (turn + 1) % 3;
     }
 
