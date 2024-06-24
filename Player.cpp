@@ -12,6 +12,7 @@ namespace ariel{
     // Constructor:
     Player::Player(string name, size_t id, string color, int points) : name(name), id(id), color(color), points(points){
         this->resources = vector<int>(5, 0);  // initialize resources vector with 0
+        this->knightsCounter = 0;
     }
 
     // Cardentials:
@@ -50,9 +51,19 @@ namespace ariel{
         else if(buildingType == CITY){
             return this->resources[WHEAT] >= 2 && this->resources[ORE] >= 3;
         }
+        else if(buildingType == CARD){
+            return this->resources[WHEAT] >= 1 && this->resources[ORE] >= 1 && this->resources[WOOL] >= 1;
+        }
         return false;
     }
-    bool Player::buy(Piece* item, int itemType, int opCode){
+    bool Player::canAfford(vector<int> costs){
+        if(costs.size() != 5) return false;
+        for(size_t i = 0; i < 5; i++){
+            if(this->resources[i] < costs[i]) return false;
+        }
+        return true;
+    }
+    bool Player::buy(void* item, int itemType, int opCode){
         if((opCode != FREE && opCode != PAID) || (itemType != ROAD && itemType != SETTLEMENT && itemType != CITY)){  // invalid input
             return false;
         }
@@ -117,9 +128,16 @@ namespace ariel{
         }
         return false;
     }
+    void Player::useCard(Card* card){
+        card->use();
+    }
+    void Player::addKnight(){
+        this->knightsCounter++;
+    }
 
     ostream& operator<<(ostream& os, Player& player){
         os << BOLD << player.getColor() << player.getName() << RESET_COLOR << BOLD << ": Points: " << RESET_COLOR << player.getPoints() << BOLD <<" Resources: " << RESET_COLOR << WOOD_EMOJI << ": " << player.getResources()[0] << " " << BRICK_EMOJI << ": " << player.getResources()[1] << " " << WHEAT_EMOJI << ": " << player.getResources()[2] << " " << WOOL_EMOJI << ": " << player.getResources()[3] << " " << STONE_EMOJI << ": " << player.getResources()[4] << " ";
+        os << BOLD << "Cards: " << RESET_COLOR << player.cards.size();
         return os;
     }
 

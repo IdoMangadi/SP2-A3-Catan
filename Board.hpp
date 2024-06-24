@@ -32,6 +32,7 @@ namespace ariel{
 
             vector<size_t> diceNums;
             vector<Card> cards;
+            size_t cardsIndex;
 
             vector<vector<Road>> playersRoads; // to store the concrete roads of each player
             vector<vector<Settlement>> playersSettlements; // to store the concrete settlements of each player
@@ -45,7 +46,7 @@ namespace ariel{
             Player* hasWinner();  // return the player with the most points, or nullptr if no winner
             vector<Player*>* getPlayers();  // return the players
 
-            bool buy(Player* player, int itemType, size_t position, int opCode);  // buy a building or a road
+            bool buy(Player* player, int itemType, size_t position, int opCode);  // buy a building or a road or a card
 
             void distributeResources(size_t diceNum);  // distribute resources to players by the settlement class
 
@@ -55,7 +56,7 @@ namespace ariel{
 
 
 
-
+            void displayStats();  // display the stats of the players
             void display();  // display the board
 
     };

@@ -290,7 +290,6 @@ namespace ariel{
         }
         // shuffle the cards:
         srand(time(0));  // Seed the random number generator
-
         for (size_t i = cards.size() - 1; i > 0; --i) {
             size_t j = (size_t)rand() % (i + 1);  // Get a random index from 0 to i
 
@@ -299,6 +298,7 @@ namespace ariel{
             cards[i] = cards[j];
             cards[j] = temp;
         }
+        cardsIndex = 0;  // initialize the cards index
 
         // creating 15 roads for each player:
         for(size_t i=0; i<3; i++){
@@ -330,6 +330,8 @@ namespace ariel{
     bool Board::buy(Player* player, int itemType, size_t position, int opCode){
 
         if(opCode != FREE && opCode != PAID && opCode != STAGE_ONE) return false;  // invalid input
+
+        if(opCode == PAID && player->canAfford(itemType) == false) return false;  // if the player can't afford the item
 
         if(itemType == SETTLEMENT){  // handling settlements:
 
@@ -406,6 +408,9 @@ namespace ariel{
                 return player->buy(road, itemType, opCode);  // buy the road
             }
         }
+        if(itemType == CARD && this->cards.size() > cardsIndex){  // handling cards:
+            return player->buy(&this->cards[cardsIndex++], itemType, PAID);  // buy the card
+        }
         return false;
     }
 
@@ -469,7 +474,15 @@ namespace ariel{
 
 
 
-
+    void Board::displayStats(){
+        cout << "------------------------------------------------------------------------------------------------------------------------" << endl;
+        // display players stats:
+        for(size_t i=0; i<3; i++){
+            // printing player stats:
+            cout << *(this->players[i]) << endl;
+        }
+        cout << "------------------------------------------------------------------------------------------------------------------------" << endl;
+    }
  
     void Board::display(){
         cout << "------------------------------------------------------------------------------------------------------------------------" << endl;

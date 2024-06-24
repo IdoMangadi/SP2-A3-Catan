@@ -32,6 +32,7 @@ namespace ariel{
             vector<Settlement*> settlements;
             vector<Settlement*> cities;
             vector<Card*> cards;
+            size_t knightsCounter;
         
         public:
             Player(string name, size_t id, string color, int points);
@@ -45,6 +46,7 @@ namespace ariel{
             const vector<int>& getResources() const;
             void addResource(int resource, int amount);
             bool canAfford(int buildingType);
+            bool canAfford(vector<int> costs);
 
             /**
              * @brief Buy a building. Assuming controller checked if player can afford and board checked if position is valid.
@@ -52,7 +54,7 @@ namespace ariel{
              * @param pieceType The type of the piece (ROAD, SETTLEMENT, CITY).
              * @param opCode The operation code (FREE or PAID).
             */
-            bool buy(Piece* piece, int itemType, int opCode);
+            bool buy(void* piece, int itemType, int opCode);
 
             const vector<Road*>& getRoads() const;
 
@@ -62,6 +64,8 @@ namespace ariel{
             const vector<Card*>& getCards() const;
             bool hasCard(int type);
             void useCard(Card* card);
+
+            void addKnight();
 
             friend ostream& operator<<(ostream& os, Player& player);  // printing player stats (name, points, resources)
     };
