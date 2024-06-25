@@ -37,27 +37,65 @@ namespace ariel{
             vector<vector<Road>> playersRoads; // to store the concrete roads of each player
             vector<vector<Settlement>> playersSettlements; // to store the concrete settlements of each player
 
-            int longestRoad;
-            int largestArmy;
+            size_t longestRoad;
+            Player* longestRoadPlayer;
+            size_t largestArmy;
+            Player* largestArmyPlayer;
 
         public:
-            Board(Player* player1, Player* player2, Player* player3);  // constructor
+            /**
+             * @brief Construct a new Board object. 
+            */
+            Board(Player* player1, Player* player2, Player* player3);
 
-            Player* hasWinner();  // return the player with the most points, or nullptr if no winner
-            vector<Player*>* getPlayers();  // return the players
+            /**
+             * return the player with the most points, or nullptr if no winner
+            */
+            Player* hasWinner();
 
-            bool buy(Player* player, int itemType, size_t position, int opCode);  // buy a building or a road or a card
+            /**
+             * return the players
+            */
+            vector<Player*>* getPlayers();
 
-            void distributeResources(size_t diceNum);  // distribute resources to players by the settlement class
+            /**
+             * buy a building or a road or a card
+            */
+            bool buy(Player* player, int itemType, size_t position, int opCode);
 
-            void stageOneResourcesDistribution(); // distribute resources to players after the first stage of the game
+            /**
+             * distribute resources to players by the settlement class
+            */
+            void distributeResources(size_t diceNum);
 
-            vector<size_t>* rollDice();  // roll the dice and return the numbers, distribute resources to players by the board and not by the settlement class.
+            /**
+             * distribute resources to players after the first stage of the game
+            */
+            void stageOneResourcesDistribution();
 
+            /**
+             * updating the largest army player
+            */
+            bool knightUsed(Player* player);
 
+            /**
+             * updating the longest road player
+            */
+            bool longestRoadCheck(Player* player);
 
-            void displayStats();  // display the stats of the players
-            void display();  // display the board
+            /**
+             * roll the dice and return the numbers, distribute resources to players by the board and not by the settlement class
+            */
+            vector<size_t>* rollDice();
+
+            /**
+             * // display the stats of the players
+            */
+            void displayStats();
+            /**
+             * // display the board
+            */
+            void display();
 
     };
 }

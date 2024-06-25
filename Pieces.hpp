@@ -39,6 +39,7 @@
 #define RED "\033[31m"
 #define GREEN "\033[32m"
 #define YELLOW "\033[33m"
+#define STRIKE_THROUGH "\033[9m"
 
 using namespace std;
 
@@ -78,6 +79,7 @@ namespace ariel{
         public:
             Road(Player& owner, size_t edge);
             size_t getEdge();
+            void setEdge(size_t edge);
             friend ostream& operator<<(ostream& os, const Road& road);
     };
 
@@ -90,6 +92,7 @@ namespace ariel{
         public:
             Settlement(Player& owner, size_t vertex);
             size_t getVertex();
+            void setVertex(size_t vertex);
             void upgrade();
             friend ostream& operator<<(ostream& os, Settlement& settlement);
     };

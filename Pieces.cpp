@@ -28,6 +28,9 @@ namespace ariel{
     size_t Road::getEdge(){
         return this->edge;
     }
+    void Road::setEdge(size_t edge){
+        this->edge = edge;
+    }
     ostream& operator<<(ostream& os, Road& road){
         os << road.getVisualDisplay();
         return os;
@@ -37,10 +40,26 @@ namespace ariel{
     size_t Settlement::getVertex(){
         return this->vertex;
     }
+    void Settlement::setVertex(size_t vertex){
+        this->vertex = vertex;
+    }
     void Settlement::upgrade(){
         // if settlement, upgrade to city according to color
         this->setType(CITY);
         this->visualDisplay = CITY_EMOJI;
+
+        // handling player ordering:
+        Player& owner = this->getOwner();
+        // removing the settlement from the player's settlements vector
+        vector<Settlement*>& settlements = owner.getSettlements();
+        for (int i = 0; i < settlements.size(); i++){
+            if (settlements[(size_t)i] == this){
+                settlements.erase(settlements.begin() + i);
+                break;
+            }
+        }
+        // adding the city to the player's cities vector
+        owner.getCities().push_back(this);
     }
     ostream& operator<<(ostream& os, Settlement& settlement){
         os << settlement.owner.getColor() << settlement.getVisualDisplay() << RESET_COLOR;

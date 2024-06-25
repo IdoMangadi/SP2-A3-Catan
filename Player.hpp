@@ -43,7 +43,7 @@ namespace ariel{
             int getPoints();
             void addPoints(int points);
 
-            const vector<int>& getResources() const;
+            vector<int>& getResources();
             void addResource(int resource, int amount);
             bool canAfford(int buildingType);
             bool canAfford(vector<int> costs);
@@ -58,13 +58,15 @@ namespace ariel{
 
             const vector<Road*>& getRoads() const;
 
-            const vector<Settlement*>& getSettlements() const;
-            const vector<Settlement*>& getCities() const;
+            vector<Settlement*>& getSettlements();
+            vector<Settlement*>& getCities();
 
             const vector<Card*>& getCards() const;
             bool hasCard(int type);
-            void useCard(Card* card);
+            bool useCard(int type);
+            string getCardsVisual();
 
+            size_t getKnightsCounter();
             void addKnight();
 
             friend ostream& operator<<(ostream& os, Player& player);  // printing player stats (name, points, resources)

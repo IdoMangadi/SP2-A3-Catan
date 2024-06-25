@@ -8,6 +8,8 @@
 #define MONOPOLY 014
 #define YEAROFPLENTY 015
 
+using namespace std;
+
 namespace ariel{
 
     /**
@@ -19,6 +21,7 @@ namespace ariel{
             int type;
             bool bought;
             bool used;
+            string visualDisplay;
         public:
             /**
              * @brief Construct a new Card object.
@@ -28,5 +31,6 @@ namespace ariel{
             int getId();
             bool isUsed();
             void use();
+            string getVisualDisplay();
     };
 }
