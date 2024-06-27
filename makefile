@@ -8,14 +8,22 @@ CXXFLAGS = -std=c++11 -Werror -Wsign-conversion
 VALGRIND_FLAGS = -v --leak-check=full --show-leak-kinds=all  --error-exitcode=99
 
 SOURCES = Player.cpp Card.cpp Pieces.cpp BoardElements.cpp Board.cpp Catan.cpp
+TSOURCES = Player.cpp Card.cpp Pieces.cpp BoardElements.cpp Board.cpp Catan.cpp TestCounter.cpp Test.cpp
 OBJECTS = $(subst .cpp,.o,$(SOURCES))
+TOBJECTS = $(subst .cpp,.o,$(TSOURCES))
 
-.PHONY: all clean valgrind cps
+.PHONY: all clean valgrind cps run_test test
 
 all: catan
 
 catan: $(OBJECTS)
 	$(CXX) $(CXXFLAGS) $(OBJECTS) -o $@
+
+run_test: test
+	./test
+
+test: $(TOBJECTS)
+	$(CXX) $(CXXFLAGS) $^ -o test
 
 valgrind: catan
 	valgrind --tool=memcheck $(VALGRIND_FLAGS) ./catan 2>&1 | { egrep "lost| at " || true; }
@@ -24,7 +32,7 @@ valgrind: catan
 	$(CXX) $(CXXFLAGS) --compile $< -o $@
 
 clean:
-	rm -f *.o catan
+	rm -f *.o catan test 
 
 cps:
 	git commit -a -m "$(m)"

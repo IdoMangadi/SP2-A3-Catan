@@ -27,10 +27,29 @@ namespace ariel{
              * @brief Construct a new Card object.
             */
             Card(int id, int type);
+            /**
+             * @brief Get the type of the card.
+             */
             int getType();
+            /**
+             * @brief Get the id of the card.
+             */
             int getId();
+            /**
+             * @brief set the card as bought.
+             */
+            void setBought();
+            /**
+             * @brief Check if the card is used.
+             */
             bool isUsed();
+            /**
+             * @brief Use the card.
+             */
             void use();
+            /**
+             * @brief Get the visual display of the card.
+             */
             string getVisualDisplay();
     };
 }

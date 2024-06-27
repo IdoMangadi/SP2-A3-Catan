@@ -425,6 +425,7 @@ namespace ariel{
             }
         }
         if(itemType == CARD && this->cards.size() > cardsIndex){  // handling cards:
+            this->cards[cardsIndex].setBought();  // set the card as bought
             return player->buy(&this->cards[cardsIndex++], itemType, PAID);  // buy the card
         }
         return false;
@@ -501,6 +502,7 @@ namespace ariel{
      *       there is no direct access from the road object to the edges objects. it can be done only through the board object. it has a vector of the edges objects that each road holds the id of the edges that it is on.
      * 
     */
+   
     bool Board::longestRoadCheck(Player* player){
         size_t longestRoad = 0;  // initialize the longest road length
         vector<Road*> playerRoads = player->getRoads();  // get the player's roads
@@ -601,102 +603,3 @@ namespace ariel{
     }
     
 } // namespace ariel
-
-
-// bool Board::longestRoadCheck(Player* player){
-//         /**
-//          * this function checks what is the length of the longest road of the player.
-//          * if the player has the longest road it updates the longest road length and the longest road owner and returns true. 
-//          * NOTE: the player dosent have access to the edges objects. only to the roads objects.
-//          *       the roads objects have access to the edges id only.
-//          *       this function check by itself the length of the longest road of the player.
-//          * the function uses BFS algorithm to find the longest road of the player.
-//         */
-
-//         vector<Road*> playerRoads = player->getRoads();  // get the player's roads
-//         vector<bool> visitedEdges(72, false);  // initialize the visited edges vector
-//         size_t longestRoad = 0;  // initialize the longest road length of the player
-
-//         for(size_t i=0; i<playerRoads.size(); i++){  // iterate over the player's roads
-//             size_t currRoadLength = 1;  // initialize the current road length
-//             size_t currEdgeId = playerRoads[i]->getEdge();  // get the current road's edge id
-//             visitedEdges[currEdgeId] = true;  // mark the current edge as visited
-//             size_t currVertexId = (size_t)this->edges[i].getVertex1()->getId();  // get the current vertex id
-//             size_t nextVertexId = (size_t)this->edges[i].getVertex2()->getId();  // get the next vertex id
-
-//             queue<size_t> q;  // create a queue
-//             q.push(nextVertexId);  // push the next vertex id to the queue
-
-//             while(!q.empty()){  // while the queue is not empty
-//                 size_t currVertexId = q.front();  // get the current vertex id
-//                 q.pop();  // pop the current vertex id
-//                 for(size_t j=0; j<this->vertices[currVertexId].getEdges().size(); j++){  // iterate over the current vertex's edges
-//                     size_t nextEdgeId = (size_t)this->vertices[currVertexId].getEdges()[j]->getId();  // get the next edge id
-//                     if(visitedEdges[nextEdgeId] == false){  // if the edge is not visited
-//                         visitedEdges[nextEdgeId] = true;  // mark the edge as visited
-//                         currRoadLength++;  // increment the current road length
-//                         size_t nextVertexId = ((size_t)this->vertices[currVertexId].getEdges()[j]->getVertex1()->getId() == currVertexId) ? (size_t)this->vertices[currVertexId].getEdges()[j]->getVertex2()->getId() : (size_t)this->vertices[currVertexId].getEdges()[j]->getVertex1()->getId();  // get the next vertex id
-//                         q.push(nextVertexId);  // push the next vertex id to the queue
-//                     }
-//                 }
-//             }
-//             if(currRoadLength > longestRoad) longestRoad = currRoadLength;  // update the longest road length
-//         }
-
-//         // Check if the player has the longest road
-//         if(longestRoad >= 5 && longestRoad > this->longestRoad){
-//             if(this->longestRoad != 0){  // means there is a player that has the longest road
-//                 this->longestRoadPlayer->addPoints(-2);  // remove the points from the previous longest road owner
-//             }
-//             this->longestRoad = longestRoad;  // update the longest road
-//             this->longestRoadPlayer = player;  // update the longest road owner
-//             player->addPoints(2);  // add 2 points to the player
-//             return true;
-//         }
-//         return false;
-//     }
-
-
-// size_t longestRoad = 0;  // initialize the longest road
-//         vector<Road*> playerRoads = player->getRoads();  // get the player's roads
-        
-//         for(size_t i=0; i<playerRoads.size(); i++){  // iterate over the player's roads
-//             vector<size_t> visitedEdges;  // vector to store the visited edges
-//             queue<size_t> q;  // queue to store the edges
-//             q.push(playerRoads[i]->getId());  // push the current road to the queue
-//             visitedEdges.push_back(playerRoads[i]->getId());  // mark the current road as visited
-//             size_t currRoads = 1;  // initialize the current roads
-//             while(!q.empty()){  // while the queue is not empty
-//                 size_t currEdge = q.front();  // get the front edge
-//                 q.pop();  // pop the front edge
-//                 for(size_t j=0; j<72; j++){  // iterate over the edges
-//                     if(this->edges[j].getId() == currEdge){  // if the current edge is the edge in the queue
-//                         for(size_t k=0; k<this->edges[j].getVertex1()->getEdges().size(); k++){  // iterate over the vertex1's edges
-//                             if(this->edges[j].getVertex1()->getEdges()[k]->hasRoad() && this->edges[j].getVertex1()->getEdges()[k]->getRoad()->getOwner().getId() == player->getId() && find(visitedEdges.begin(), visitedEdges.end(), this->edges[j].getVertex1()->getEdges()[k]->getId()) == visitedEdges.end()){
-//                                 q.push(this->edges[j].getVertex1()->getEdges()[k]->getId());  // push the edge to the queue
-//                                 visitedEdges.push_back(this->edges[j].getVertex1()->getEdges()[k]->getId());  // mark the edge as visited
-//                                 currRoads++;  // increment the current roads
-//                             }
-//                         }
-//                         for(size_t k=0; k<this->edges[j].getVertex2()->getEdges().size(); k++){  // iterate over the vertex2's edges
-//                             if(this->edges[j].getVertex2()->getEdges()[k]->hasRoad() && this->edges[j].getVertex2()->getEdges()[k]->getRoad()->getOwner().getId() == player->getId() && find(visitedEdges.begin(), visitedEdges.end(), this->edges[j].getVertex2()->getEdges()[k]->getId()) == visitedEdges.end()){
-//                                 q.push(this->edges[j].getVertex2()->getEdges()[k]->getId());  // push the edge to the queue
-//                                 visitedEdges.push_back(this->edges[j].getVertex2()->getEdges()[k]->getId());  // mark the edge as visited
-//                                 currRoads++;  // increment the current roads
-//                             }
-//                         }
-//                     }
-//                 }
-//             }
-//             if(currRoads > longestRoad) longestRoad = currRoads;  // update the longest road
-//         }
-//         if(longestRoad >= 5){  // if the longest road is greater than or equal to 5
-//             if(longestRoad > this->longestRoad){  // if the longest road is greater than the current longest road
-//                 if(this->longestRoad != 0){  // means there is a player that has the longest road
-//                     this->longestRoadPlayer->addPoints(-2);  // remove the points from the previous longest road owner
-//                 }
-//                 this->longestRoad = longestRoad;  // update the longest road
-//                 this->longestRoadPlayer = player;  // update the longest road owner
-//                 player->addPoints(2);  // add 2 points to the player
-//             }
-//         }

@@ -49,24 +49,41 @@ namespace ariel{
     class Player;
 
     /**
-     * @brief A class representing a piece on the board.
+     * @brief An abstruct class representing a piece on the board.
     */
     class Piece{
         protected:
-            int type;
-            string visualDisplay;
-            Player& owner;
+            int type;  // 0 - road, 1 - settlement, 2 - city
+            string visualDisplay;  // the emoji that represents the piece
+            Player& owner;  // reference to the player object
         public:
+            virtual void pureVirtual() = 0;  // pure virtual function
+            virtual ~Piece() = default;  // default destructor
             /**
              * @brief Construct a new Piece object.
              * param id The id of the piece.
              * param owner The owner of the piece (reference to the player object)
              */       
             Piece(int type, string visualDisplay, Player& owner);
+            /**
+             * @brief Set the type of the piece.
+             */
             void setType(int type);
+            /**
+             * @brief Get the type of the piece.
+             */
             int getType();
+            /**
+             * @brief Get the owner of the piece.
+             */
             Player& getOwner();
+            /**
+             * @brief Get the visual display of the piece.
+             */
             string getVisualDisplay();
+            /**
+             * @brief Set the visual display of the piece.
+             */
             void setVisualDisplay(string type);
     };
 
@@ -75,11 +92,24 @@ namespace ariel{
     */
     class Road : public Piece{
         private:
-            size_t edge;
+            size_t edge;  // the edge id of the road according to the boardPosition.jpg
         public:
+            void pureVirtual() override{}  // override the pure virtual function
+            /**
+             * @brief Construct a new Road object.
+             */
             Road(Player& owner, size_t edge);
+            /**
+             * @brief Get the edge of the road.
+             */
             size_t getEdge();
+            /**
+             * @brief Set the edge of the road.
+             */
             void setEdge(size_t edge);
+            /**
+             * @brief Overloading the << operator to print the road object.
+             */
             friend ostream& operator<<(ostream& os, const Road& road);
     };
 
@@ -88,12 +118,28 @@ namespace ariel{
     */
     class Settlement : public Piece{
         private:
-            size_t vertex;
+            size_t vertex;  // the vertex id of the settlement according to the boardPosition.jpg
         public:
+            void pureVirtual() override{}  // override the pure virtual function
+            /**
+             * @brief Construct a new Settlement object.
+             */
             Settlement(Player& owner, size_t vertex);
+            /**
+             * @brief Get the vertex of the settlement.
+             */
             size_t getVertex();
+            /**
+             * @brief Set the vertex of the settlement.
+             */
             void setVertex(size_t vertex);
+            /**
+             * @brief Upgrade the settlement to a city.
+             */
             void upgrade();
+            /**
+             * @brief Overloading the << operator to print the settlement object.
+             */
             friend ostream& operator<<(ostream& os, Settlement& settlement);
     };
 }

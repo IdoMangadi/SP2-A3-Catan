@@ -15,6 +15,15 @@ using namespace std;
 using namespace ariel;
 
 /**
+ * this function display the jpg "boardPositions.jpg" that contains the positions of the vertices and edges.
+ * the file is in the same directory as the code.
+ */
+void displayPositions(){
+    cout << BOLD << "Displaying the board positions" << RESET_COLOR << endl;
+    system("xdg-open boardPositions.jpg");
+}
+
+/**
  * @brief Parse a string to a size_t.
  * @param str The string to parse.
  * @param result The result of the parsing.
@@ -28,6 +37,7 @@ bool parseStringToSize_t(string str, size_t& result){
     result = (size_t)stoi(str);
     return true;
 }
+
 /**
  * function to check if a string is a number between 0 and 53
 */
@@ -52,6 +62,7 @@ size_t getVertexFromUser(){
     } while(true);
     return INVALID_POSITION;
 }
+
 /**
  * function to check if a string is a number between 0 and 71
 */
@@ -61,6 +72,7 @@ size_t edgeValidation(string edge){
     if(result >= 0 && result <= 71) return result;  // check if the number is between 0 and 71
     return INVALID_POSITION;
 }
+
 /**
  * @brief Get a edge number between 0 and 71 from the user.
 */
@@ -74,6 +86,10 @@ size_t getEdgeFromUser(){
     } while(true);
     return INVALID_POSITION;
 }
+
+/**
+ * stagr one is used as the first stage of the game when every player placing two settlements and two roads.
+ */
 void stageOne(Board* board){
     for(size_t i=0; i<6; i++){
         // get the player name:
@@ -99,28 +115,27 @@ void stageOne(Board* board){
     board->stageOneResourcesDistribution();
     board->display();
 }
+
 /**
  * @brief Split a string into tokens by spaces.
 */
 void splitAction(string* action, vector<string>* actionTokens){
+   
+    istringstream stream(*(action));  // Creating an input string stream from the input string
+
+    string token;  // Temporary string to store each token 
   
-    // Creating an input string stream from the input string 
-    istringstream stream(*(action)); 
-  
-    // Temporary string to store each token 
-    string token; 
-  
-    // Read tokens from the string stream separated by the 
-    // delimiter 
-    while (getline(stream, token, ' ')) { 
-        // Add the token to the vector of tokens 
-        actionTokens->push_back(token); 
+    // Read tokens from the string stream separated by the " " delimiter
+    while (getline(stream, token, ' ')) {  
+        actionTokens->push_back(token);  // Add the token to the vector of tokens
     }
 } 
+
 /**
  * @brief Handle the buy action.
 */
 bool mainBuy(Board* board, Player* player, vector<string>* actionTokens){
+
     if(actionTokens->at(1) != "CARD" && actionTokens->size() != 3){  // invalid input
         cout << "Invalid action, please try again (NOT ENOUGH ARGUMENTS)" << endl;
         return false;
@@ -153,12 +168,11 @@ bool mainBuy(Board* board, Player* player, vector<string>* actionTokens){
         else cout << BOLD << "failed to buy" << RESET_COLOR << endl;
         return false;
     }
-    else{  // means the position is invalid
-        cout << "Invalid action, please try again (INVALID POSITION/ITEM)" << endl;
-        return false;
-    }
+    // means the position is invalid
+    cout << "Invalid action, please try again (INVALID POSITION/ITEM)" << endl;
     return false;
 }
+
 void printInvalidTrade(){
     cout << "Invalid trade. usage: trade OFFER <amount> <resource> <amount> <resource>... SEEK <amount> <resource> <amount> <resource>..." << endl;
 }
@@ -614,7 +628,7 @@ int main(int argc , char* argv[]){
         
         do{
             // player action:
-            cout << "Choose action:  <buy> <ITEM> <position>\n                <trade> <OFFER> <SEEK>\n                <card> <TYPE> <option>\n                <board>\n                <status>\n                <end>" << endl;
+            cout << "Choose action:  <buy> <ITEM> <position>\n                <trade> <OFFER> <SEEK>\n                <card> <TYPE> <option>\n                <board>\n                <status>\n                <positions>\n                <end>" << endl;
             getline(cin, action);
             vector<string> actionTokens;
             splitAction(&action, &actionTokens);
@@ -641,6 +655,11 @@ int main(int argc , char* argv[]){
             // status:
             else if(actionTokens.at(0) == "status"){
                 board.displayStats();
+                continue;
+            }
+            // positions:
+            else if(actionTokens.at(0) == "positions"){
+                displayPositions();
                 continue;
             }
             // end turn:

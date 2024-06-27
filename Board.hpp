@@ -23,7 +23,7 @@ namespace ariel{
 
     class Board{
         private:
-            vector<Player*> players;
+            vector<Player*> players;  // the players
 
             // the concrete board elements (rest of the classes hold pointers to these elements):
             vector<Hexagon> hexagons;
@@ -32,11 +32,12 @@ namespace ariel{
 
             vector<size_t> diceNums;
             vector<Card> cards;
-            size_t cardsIndex;
+            size_t cardsIndex;  // the index of the next card to draw
 
             vector<vector<Road>> playersRoads; // to store the concrete roads of each player
             vector<vector<Settlement>> playersSettlements; // to store the concrete settlements of each player
 
+            // the stats:
             size_t longestRoad;
             Player* longestRoadPlayer;
             size_t largestArmy;

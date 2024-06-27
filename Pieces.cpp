@@ -44,7 +44,7 @@ namespace ariel{
         this->vertex = vertex;
     }
     void Settlement::upgrade(){
-        // if settlement, upgrade to city according to color
+        // upgrade to city according to color (board.cpp handles the validation check for the upgrade)
         this->setType(CITY);
         this->visualDisplay = CITY_EMOJI;
 

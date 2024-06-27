@@ -22,6 +22,9 @@ namespace ariel{
     int Card::getId(){
         return this->id;
     }
+    void Card::setBought(){
+        this->bought = true;
+    }
     bool Card::isUsed(){
         return this->used;
     }
