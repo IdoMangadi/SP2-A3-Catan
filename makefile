@@ -8,7 +8,7 @@ CXXFLAGS = -std=c++11 -Werror -Wsign-conversion
 VALGRIND_FLAGS = -v --leak-check=full --show-leak-kinds=all  --error-exitcode=99
 
 SOURCES = Player.cpp Card.cpp Pieces.cpp BoardElements.cpp Board.cpp Catan.cpp
-TSOURCES = Player.cpp Card.cpp Pieces.cpp BoardElements.cpp Board.cpp Catan.cpp TestCounter.cpp Test.cpp
+TSOURCES = Player.cpp Card.cpp Pieces.cpp BoardElements.cpp Board.cpp CatanDemo.cpp TestCounter.cpp Test.cpp
 OBJECTS = $(subst .cpp,.o,$(SOURCES))
 TOBJECTS = $(subst .cpp,.o,$(TSOURCES))
 

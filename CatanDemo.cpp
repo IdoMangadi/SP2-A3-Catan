@@ -577,7 +577,7 @@ bool sevenScenario(Board* board){
 }
 
 
-int main(int argc , char* argv[]){
+int demoMain(int argc , char* argv[]){
     // check if the number of arguments is correct:
     if(argc != 4){
         cout << "Usage: Catan <player1_name> <player2_name> <player3_name>" << endl;
@@ -592,13 +592,13 @@ int main(int argc , char* argv[]){
     vector<Player> players = {Player(player1Name, 0, RED, 0), Player(player2Name, 1, GREEN, 0), Player(player3Name, 2, YELLOW, 0)};
     Board board(&players[0], &players[1], &players[2]);
 
-    // // for tests:
-    // // appending each player 10 resources of each type:
-    // for(size_t i=0; i<3; i++){
-    //     for(size_t j=0; j<5; j++){
-    //         players[i].addResource(j, 10);
-    //     }
-    // }
+    // for tests:
+    // appending each player 10 resources of each type:
+    for(size_t i=0; i<3; i++){
+        for(size_t j=0; j<5; j++){
+            players[i].addResource(j, 10);
+        }
+    }
     
     size_t turn = 0;
     board.display();
