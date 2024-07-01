@@ -1,3 +1,7 @@
+// ID: 315310250
+// EMAIL: IDOIZHAR.Mangadi@msmail.ariel.ac.il
+// GMAIL: idomangadi@gmail.com
+
 #ifndef PLAYER_HPP
 #define PLAYER_HPP
 

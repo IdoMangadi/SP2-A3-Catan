@@ -1,3 +1,7 @@
+// ID: 315310250
+// EMAIL: IDOIZHAR.Mangadi@msmail.ariel.ac.il
+// GMAIL: idomangadi@gmail.com
+
 #ifndef CATAN_HPP
 #define CATAN_HPP
 
