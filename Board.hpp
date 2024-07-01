@@ -67,7 +67,7 @@ namespace ariel{
             bool buy(Player* player, int itemType, size_t position, int opCode);
 
             /**
-             * distribute resources to players by the settlement class
+             * distribute resources to players.
             */
             void distributeResources(size_t diceNum);
 

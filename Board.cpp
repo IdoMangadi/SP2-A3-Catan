@@ -432,6 +432,9 @@ namespace ariel{
     }
 
     void Board::distributeResources(size_t diceSum){
+        
+        if(diceSum < 2 || diceSum > 12) return;  // invalid input
+
         for(size_t i=0; i<19; i++){  // iterate over the hexagons
             if(this->hexagons[i].getDiceNum() == diceSum && !this->hexagons[i].getHasRobber()){  // if the dice number matches the hexagon's dice number
                 for(size_t j=0; j<6; j++){  // iterate over the hexagon's vertices

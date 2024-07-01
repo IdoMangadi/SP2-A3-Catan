@@ -32,7 +32,7 @@ test: $(TOBJECTS)
 	$(CXX) $(CXXFLAGS) $^ -o test
 
 valgrind: catan
-	valgrind --tool=memcheck $(VALGRIND_FLAGS) ./catan 2>&1 | { egrep "lost| at " || true; }
+	valgrind --tool=memcheck $(VALGRIND_FLAGS) ./catan < input.txt 2>&1 | { egrep "lost| at " || true; }
 
 %.o: %.cpp %.hpp
 	$(CXX) $(CXXFLAGS) --compile $< -o $@
