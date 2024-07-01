@@ -95,7 +95,7 @@ namespace ariel{
             this->points++;
         }
         // handling cards:
-        else if  (itemType == CARD){
+        else if (itemType == CARD){
             this->resources[WHEAT]--;
             this->resources[ORE]--;
             this->resources[WOOL]--;

@@ -1,0 +1,655 @@
+------------------------------------------------------------------------------------------------------------------------
+[1m[31mplayer0[0m[1m: Points: [0m0[1m Resources: [0m🪵: 100 🧱: 100 🌾: 100 🐑: 100 🪨: 100 
+[1m[32mplayer1[0m[1m: Points: [0m0[1m Resources: [0m🪵: 100 🧱: 100 🌾: 100 🐑: 100 🪨: 100 
+[1m[33mplayer2[0m[1m: Points: [0m0[1m Resources: [0m🪵: 100 🧱: 100 🌾: 100 🐑: 100 🪨: 100 
+                                                               △       △       △
+                                                             [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m
+                                                           △       △       △       △
+                                                           [37m|[0m 🏔️ 10  [37m|[0m 🐑 2  [37m|[0m  🌲 9 [37m|[0m
+                                                           △       △       △       △
+                                                         [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m
+                                                       △       △       △       △       △
+                                                       [37m|[0m 🌾 12 [37m|[0m 🌋 6  [37m|[0m 🐑 4  [37m|[0m 🌋 10 [37m|[0m
+                                                       △       △       △       △       △
+                                                     [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m
+                                                   △       △       △       △       △       △
+                                                   [37m|[0m 🌾 9  [37m|[0m 🌲 11 [37m|[0m  🏜️ 0  [37m|[0m 🌲 3  [37m|[0m  🏔️ 8  [37m|[0m
+                                                   △       △       △       △       △       △
+                                                     [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m
+                                                       △       △       △       △       △
+                                                       [37m|[0m 🌲 8  [37m|[0m  🏔️ 3  [37m|[0m  🌾 4 [37m|[0m  🐑 5 [37m|[0m
+                                                       △       △       △       △       △
+                                                         [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m
+                                                           △       △       △       △
+                                                           [37m|[0m 🌋 5  [37m|[0m 🌾 6  [37m|[0m 🐑 11 [37m|[0m
+                                                           △       △       △       △
+                                                             [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m
+                                                               △       △       △
+------------------------------------------------------------------------------------------------------------------------
+[1m[31mplayer0[0m, choose vertex to place settlement. Enter a vertex number between 0 and 53: 
+[1m[31mplayer0[0m, choose edge to place road. Enter an edge number between 0 and 71: 
+------------------------------------------------------------------------------------------------------------------------
+[1m[31mplayer0[0m[1m: Points: [0m1[1m Resources: [0m🪵: 100 🧱: 100 🌾: 100 🐑: 100 🪨: 100 
+[1m[32mplayer1[0m[1m: Points: [0m0[1m Resources: [0m🪵: 100 🧱: 100 🌾: 100 🐑: 100 🪨: 100 
+[1m[33mplayer2[0m[1m: Points: [0m0[1m Resources: [0m🪵: 100 🧱: 100 🌾: 100 🐑: 100 🪨: 100 
+                                                               [31m▲[0m       △       △
+                                                             [31m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m
+                                                           △       △       △       △
+                                                           [37m|[0m 🏔️ 10  [37m|[0m 🐑 2  [37m|[0m  🌲 9 [37m|[0m
+                                                           △       △       △       △
+                                                         [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m
+                                                       △       △       △       △       △
+                                                       [37m|[0m 🌾 12 [37m|[0m 🌋 6  [37m|[0m 🐑 4  [37m|[0m 🌋 10 [37m|[0m
+                                                       △       △       △       △       △
+                                                     [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m
+                                                   △       △       △       △       △       △
+                                                   [37m|[0m 🌾 9  [37m|[0m 🌲 11 [37m|[0m  🏜️ 0  [37m|[0m 🌲 3  [37m|[0m  🏔️ 8  [37m|[0m
+                                                   △       △       △       △       △       △
+                                                     [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m
+                                                       △       △       △       △       △
+                                                       [37m|[0m 🌲 8  [37m|[0m  🏔️ 3  [37m|[0m  🌾 4 [37m|[0m  🐑 5 [37m|[0m
+                                                       △       △       △       △       △
+                                                         [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m
+                                                           △       △       △       △
+                                                           [37m|[0m 🌋 5  [37m|[0m 🌾 6  [37m|[0m 🐑 11 [37m|[0m
+                                                           △       △       △       △
+                                                             [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m
+                                                               △       △       △
+------------------------------------------------------------------------------------------------------------------------
+[1m[32mplayer1[0m, choose vertex to place settlement. Enter a vertex number between 0 and 53: 
+[1m[32mplayer1[0m, choose edge to place road. Enter an edge number between 0 and 71: 
+------------------------------------------------------------------------------------------------------------------------
+[1m[31mplayer0[0m[1m: Points: [0m1[1m Resources: [0m🪵: 100 🧱: 100 🌾: 100 🐑: 100 🪨: 100 
+[1m[32mplayer1[0m[1m: Points: [0m1[1m Resources: [0m🪵: 100 🧱: 100 🌾: 100 🐑: 100 🪨: 100 
+[1m[33mplayer2[0m[1m: Points: [0m0[1m Resources: [0m🪵: 100 🧱: 100 🌾: 100 🐑: 100 🪨: 100 
+                                                               [31m▲[0m       [32m▲[0m       △
+                                                             [31m/[0m   [37m\[0m   [32m/[0m   [37m\[0m   [37m/[0m   [37m\[0m
+                                                           △       △       △       △
+                                                           [37m|[0m 🏔️ 10  [37m|[0m 🐑 2  [37m|[0m  🌲 9 [37m|[0m
+                                                           △       △       △       △
+                                                         [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m
+                                                       △       △       △       △       △
+                                                       [37m|[0m 🌾 12 [37m|[0m 🌋 6  [37m|[0m 🐑 4  [37m|[0m 🌋 10 [37m|[0m
+                                                       △       △       △       △       △
+                                                     [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m
+                                                   △       △       △       △       △       △
+                                                   [37m|[0m 🌾 9  [37m|[0m 🌲 11 [37m|[0m  🏜️ 0  [37m|[0m 🌲 3  [37m|[0m  🏔️ 8  [37m|[0m
+                                                   △       △       △       △       △       △
+                                                     [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m
+                                                       △       △       △       △       △
+                                                       [37m|[0m 🌲 8  [37m|[0m  🏔️ 3  [37m|[0m  🌾 4 [37m|[0m  🐑 5 [37m|[0m
+                                                       △       △       △       △       △
+                                                         [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m
+                                                           △       △       △       △
+                                                           [37m|[0m 🌋 5  [37m|[0m 🌾 6  [37m|[0m 🐑 11 [37m|[0m
+                                                           △       △       △       △
+                                                             [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m
+                                                               △       △       △
+------------------------------------------------------------------------------------------------------------------------
+[1m[33mplayer2[0m, choose vertex to place settlement. Enter a vertex number between 0 and 53: 
+[1m[33mplayer2[0m, choose edge to place road. Enter an edge number between 0 and 71: 
+------------------------------------------------------------------------------------------------------------------------
+[1m[31mplayer0[0m[1m: Points: [0m1[1m Resources: [0m🪵: 100 🧱: 100 🌾: 100 🐑: 100 🪨: 100 
+[1m[32mplayer1[0m[1m: Points: [0m1[1m Resources: [0m🪵: 100 🧱: 100 🌾: 100 🐑: 100 🪨: 100 
+[1m[33mplayer2[0m[1m: Points: [0m1[1m Resources: [0m🪵: 100 🧱: 100 🌾: 100 🐑: 100 🪨: 100 
+                                                               [31m▲[0m       [32m▲[0m       [33m▲[0m
+                                                             [31m/[0m   [37m\[0m   [32m/[0m   [37m\[0m   [33m/[0m   [37m\[0m
+                                                           △       △       △       △
+                                                           [37m|[0m 🏔️ 10  [37m|[0m 🐑 2  [37m|[0m  🌲 9 [37m|[0m
+                                                           △       △       △       △
+                                                         [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m
+                                                       △       △       △       △       △
+                                                       [37m|[0m 🌾 12 [37m|[0m 🌋 6  [37m|[0m 🐑 4  [37m|[0m 🌋 10 [37m|[0m
+                                                       △       △       △       △       △
+                                                     [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m
+                                                   △       △       △       △       △       △
+                                                   [37m|[0m 🌾 9  [37m|[0m 🌲 11 [37m|[0m  🏜️ 0  [37m|[0m 🌲 3  [37m|[0m  🏔️ 8  [37m|[0m
+                                                   △       △       △       △       △       △
+                                                     [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m
+                                                       △       △       △       △       △
+                                                       [37m|[0m 🌲 8  [37m|[0m  🏔️ 3  [37m|[0m  🌾 4 [37m|[0m  🐑 5 [37m|[0m
+                                                       △       △       △       △       △
+                                                         [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m
+                                                           △       △       △       △
+                                                           [37m|[0m 🌋 5  [37m|[0m 🌾 6  [37m|[0m 🐑 11 [37m|[0m
+                                                           △       △       △       △
+                                                             [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m
+                                                               △       △       △
+------------------------------------------------------------------------------------------------------------------------
+[1m[33mplayer2[0m, choose vertex to place settlement. Enter a vertex number between 0 and 53: 
+[1m[33mplayer2[0m, choose edge to place road. Enter an edge number between 0 and 71: 
+------------------------------------------------------------------------------------------------------------------------
+[1m[31mplayer0[0m[1m: Points: [0m1[1m Resources: [0m🪵: 100 🧱: 100 🌾: 100 🐑: 100 🪨: 100 
+[1m[32mplayer1[0m[1m: Points: [0m1[1m Resources: [0m🪵: 100 🧱: 100 🌾: 100 🐑: 100 🪨: 100 
+[1m[33mplayer2[0m[1m: Points: [0m2[1m Resources: [0m🪵: 100 🧱: 100 🌾: 100 🐑: 100 🪨: 100 
+                                                               [31m▲[0m       [32m▲[0m       [33m▲[0m
+                                                             [31m/[0m   [37m\[0m   [32m/[0m   [37m\[0m   [33m/[0m   [37m\[0m
+                                                           △       △       △       △
+                                                           [37m|[0m 🏔️ 10  [37m|[0m 🐑 2  [37m|[0m  🌲 9 [37m|[0m
+                                                           [33m▲[0m       △       △       △
+                                                         [33m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m
+                                                       △       △       △       △       △
+                                                       [37m|[0m 🌾 12 [37m|[0m 🌋 6  [37m|[0m 🐑 4  [37m|[0m 🌋 10 [37m|[0m
+                                                       △       △       △       △       △
+                                                     [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m
+                                                   △       △       △       △       △       △
+                                                   [37m|[0m 🌾 9  [37m|[0m 🌲 11 [37m|[0m  🏜️ 0  [37m|[0m 🌲 3  [37m|[0m  🏔️ 8  [37m|[0m
+                                                   △       △       △       △       △       △
+                                                     [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m
+                                                       △       △       △       △       △
+                                                       [37m|[0m 🌲 8  [37m|[0m  🏔️ 3  [37m|[0m  🌾 4 [37m|[0m  🐑 5 [37m|[0m
+                                                       △       △       △       △       △
+                                                         [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m
+                                                           △       △       △       △
+                                                           [37m|[0m 🌋 5  [37m|[0m 🌾 6  [37m|[0m 🐑 11 [37m|[0m
+                                                           △       △       △       △
+                                                             [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m
+                                                               △       △       △
+------------------------------------------------------------------------------------------------------------------------
+[1m[32mplayer1[0m, choose vertex to place settlement. Enter a vertex number between 0 and 53: 
+[1m[32mplayer1[0m, choose edge to place road. Enter an edge number between 0 and 71: 
+------------------------------------------------------------------------------------------------------------------------
+[1m[31mplayer0[0m[1m: Points: [0m1[1m Resources: [0m🪵: 100 🧱: 100 🌾: 100 🐑: 100 🪨: 100 
+[1m[32mplayer1[0m[1m: Points: [0m2[1m Resources: [0m🪵: 100 🧱: 100 🌾: 100 🐑: 100 🪨: 100 
+[1m[33mplayer2[0m[1m: Points: [0m2[1m Resources: [0m🪵: 100 🧱: 100 🌾: 100 🐑: 100 🪨: 100 
+                                                               [31m▲[0m       [32m▲[0m       [33m▲[0m
+                                                             [31m/[0m   [37m\[0m   [32m/[0m   [37m\[0m   [33m/[0m   [37m\[0m
+                                                           △       △       △       △
+                                                           [37m|[0m 🏔️ 10  [37m|[0m 🐑 2  [37m|[0m  🌲 9 [37m|[0m
+                                                           [33m▲[0m       [32m▲[0m       △       △
+                                                         [33m/[0m   [37m\[0m   [32m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m
+                                                       △       △       △       △       △
+                                                       [37m|[0m 🌾 12 [37m|[0m 🌋 6  [37m|[0m 🐑 4  [37m|[0m 🌋 10 [37m|[0m
+                                                       △       △       △       △       △
+                                                     [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m
+                                                   △       △       △       △       △       △
+                                                   [37m|[0m 🌾 9  [37m|[0m 🌲 11 [37m|[0m  🏜️ 0  [37m|[0m 🌲 3  [37m|[0m  🏔️ 8  [37m|[0m
+                                                   △       △       △       △       △       △
+                                                     [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m
+                                                       △       △       △       △       △
+                                                       [37m|[0m 🌲 8  [37m|[0m  🏔️ 3  [37m|[0m  🌾 4 [37m|[0m  🐑 5 [37m|[0m
+                                                       △       △       △       △       △
+                                                         [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m
+                                                           △       △       △       △
+                                                           [37m|[0m 🌋 5  [37m|[0m 🌾 6  [37m|[0m 🐑 11 [37m|[0m
+                                                           △       △       △       △
+                                                             [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m
+                                                               △       △       △
+------------------------------------------------------------------------------------------------------------------------
+[1m[31mplayer0[0m, choose vertex to place settlement. Enter a vertex number between 0 and 53: 
+[1m[31mplayer0[0m, choose edge to place road. Enter an edge number between 0 and 71: 
+------------------------------------------------------------------------------------------------------------------------
+[1m[31mplayer0[0m[1m: Points: [0m2[1m Resources: [0m🪵: 101 🧱: 100 🌾: 100 🐑: 102 🪨: 100 
+[1m[32mplayer1[0m[1m: Points: [0m2[1m Resources: [0m🪵: 100 🧱: 101 🌾: 100 🐑: 101 🪨: 101 
+[1m[33mplayer2[0m[1m: Points: [0m2[1m Resources: [0m🪵: 100 🧱: 100 🌾: 101 🐑: 100 🪨: 101 
+                                                               [31m▲[0m       [32m▲[0m       [33m▲[0m
+                                                             [31m/[0m   [37m\[0m   [32m/[0m   [37m\[0m   [33m/[0m   [37m\[0m
+                                                           △       △       △       △
+                                                           [37m|[0m 🏔️ 10  [37m|[0m 🐑 2  [37m|[0m  🌲 9 [37m|[0m
+                                                           [33m▲[0m       [32m▲[0m       [31m▲[0m       △
+                                                         [33m/[0m   [37m\[0m   [32m/[0m   [37m\[0m   [31m/[0m   [37m\[0m   [37m/[0m   [37m\[0m
+                                                       △       △       △       △       △
+                                                       [37m|[0m 🌾 12 [37m|[0m 🌋 6  [37m|[0m 🐑 4  [37m|[0m 🌋 10 [37m|[0m
+                                                       △       △       △       △       △
+                                                     [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m
+                                                   △       △       △       △       △       △
+                                                   [37m|[0m 🌾 9  [37m|[0m 🌲 11 [37m|[0m  🏜️ 0  [37m|[0m 🌲 3  [37m|[0m  🏔️ 8  [37m|[0m
+                                                   △       △       △       △       △       △
+                                                     [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m
+                                                       △       △       △       △       △
+                                                       [37m|[0m 🌲 8  [37m|[0m  🏔️ 3  [37m|[0m  🌾 4 [37m|[0m  🐑 5 [37m|[0m
+                                                       △       △       △       △       △
+                                                         [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m
+                                                           △       △       △       △
+                                                           [37m|[0m 🌋 5  [37m|[0m 🌾 6  [37m|[0m 🐑 11 [37m|[0m
+                                                           △       △       △       △
+                                                             [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m
+                                                               △       △       △
+------------------------------------------------------------------------------------------------------------------------
+[1m[31mTurn player0: [0mRoll the dice! <roll>
+[1mDice numbers: 5 , 1[0m
+------------------------------------------------------------------------------------------------------------------------
+[1m[31mplayer0[0m[1m: Points: [0m2[1m Resources: [0m🪵: 101 🧱: 100 🌾: 100 🐑: 102 🪨: 100 [1m Cards(0): [0m
+[1m[32mplayer1[0m[1m: Points: [0m2[1m Resources: [0m🪵: 100 🧱: 102 🌾: 100 🐑: 101 🪨: 101 [1m Cards(0): [0m
+[1m[33mplayer2[0m[1m: Points: [0m2[1m Resources: [0m🪵: 100 🧱: 100 🌾: 101 🐑: 100 🪨: 101 [1m Cards(0): [0m
+------------------------------------------------------------------------------------------------------------------------
+Choose action:  <buy> <ITEM> <position>
+                <trade> <OFFER> <SEEK>
+                <card> <TYPE> <option>
+                <board>
+                <status>
+                <positions>
+                <end>
+end
+------------------------------------------------------------------------------------------------------------------------
+[1m[31mplayer0[0m[1m: Points: [0m2[1m Resources: [0m🪵: 101 🧱: 100 🌾: 100 🐑: 102 🪨: 100 
+[1m[32mplayer1[0m[1m: Points: [0m2[1m Resources: [0m🪵: 100 🧱: 102 🌾: 100 🐑: 101 🪨: 101 
+[1m[33mplayer2[0m[1m: Points: [0m2[1m Resources: [0m🪵: 100 🧱: 100 🌾: 101 🐑: 100 🪨: 101 
+                                                               [31m▲[0m       [32m▲[0m       [33m▲[0m
+                                                             [31m/[0m   [37m\[0m   [32m/[0m   [37m\[0m   [33m/[0m   [37m\[0m
+                                                           △       △       △       △
+                                                           [37m|[0m 🏔️ 10  [37m|[0m 🐑 2  [37m|[0m  🌲 9 [37m|[0m
+                                                           [33m▲[0m       [32m▲[0m       [31m▲[0m       △
+                                                         [33m/[0m   [37m\[0m   [32m/[0m   [37m\[0m   [31m/[0m   [37m\[0m   [37m/[0m   [37m\[0m
+                                                       △       △       △       △       △
+                                                       [37m|[0m 🌾 12 [37m|[0m 🌋 6  [37m|[0m 🐑 4  [37m|[0m 🌋 10 [37m|[0m
+                                                       △       △       △       △       △
+                                                     [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m
+                                                   △       △       △       △       △       △
+                                                   [37m|[0m 🌾 9  [37m|[0m 🌲 11 [37m|[0m  🏜️ 0  [37m|[0m 🌲 3  [37m|[0m  🏔️ 8  [37m|[0m
+                                                   △       △       △       △       △       △
+                                                     [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m
+                                                       △       △       △       △       △
+                                                       [37m|[0m 🌲 8  [37m|[0m  🏔️ 3  [37m|[0m  🌾 4 [37m|[0m  🐑 5 [37m|[0m
+                                                       △       △       △       △       △
+                                                         [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m
+                                                           △       △       △       △
+                                                           [37m|[0m 🌋 5  [37m|[0m 🌾 6  [37m|[0m 🐑 11 [37m|[0m
+                                                           △       △       △       △
+                                                             [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m
+                                                               △       △       △
+------------------------------------------------------------------------------------------------------------------------
+[1m[32mTurn player1: [0mRoll the dice! <roll>
+[1mDice numbers: 5 , 3[0m
+------------------------------------------------------------------------------------------------------------------------
+[1m[31mplayer0[0m[1m: Points: [0m2[1m Resources: [0m🪵: 101 🧱: 100 🌾: 100 🐑: 102 🪨: 100 [1m Cards(0): [0m
+[1m[32mplayer1[0m[1m: Points: [0m2[1m Resources: [0m🪵: 100 🧱: 102 🌾: 100 🐑: 101 🪨: 101 [1m Cards(0): [0m
+[1m[33mplayer2[0m[1m: Points: [0m2[1m Resources: [0m🪵: 100 🧱: 100 🌾: 101 🐑: 100 🪨: 101 [1m Cards(0): [0m
+------------------------------------------------------------------------------------------------------------------------
+Choose action:  <buy> <ITEM> <position>
+                <trade> <OFFER> <SEEK>
+                <card> <TYPE> <option>
+                <board>
+                <status>
+                <positions>
+                <end>
+buy CITY 1
+[1mbought successfully[0m
+Choose action:  <buy> <ITEM> <position>
+                <trade> <OFFER> <SEEK>
+                <card> <TYPE> <option>
+                <board>
+                <status>
+                <positions>
+                <end>
+buy CITY 8
+[1mbought successfully[0m
+Choose action:  <buy> <ITEM> <position>
+                <trade> <OFFER> <SEEK>
+                <card> <TYPE> <option>
+                <board>
+                <status>
+                <positions>
+                <end>
+buy CARD 
+[1mbought successfully[0m
+Choose action:  <buy> <ITEM> <position>
+                <trade> <OFFER> <SEEK>
+                <card> <TYPE> <option>
+                <board>
+                <status>
+                <positions>
+                <end>
+buy CARD
+[1mbought successfully[0m
+Choose action:  <buy> <ITEM> <position>
+                <trade> <OFFER> <SEEK>
+                <card> <TYPE> <option>
+                <board>
+                <status>
+                <positions>
+                <end>
+buy CARD
+[1mbought successfully[0m
+Choose action:  <buy> <ITEM> <position>
+                <trade> <OFFER> <SEEK>
+                <card> <TYPE> <option>
+                <board>
+                <status>
+                <positions>
+                <end>
+buy CARD
+[1mbought successfully[0m
+Choose action:  <buy> <ITEM> <position>
+                <trade> <OFFER> <SEEK>
+                <card> <TYPE> <option>
+                <board>
+                <status>
+                <positions>
+                <end>
+buy CARD
+[1mbought successfully[0m
+Choose action:  <buy> <ITEM> <position>
+                <trade> <OFFER> <SEEK>
+                <card> <TYPE> <option>
+                <board>
+                <status>
+                <positions>
+                <end>
+buy CARD 
+[1mbought successfully[0m
+Choose action:  <buy> <ITEM> <position>
+                <trade> <OFFER> <SEEK>
+                <card> <TYPE> <option>
+                <board>
+                <status>
+                <positions>
+                <end>
+buy CARD
+[1mbought successfully[0m
+Choose action:  <buy> <ITEM> <position>
+                <trade> <OFFER> <SEEK>
+                <card> <TYPE> <option>
+                <board>
+                <status>
+                <positions>
+                <end>
+buy CARD
+[1mbought successfully[0m
+Choose action:  <buy> <ITEM> <position>
+                <trade> <OFFER> <SEEK>
+                <card> <TYPE> <option>
+                <board>
+                <status>
+                <positions>
+                <end>
+buy CARD
+[1mbought successfully[0m
+Choose action:  <buy> <ITEM> <position>
+                <trade> <OFFER> <SEEK>
+                <card> <TYPE> <option>
+                <board>
+                <status>
+                <positions>
+                <end>
+buy CARD
+[1mbought successfully[0m
+Choose action:  <buy> <ITEM> <position>
+                <trade> <OFFER> <SEEK>
+                <card> <TYPE> <option>
+                <board>
+                <status>
+                <positions>
+                <end>
+buy CARD 
+[1mbought successfully[0m
+Choose action:  <buy> <ITEM> <position>
+                <trade> <OFFER> <SEEK>
+                <card> <TYPE> <option>
+                <board>
+                <status>
+                <positions>
+                <end>
+buy CARD
+[1mbought successfully[0m
+Choose action:  <buy> <ITEM> <position>
+                <trade> <OFFER> <SEEK>
+                <card> <TYPE> <option>
+                <board>
+                <status>
+                <positions>
+                <end>
+buy CARD
+[1mbought successfully[0m
+Choose action:  <buy> <ITEM> <position>
+                <trade> <OFFER> <SEEK>
+                <card> <TYPE> <option>
+                <board>
+                <status>
+                <positions>
+                <end>
+buy CARD
+[1mbought successfully[0m
+Choose action:  <buy> <ITEM> <position>
+                <trade> <OFFER> <SEEK>
+                <card> <TYPE> <option>
+                <board>
+                <status>
+                <positions>
+                <end>
+buy CARD
+[1mbought successfully[0m
+Choose action:  <buy> <ITEM> <position>
+                <trade> <OFFER> <SEEK>
+                <card> <TYPE> <option>
+                <board>
+                <status>
+                <positions>
+                <end>
+buy CARD
+[1mbought successfully[0m
+Choose action:  <buy> <ITEM> <position>
+                <trade> <OFFER> <SEEK>
+                <card> <TYPE> <option>
+                <board>
+                <status>
+                <positions>
+                <end>
+buy CARD
+[1mbought successfully[0m
+Choose action:  <buy> <ITEM> <position>
+                <trade> <OFFER> <SEEK>
+                <card> <TYPE> <option>
+                <board>
+                <status>
+                <positions>
+                <end>
+buy CARD
+[1mbought successfully[0m
+Choose action:  <buy> <ITEM> <position>
+                <trade> <OFFER> <SEEK>
+                <card> <TYPE> <option>
+                <board>
+                <status>
+                <positions>
+                <end>
+buy CARD
+[1mbought successfully[0m
+Choose action:  <buy> <ITEM> <position>
+                <trade> <OFFER> <SEEK>
+                <card> <TYPE> <option>
+                <board>
+                <status>
+                <positions>
+                <end>
+buy CARD
+[1mbought successfully[0m
+Choose action:  <buy> <ITEM> <position>
+                <trade> <OFFER> <SEEK>
+                <card> <TYPE> <option>
+                <board>
+                <status>
+                <positions>
+                <end>
+buy CARD 
+[1mbought successfully[0m
+Choose action:  <buy> <ITEM> <position>
+                <trade> <OFFER> <SEEK>
+                <card> <TYPE> <option>
+                <board>
+                <status>
+                <positions>
+                <end>
+buy CARD
+[1mbought successfully[0m
+Choose action:  <buy> <ITEM> <position>
+                <trade> <OFFER> <SEEK>
+                <card> <TYPE> <option>
+                <board>
+                <status>
+                <positions>
+                <end>
+buy CARD
+[1mbought successfully[0m
+Choose action:  <buy> <ITEM> <position>
+                <trade> <OFFER> <SEEK>
+                <card> <TYPE> <option>
+                <board>
+                <status>
+                <positions>
+                <end>
+buy CARD
+[1mbought successfully[0m
+Choose action:  <buy> <ITEM> <position>
+                <trade> <OFFER> <SEEK>
+                <card> <TYPE> <option>
+                <board>
+                <status>
+                <positions>
+                <end>
+buy CARD
+[1mbought successfully[0m
+Choose action:  <buy> <ITEM> <position>
+                <trade> <OFFER> <SEEK>
+                <card> <TYPE> <option>
+                <board>
+                <status>
+                <positions>
+                <end>
+card VICTORYPOINT
+[1mcard used successfully[0m
+Choose action:  <buy> <ITEM> <position>
+                <trade> <OFFER> <SEEK>
+                <card> <TYPE> <option>
+                <board>
+                <status>
+                <positions>
+                <end>
+card VICTORYPOINT
+[1mcard used successfully[0m
+Choose action:  <buy> <ITEM> <position>
+                <trade> <OFFER> <SEEK>
+                <card> <TYPE> <option>
+                <board>
+                <status>
+                <positions>
+                <end>
+card VICTORYPOINT
+[1mcard used successfully[0m
+Choose action:  <buy> <ITEM> <position>
+                <trade> <OFFER> <SEEK>
+                <card> <TYPE> <option>
+                <board>
+                <status>
+                <positions>
+                <end>
+card VICTORYPOINT
+[1mcard used successfully[0m
+Choose action:  <buy> <ITEM> <position>
+                <trade> <OFFER> <SEEK>
+                <card> <TYPE> <option>
+                <board>
+                <status>
+                <positions>
+                <end>
+card VICTORYPOINT
+[1mcard used successfully[0m
+Choose action:  <buy> <ITEM> <position>
+                <trade> <OFFER> <SEEK>
+                <card> <TYPE> <option>
+                <board>
+                <status>
+                <positions>
+                <end>
+buy ROAD 7
+[1mbought successfully[0m
+Choose action:  <buy> <ITEM> <position>
+                <trade> <OFFER> <SEEK>
+                <card> <TYPE> <option>
+                <board>
+                <status>
+                <positions>
+                <end>
+buy ROAD 19
+[1mbought successfully[0m
+Choose action:  <buy> <ITEM> <position>
+                <trade> <OFFER> <SEEK>
+                <card> <TYPE> <option>
+                <board>
+                <status>
+                <positions>
+                <end>
+buy ROAD 25
+[1mbought successfully[0m
+Choose action:  <buy> <ITEM> <position>
+                <trade> <OFFER> <SEEK>
+                <card> <TYPE> <option>
+                <board>
+                <status>
+                <positions>
+                <end>
+buy ROAD 34
+[1mbought successfully[0m
+Choose action:  <buy> <ITEM> <position>
+                <trade> <OFFER> <SEEK>
+                <card> <TYPE> <option>
+                <board>
+                <status>
+                <positions>
+                <end>
+buy SETTLEMENT 17
+[1mbought successfully[0m
+Choose action:  <buy> <ITEM> <position>
+                <trade> <OFFER> <SEEK>
+                <card> <TYPE> <option>
+                <board>
+                <status>
+                <positions>
+                <end>
+buy CITY 17
+[1mfailed to buy[0m
+Choose action:  <buy> <ITEM> <position>
+                <trade> <OFFER> <SEEK>
+                <card> <TYPE> <option>
+                <board>
+                <status>
+                <positions>
+                <end>
+buy SETTLEMENT 28
+[1mbought successfully[0m
+Choose action:  <buy> <ITEM> <position>
+                <trade> <OFFER> <SEEK>
+                <card> <TYPE> <option>
+                <board>
+                <status>
+                <positions>
+                <end>
+buy CITY 28
+[1mfailed to buy[0m
+Choose action:  <buy> <ITEM> <position>
+                <trade> <OFFER> <SEEK>
+                <card> <TYPE> <option>
+                <board>
+                <status>
+                <positions>
+                <end>
+end
+[1m[32mplayer1[0m won the game!
+------------------------------------------------------------------------------------------------------------------------
+[1m[31mplayer0[0m[1m: Points: [0m2[1m Resources: [0m🪵: 101 🧱: 100 🌾: 100 🐑: 102 🪨: 100 
+[1m[32mplayer1[0m[1m: Points: [0m13[1m Resources: [0m🪵: 94 🧱: 96 🌾: 69 🐑: 74 🪨: 70 
+[1m[33mplayer2[0m[1m: Points: [0m2[1m Resources: [0m🪵: 100 🧱: 100 🌾: 101 🐑: 100 🪨: 101 
+                                                               [31m▲[0m       [32m●[0m       [33m▲[0m
+                                                             [31m/[0m   [37m\[0m   [32m/[0m   [37m\[0m   [33m/[0m   [37m\[0m
+                                                           △       △       △       △
+                                                           [37m|[0m 🏔️ 10  [32m|[0m 🐑 2  [37m|[0m  🌲 9 [37m|[0m
+                                                           [33m▲[0m       [32m●[0m       [31m▲[0m       △
+                                                         [33m/[0m   [37m\[0m   [32m/[0m   [37m\[0m   [31m/[0m   [37m\[0m   [37m/[0m   [37m\[0m
+                                                       △       △       △       △       △
+                                                       [37m|[0m 🌾 12 [32m|[0m 🌋 6  [37m|[0m 🐑 4  [37m|[0m 🌋 10 [37m|[0m
+                                                       △       [32m▲[0m       △       △       △
+                                                     [37m/[0m   [37m\[0m   [32m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m
+                                                   △       △       △       △       △       △
+                                                   [37m|[0m 🌾 9  [32m|[0m 🌲 11 [37m|[0m  🏜️ 0  [37m|[0m 🌲 3  [37m|[0m  🏔️ 8  [37m|[0m
+                                                   △       [32m▲[0m       △       △       △       △
+                                                     [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m
+                                                       △       △       △       △       △
+                                                       [37m|[0m 🌲 8  [37m|[0m  🏔️ 3  [37m|[0m  🌾 4 [37m|[0m  🐑 5 [37m|[0m
+                                                       △       △       △       △       △
+                                                         [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m
+                                                           △       △       △       △
+                                                           [37m|[0m 🌋 5  [37m|[0m 🌾 6  [37m|[0m 🐑 11 [37m|[0m
+                                                           △       △       △       △
+                                                             [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m   [37m\[0m   [37m/[0m
+                                                               △       △       △
+------------------------------------------------------------------------------------------------------------------------

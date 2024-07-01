@@ -6,6 +6,7 @@
 
 using namespace std;
 
+// implementing classes: Hexagon, Edge, Vertex 
 namespace ariel{
 
     Hexagon::Hexagon(int id, string type, size_t diceNum, bool hasRobber) : id(id), type(type), diceNum(diceNum), hasRobber(hasRobber){}

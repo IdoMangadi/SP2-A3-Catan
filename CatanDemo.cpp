@@ -10,6 +10,7 @@
 #include "Pieces.hpp"
 #include "Card.hpp"
 #include "BoardElements.hpp"
+#include <unistd.h>
 
 using namespace std;
 using namespace ariel;
@@ -577,7 +578,7 @@ bool sevenScenario(Board* board){
 }
 
 
-int demoMain(int argc , char* argv[]){
+int main(int argc , char* argv[]){
     // check if the number of arguments is correct:
     if(argc != 4){
         cout << "Usage: Catan <player1_name> <player2_name> <player3_name>" << endl;
@@ -592,11 +593,11 @@ int demoMain(int argc , char* argv[]){
     vector<Player> players = {Player(player1Name, 0, RED, 0), Player(player2Name, 1, GREEN, 0), Player(player3Name, 2, YELLOW, 0)};
     Board board(&players[0], &players[1], &players[2]);
 
-    // for tests:
+    // for demo:
     // appending each player 10 resources of each type:
     for(size_t i=0; i<3; i++){
         for(size_t j=0; j<5; j++){
-            players[i].addResource(j, 10);
+            players[i].addResource(j, 100);
         }
     }
     
@@ -619,6 +620,7 @@ int demoMain(int argc , char* argv[]){
         cout << BOLD << "Dice numbers: " << diceNums->at(0) << " , " << diceNums->at(1) << RESET_COLOR << endl;
         cin.ignore();
         
+        // ignore this lines in the demo:
         if(diceNums->at(0) + diceNums->at(1) == 7){
             sevenScenario(&board);
         }
@@ -634,6 +636,9 @@ int demoMain(int argc , char* argv[]){
             getline(cin, action);
             vector<string> actionTokens;
             splitAction(&action, &actionTokens);
+
+            // printing for demo:
+            cout << action << endl;
 
             // buy action:
             if(actionTokens.at(0) == "buy"){  // TODO: make sure the user isnt stuck for bad input
@@ -673,6 +678,7 @@ int demoMain(int argc , char* argv[]){
             }
             winner = board.hasWinner();
             if(winner != nullptr) break;
+            sleep(1);
 
         } while(endTurn == false);
 

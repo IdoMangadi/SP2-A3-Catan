@@ -117,7 +117,7 @@ namespace ariel{
              */
             size_t getKnightsCounter();
             /**
-             * @brief Add a knight to the player.
+             * @brief Add a knight to the player (when actually using a knight card).
              */
             void addKnight();
             /**

@@ -1,0 +1,44 @@
+0 0 1 2 2 4 7 10 8 12 9 14 roll
+end
+roll
+buy CITY 1
+buy CITY 8
+buy CARD 
+buy CARD
+buy CARD
+buy CARD
+buy CARD
+buy CARD 
+buy CARD
+buy CARD
+buy CARD
+buy CARD
+buy CARD 
+buy CARD
+buy CARD
+buy CARD
+buy CARD
+buy CARD
+buy CARD
+buy CARD
+buy CARD
+buy CARD
+buy CARD 
+buy CARD
+buy CARD
+buy CARD
+buy CARD
+card VICTORYPOINT
+card VICTORYPOINT
+card VICTORYPOINT
+card VICTORYPOINT
+card VICTORYPOINT
+buy ROAD 7
+buy ROAD 19
+buy ROAD 25
+buy ROAD 34
+buy SETTLEMENT 17
+buy CITY 17
+buy SETTLEMENT 28
+buy CITY 28
+end

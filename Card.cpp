@@ -36,3 +36,4 @@ namespace ariel{
         return this->visualDisplay;
     }
 }
+

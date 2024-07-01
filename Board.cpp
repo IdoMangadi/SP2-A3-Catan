@@ -11,7 +11,7 @@
 using namespace std;
 
 namespace ariel{
-
+    
     Board::Board(Player* player1, Player* player2, Player* player3) : players({player1, player2, player3}){
 
         this->playersRoads = vector<vector<Road>>(3, vector<Road>()); // initialize the players' roads
@@ -332,7 +332,7 @@ namespace ariel{
 
     bool Board::buy(Player* player, int itemType, size_t position, int opCode){
 
-        if(opCode != FREE && opCode != PAID && opCode != STAGE_ONE) return false;  // invalid input
+        if((opCode != FREE && opCode != PAID && opCode != STAGE_ONE) || (player == nullptr)) return false;  // invalid input
 
         if(opCode == PAID && player->canAfford(itemType) == false) return false;  // if the player can't afford the item
 
@@ -469,7 +469,7 @@ namespace ariel{
     bool Board::knightUsed(Player* player){
         player->addKnight();
         size_t currPlayerKnights = player->getKnightsCounter();
-        if(currPlayerKnights >= 3){
+        if(currPlayerKnights >= 3){  // if the player has more than 3 knights
             // check if the player has the largest army:
             if(currPlayerKnights > this->largestArmy){
                 if(this->largestArmy != 0){  // means there is a player that has the largest army

@@ -5,11 +5,12 @@
 #include <string>
 #include <vector>
 
+// opcodes:
 #define FREE 0
 #define PAID 1
 #define STAGE_ONE 100 
 
-// building types:
+// item types:
 #define ROAD 0
 #define SETTLEMENT 1
 #define CITY 2

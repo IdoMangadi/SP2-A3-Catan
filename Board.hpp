@@ -46,6 +46,7 @@ namespace ariel{
         public:
             /**
              * @brief Construct a new Board object. 
+             * creates the concrete board elements (hexagons, vertices, edges) and the pieces (roads, settlements, cards).
             */
             Board(Player* player1, Player* player2, Player* player3);
 
@@ -60,7 +61,8 @@ namespace ariel{
             vector<Player*>* getPlayers();
 
             /**
-             * buy a building or a road or a card
+             * buy a building or a road or a card.
+             * NOTE: position validation is not done here. make sure to validate the position before calling this function.
             */
             bool buy(Player* player, int itemType, size_t position, int opCode);
 
