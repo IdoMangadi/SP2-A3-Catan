@@ -597,12 +597,12 @@ int main(int argc , char* argv[]){
     Board board(&players[0], &players[1], &players[2]);
 
     // // for tests:
-    // // appending each player 10 resources of each type:
-    // for(size_t i=0; i<3; i++){
-    //     for(size_t j=0; j<5; j++){
-    //         players[i].addResource(j, 10);
-    //     }
-    // }
+    // appending each player 10 resources of each type:
+    for(size_t i=0; i<3; i++){
+        for(size_t j=0; j<5; j++){
+            players[i].addResource(j, 100);
+        }
+    }
     
     size_t turn = 0;
     board.display();
@@ -624,7 +624,7 @@ int main(int argc , char* argv[]){
         cin.ignore();
         
         if(diceNums->at(0) + diceNums->at(1) == 7){
-            sevenScenario(&board);
+            // sevenScenario(&board);
         }
             
         board.displayStats();

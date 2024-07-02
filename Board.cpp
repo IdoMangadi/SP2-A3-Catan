@@ -373,8 +373,8 @@ namespace ariel{
 
             // check if there is a settlement of the player on this vertex:
             if(this->vertices[position].hasSettlement() && this->vertices[position].getSettlement()->getType() == SETTLEMENT && this->vertices[position].getSettlement()->getOwner().getId() == player->getId()){
-                this->vertices[position].getSettlement()->upgrade();  // upgrade the settlement to a city (will also handle buildings ordering in the player object)
-                return player->buy(this->vertices[position].getSettlement(), itemType, opCode);
+                this->vertices[position].getSettlement()->upgrade();  // upgrade the settlement to a city.
+                return player->buy(this->vertices[position].getSettlement(), itemType, opCode); // buy the city by the player
             }
         }
 

@@ -25,7 +25,7 @@ catan: $(OBJECTS)
 catan_demo: $(DOBJECTS)
 	$(CXX) $(CXXFLAGS) $(DOBJECTS) -o $@
 
-run_test: test
+run_test: test catan_demo
 	./test
 
 test: $(TOBJECTS)

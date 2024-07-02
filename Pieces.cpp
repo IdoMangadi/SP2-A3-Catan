@@ -49,19 +49,6 @@ namespace ariel{
         // upgrade to city according to color (board.cpp handles the validation check for the upgrade)
         this->setType(CITY);
         this->visualDisplay = CITY_EMOJI;
-
-        // handling player ordering:
-        Player& owner = this->getOwner();
-        // removing the settlement from the player's settlements vector
-        vector<Settlement*>& settlements = owner.getSettlements();
-        for (int i = 0; i < settlements.size(); i++){
-            if (settlements[(size_t)i] == this){
-                settlements.erase(settlements.begin() + i);
-                break;
-            }
-        }
-        // adding the city to the player's cities vector
-        owner.getCities().push_back(this);
     }
     ostream& operator<<(ostream& os, Settlement& settlement){
         os << settlement.owner.getColor() << settlement.getVisualDisplay() << RESET_COLOR;

@@ -108,17 +108,17 @@ void stageOne(Board* board){
         // buying a settlement and a road:
         size_t vertexId = INVALID_POSITION, edgeId = INVALID_POSITION;
         do{
-            cout << BOLD << currPlayer->getColor() << playerName << RESET_COLOR << ", choose vertex to place settlement. Enter a vertex number between 0 and 53: " << endl;
+            //cout << BOLD << currPlayer->getColor() << playerName << RESET_COLOR << ", choose vertex to place settlement. Enter a vertex number between 0 and 53: " << endl;
             vertexId = getVertexFromUser();
         } while(board->buy(currPlayer, SETTLEMENT, vertexId, STAGE_ONE) == false);
         do{
-            cout << BOLD << currPlayer->getColor() << playerName << RESET_COLOR << ", choose edge to place road. Enter an edge number between 0 and 71: " << endl;
+            // cout << BOLD << currPlayer->getColor() << playerName << RESET_COLOR << ", choose edge to place road. Enter an edge number between 0 and 71: " << endl;
             edgeId = getEdgeFromUser();
         } while(board->buy(currPlayer, ROAD, edgeId, STAGE_ONE) == false);
-        if(i < 5) board->display();
+        // if(i < 5) board->display();
     }
     board->stageOneResourcesDistribution();
-    board->display();
+    // board->display();
 }
 
 /**
@@ -148,10 +148,10 @@ bool mainBuy(Board* board, Player* player, vector<string>* actionTokens){
     
     if(actionTokens->at(1) == "CARD"){
         if(board->buy(player, CARD, INVALID_POSITION, PAID) == true){
-            cout << BOLD << "bought successfully" << RESET_COLOR << endl;
+            cout << "bought successfully" << endl;
             return true;
         }
-        else cout << BOLD << "failed to buy" << RESET_COLOR << endl;
+        else cout << "failed to buy" << endl;
         return false;
     }
 
@@ -167,10 +167,10 @@ bool mainBuy(Board* board, Player* player, vector<string>* actionTokens){
     }
     if(position != INVALID_POSITION){  // means that the position is valid (for road it is between 0 and 71, for building it is between 0 and 53)
         if(board->buy(player, itemType, position, PAID) == true){
-            cout << BOLD << "bought successfully" << RESET_COLOR << endl;
+            cout << "bought successfully" << endl;
             return true;
         }
-        else cout << BOLD << "failed to buy" << RESET_COLOR << endl;
+        else cout << "failed to buy" << endl;
         return false;
     }
     // means the position is invalid
@@ -271,24 +271,25 @@ bool parseActionToVectors(vector<string>* actionTokens, vector<int>* offer, vect
 */
 Player* playerAccept(Board* board, vector<int>* offer, vector<int>* seek, Player* offerer){
 
-    cout << BOLD << offerer->getColor() << "Trade proposal from " << offerer->getName() << RESET_COLOR << ": OFFER ";
-    if(offer->at(0) > 0) cout << offer->at(0) << " WOOD";
-    if(offer->at(1) > 0) cout << offer->at(1) << " BRICK";
-    if(offer->at(2) > 0) cout << offer->at(2) << " WHEAT";
-    if(offer->at(3) > 0) cout << offer->at(3) << " WOOL";
-    if(offer->at(4) > 0) cout << offer->at(4) << " ORE";
-    cout << ", SEEK ";
-    if(seek->at(0) > 0) cout << seek->at(0) << " WOOD ";
-    if(seek->at(1) > 0) cout << seek->at(1) << " BRICK ";
-    if(seek->at(2) > 0) cout << seek->at(2) << " WHEAT ";
-    if(seek->at(3) > 0) cout << seek->at(3) << " WOOL ";
-    if(seek->at(4) > 0) cout << seek->at(4) << " ORE ";
-    cout << endl;
+    // ignore this line in the demo version:
+    // cout << BOLD << offerer->getColor() << "Trade proposal from " << offerer->getName() << RESET_COLOR << ": OFFER ";
+    // if(offer->at(0) > 0) cout << offer->at(0) << " WOOD";
+    // if(offer->at(1) > 0) cout << offer->at(1) << " BRICK";
+    // if(offer->at(2) > 0) cout << offer->at(2) << " WHEAT";
+    // if(offer->at(3) > 0) cout << offer->at(3) << " WOOL";
+    // if(offer->at(4) > 0) cout << offer->at(4) << " ORE";
+    // cout << ", SEEK ";
+    // if(seek->at(0) > 0) cout << seek->at(0) << " WOOD ";
+    // if(seek->at(1) > 0) cout << seek->at(1) << " BRICK ";
+    // if(seek->at(2) > 0) cout << seek->at(2) << " WHEAT ";
+    // if(seek->at(3) > 0) cout << seek->at(3) << " WOOL ";
+    // if(seek->at(4) > 0) cout << seek->at(4) << " ORE ";
+    // cout << endl;
 
     string answer;
     for(size_t i=0; i<3; i++){ // iterate over the players (not including the player that made the offer)
         if(board->getPlayers()->at(i) == offerer) continue;
-        cout << BOLD << board->getPlayers()->at(i)->getColor() << board->getPlayers()->at(i)->getName() << RESET_COLOR << ", do you accept the trade? <y/n>" << endl;
+        // cout << BOLD << board->getPlayers()->at(i)->getColor() << board->getPlayers()->at(i)->getName() << RESET_COLOR << ", do you accept the trade? <y/n>" << endl;
         cin >> answer;
         cin.ignore();  // insuring the next input will be correct
         if(answer == "y" && board->getPlayers()->at(i)->canAfford(*seek) == true) return board->getPlayers()->at(i);
@@ -349,7 +350,7 @@ bool mainCard(Board* board, Player* player, vector<string>* actionTokens){
         }
         player->useCard(VICTORYPOINT);
         player->addPoints(1);
-        cout << BOLD << "card used successfully" << RESET_COLOR << endl;
+        cout << "card used successfully" << endl;
         return true;
     }
     if(actionTokens->at(1) == "KNIGHT"){
@@ -362,7 +363,7 @@ bool mainCard(Board* board, Player* player, vector<string>* actionTokens){
         // NOTE: this function will update the largest army player by the board  class.
         bool tmp = board->knightUsed(player);
         if(tmp == true){
-            cout << BOLD << "card used successfully" << RESET_COLOR << endl;
+            cout << "card used successfully" << endl;
             return true;
         }
     }
@@ -393,7 +394,7 @@ bool mainCard(Board* board, Player* player, vector<string>* actionTokens){
             edge2 = getEdgeFromUser();
         }
         player->useCard(ROADBUILDING);
-        cout << BOLD << "card used successfully" << RESET_COLOR << endl;
+        cout << "card used successfully" << endl;
         return true;
         
     }
@@ -601,12 +602,12 @@ int main(int argc , char* argv[]){
     // appending each player 10 resources of each type:
     for(size_t i=0; i<3; i++){
         for(size_t j=0; j<5; j++){
-            players[i].addResource(j, 100);
+            players[i].addResource(j, 1000);
         }
     }
     
     size_t turn = 0;
-    board.display();
+    // board.display();
 
     // first stage: each player places 2 settlements and 2 roads:
     stageOne(&board);
@@ -617,32 +618,32 @@ int main(int argc , char* argv[]){
         string action = "";
         // dice roll:
         do{
-            cout << BOLD << players[turn].getColor() << "Turn " << players[turn].getName()<< ": " << RESET_COLOR << "Roll the dice! <roll>" << endl;
+            // cout << BOLD << players[turn].getColor() << "Turn " << players[turn].getName()<< ": " << RESET_COLOR << "Roll the dice! <roll>" << endl;
             cin >> action;
         } while(action != "roll");
         vector<size_t>* diceNums = board.rollDice();
-        cout << BOLD << "Dice numbers: " << diceNums->at(0) << " , " << diceNums->at(1) << RESET_COLOR << endl;
+        // cout << BOLD << "Dice numbers: " << diceNums->at(0) << " , " << diceNums->at(1) << RESET_COLOR << endl;
         cin.ignore();
         
         // ignore this lines in the demo:
-        if(diceNums->at(0) + diceNums->at(1) == 7){
-            sevenScenario(&board);
-        }
+        // if(diceNums->at(0) + diceNums->at(1) == 7){
+        //     sevenScenario(&board);
+        // }
             
-        board.displayStats();
+        // board.displayStats();
 
         // player action loop:
         bool endTurn = false;
         
         do{
-            // player action:
-            cout << "Choose action:  <buy> <ITEM> <position>\n                <trade> <OFFER> <SEEK>\n                <card> <TYPE> <option>\n                <board>\n                <status>\n                <positions>\n                <end>" << endl;
+            // player action: (ignore this line in the demo:)
+            // cout << "Choose action:  <buy> <ITEM> <position>\n                <trade> <OFFER> <SEEK>\n                <card> <TYPE> <option>\n                <board>\n                <status>\n                <positions>\n                <end>" << endl;
             getline(cin, action);
             vector<string> actionTokens;
             splitAction(&action, &actionTokens);
 
             // printing for demo:
-            cout << action << endl;
+            // cout << action << endl;
 
             // buy action:
             if(actionTokens.at(0) == "buy"){  // TODO: make sure the user isnt stuck for bad input
@@ -682,18 +683,19 @@ int main(int argc , char* argv[]){
             }
             winner = board.hasWinner();
             if(winner != nullptr) break;
-            sleep(1);
 
         } while(endTurn == false);
 
         if(winner != nullptr) break;
 
-        board.display();
+        // ignore this line in the demo:
+        // board.display();
+
         turn = (turn + 1) % 3;
     }
 
-    cout << BOLD << winner->getColor() << winner->getName() << RESET_COLOR << " won the game!" << endl;
-    board.display();
+    // cout << BOLD << winner->getColor() << winner->getName() << RESET_COLOR << " won the game!" << endl;
+    // board.display();
     return 0;
 }
 

@@ -1,6 +1,14 @@
 0 0 1 2 2 4 7 10 8 12 9 14 roll
 end
 roll
+buy ROAD 89
+buy ROAD abc123
+buy SETTLEMENT abc123
+buy SOMETHINGELSE
+trade OFFER 100000 ORE SEEK 1 WOOD
+trade OFFER 1 ORE SEEK 100000 WOOD
+y
+n
 buy CITY 1
 buy CITY 8
 buy CARD 

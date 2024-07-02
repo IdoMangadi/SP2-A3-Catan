@@ -2,9 +2,13 @@
 // EMAIL: IDOIZHAR.Mangadi@msmail.ariel.ac.il
 // GMAIL: idomangadi@gmail.com
 
-#include <stdio.h>
-#include <cstdio>
-#include <thread>
+#include <iostream>
+#include <string>
+#include <fcntl.h>
+#include <sys/stat.h>
+#include <unistd.h> // Add this line
+#include <fstream>
+#include <condition_variable>
 
 #include "doctest.h"
 #include "Board.hpp"
@@ -12,9 +16,66 @@
 #include "Player.hpp"
 #include "Pieces.hpp"
 #include "Card.hpp"
+#include "../../../../usr/include/x86_64-linux-gnu/sys/wait.h"
+
 
 using namespace std;
 using namespace ariel;
+
+/** in this test case we will run the CatanDemo executable with execv when redirect its output to a file (output.txt).
+ *  then we will read the file line by line and check if the output is as expected.
+ *  in this test: invalid edge and vertex positions (out of range and not a number), invalid action, invalid trade. 
+*/
+TEST_CASE("TestCatanDemo"){
+
+    int pid = fork(); 
+
+    if (pid == 0) { // Child process
+        // Redirect standard input from input.txt
+        int fdIn = open("input.txt", O_RDONLY);
+        if (fdIn < 0) {
+            std::cerr << "Failed to open input.txt" << std::endl;
+            exit(1);
+        }
+        dup2(fdIn, STDIN_FILENO);
+        close(fdIn);
+
+        // Redirect standard output to output.txt
+        int fdOut = open("output.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
+        if (fdOut < 0) {
+            std::cerr << "Failed to open output.txt" << std::endl;
+            exit(1);
+        }
+        dup2(fdOut, STDOUT_FILENO);
+        close(fdOut);
+
+        // Prepare arguments for execv
+        char *args[] = {(char*)"./catan_demo", (char*)"player0", (char*)"player1", (char*)"player2", NULL};
+        
+        // Execute the command
+        execv("./catan_demo", args);
+
+        // If execv returns, it means it failed
+        std::cerr << "execv failed" << std::endl;
+        exit(1);
+
+    } else if (pid > 0) { // Parent process
+        wait(NULL); // Wait for child process to finish
+
+        // comparing the output to the expected output:
+        ifstream expected("expected_output.txt");
+        ifstream output("output.txt");
+        string expectedLine, outputLine;
+        size_t lineNum = 1;
+        while(getline(expected, expectedLine) && getline(output, outputLine)){
+            CHECK(false != false);
+            CHECK(expectedLine != outputLine);
+        }
+        expected.close();
+        output.close();
+    }
+
+}
 
 
 TEST_CASE("TestBoardBuy"){
