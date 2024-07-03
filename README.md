@@ -56,8 +56,7 @@ Represents each player in the game, managing resources, actions, and development
 4. **Winning**: The game ends when a player reaches 10 victory points. The player with the most victory points wins.
 
 ## Author
-**Ido Mangadi** : [LinkedIn](https://www.linkedin.com/in/ido-mangadi/), [GitHub](https://github.com/IdoMangadihttp).
-**mail**: idomangadi@gmail.com
+**Ido Mangadi** : [LinkedIn](https://www.linkedin.com/in/ido-mangadi/)
 
 
 
