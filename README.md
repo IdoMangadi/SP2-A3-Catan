@@ -1,5 +1,5 @@
 # SP2-A3-Catan
-Course - Systems Programming - Assignment 2 - Catan
+Course - Systems Programming 2 - Assignment 3 - Catan
 
 # Catan Game Simulation
 
@@ -36,10 +36,10 @@ The `Card` class represents a card in the game.
 The `Piece` class is an abstract class that represents a piece on the board. It has two subclasses: `Road` and `Settlement`.
 
 #### Road Class (`Road`)
-The `Road` class represents a road on the board.
+The `Road` class represents a road on the board (inherits from `Piece`).
 
 #### Settlement Class (`Settlement`)
-The `Settlement` class represents a settlement on the board.
+The `Settlement` class represents a settlement on the board (inherits from `Piece`).
 
 ### Player Class (`Player`)
 Represents each player in the game, managing resources, actions, and development cards.
@@ -54,6 +54,10 @@ Represents each player in the game, managing resources, actions, and development
    ./Catan player1_name player2_name player3_name
 3. **Game Loop**: Follow the prompts to play the game, including rolling dice, managing resources, and making decisions.
 4. **Winning**: The game ends when a player reaches 10 victory points. The player with the most victory points wins.
+
+## Author
+**Ido Mangadi** : [LinkedIn](https://www.linkedin.com/in/ido-mangadi/), [Gmail](idomangadi@gmail.com)
+
 
 
 

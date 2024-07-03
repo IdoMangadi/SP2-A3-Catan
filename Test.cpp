@@ -18,6 +18,7 @@
 #include "Card.hpp"
 #include "../../../../usr/include/x86_64-linux-gnu/sys/wait.h"
 
+#define EXPECTED_LINES_NUM 46
 
 using namespace std;
 using namespace ariel;
@@ -34,7 +35,7 @@ TEST_CASE("TestCatanDemo"){
         // Redirect standard input from input.txt
         int fdIn = open("input.txt", O_RDONLY);
         if (fdIn < 0) {
-            std::cerr << "Failed to open input.txt" << std::endl;
+            cerr << "Failed to open input.txt" << std::endl;
             exit(1);
         }
         dup2(fdIn, STDIN_FILENO);
@@ -43,7 +44,7 @@ TEST_CASE("TestCatanDemo"){
         // Redirect standard output to output.txt
         int fdOut = open("output.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
         if (fdOut < 0) {
-            std::cerr << "Failed to open output.txt" << std::endl;
+            cerr << "Failed to open output.txt" << std::endl;
             exit(1);
         }
         dup2(fdOut, STDOUT_FILENO);
@@ -56,21 +57,24 @@ TEST_CASE("TestCatanDemo"){
         execv("./catan_demo", args);
 
         // If execv returns, it means it failed
-        std::cerr << "execv failed" << std::endl;
+        cerr << "execv failed" << std::endl;
         exit(1);
 
     } else if (pid > 0) { // Parent process
         wait(NULL); // Wait for child process to finish
 
         // comparing the output to the expected output:
-        ifstream expected("expected_output.txt");
+        ifstream expected("expected.txt");
         ifstream output("output.txt");
+
         string expectedLine, outputLine;
-        size_t lineNum = 1;
+        size_t lineNum = 0;
+
         while(getline(expected, expectedLine) && getline(output, outputLine)){
-            CHECK(false != false);
-            CHECK(expectedLine != outputLine);
+            lineNum++;
+            CHECK(expectedLine == outputLine);  // check if the lines are equal
         }
+        CHECK(lineNum == EXPECTED_LINES_NUM);  // check if the number of lines is correct
         expected.close();
         output.close();
     }
