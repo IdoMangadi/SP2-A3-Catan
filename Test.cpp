@@ -6,7 +6,7 @@
 #include <string>
 #include <fcntl.h>
 #include <sys/stat.h>
-#include <unistd.h> // Add this line
+#include <unistd.h>
 #include <fstream>
 #include <condition_variable>
 
@@ -150,7 +150,7 @@ TEST_CASE("BoardResourses"){
         player2.addResource(i, 10);
     }
 
-    SUBCASE("stageOneResourcesDistribution"){
+    SUBCASE("stageOneResourcesDistribution"){  // checck for miss distribution 
         board.stageOneResourcesDistribution();
         CHECK(player0.getResources()[0] == 10);
         CHECK(player0.getResources()[1] == 10);
