@@ -8,13 +8,14 @@
 #include <iostream>
 #include <string>
 #include <sstream> 
+#include <unistd.h>
 
 #include "Board.hpp"
 #include "Player.hpp"
 #include "Pieces.hpp"
 #include "Card.hpp"
 #include "BoardElements.hpp"
-#include <unistd.h>
+
 
 using namespace std;
 using namespace ariel;

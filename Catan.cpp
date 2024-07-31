@@ -596,8 +596,7 @@ int main(int argc , char* argv[]){
     vector<Player> players = {Player(player1Name, 0, RED, 0), Player(player2Name, 1, GREEN, 0), Player(player3Name, 2, YELLOW, 0)};
     Board board(&players[0], &players[1], &players[2]);
 
-    // // for tests:
-    // appending each player 10 resources of each type:
+    // for tests: appending each player 10 resources of each type:
     for(size_t i=0; i<3; i++){
         for(size_t j=0; j<5; j++){
             players[i].addResource(j, 100);
@@ -624,7 +623,7 @@ int main(int argc , char* argv[]){
         cin.ignore();
         
         if(diceNums->at(0) + diceNums->at(1) == 7){
-            // sevenScenario(&board);
+            sevenScenario(&board);
         }
             
         board.displayStats();
@@ -640,7 +639,7 @@ int main(int argc , char* argv[]){
             splitAction(&action, &actionTokens);
 
             // buy action:
-            if(actionTokens.at(0) == "buy"){  // TODO: make sure the user isnt stuck for bad input
+            if(actionTokens.at(0) == "buy"){
                 mainBuy(&board, &players[turn], &actionTokens);
                 continue;
             }

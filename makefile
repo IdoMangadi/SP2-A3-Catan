@@ -19,6 +19,9 @@ DOBJECTS = $(subst .cpp,.o,$(DSOURCES))
 
 all: catan
 
+run_catan: catan
+	./catan player0 player1 player2
+
 catan: $(OBJECTS)
 	$(CXX) $(CXXFLAGS) $(OBJECTS) -o $@
 
