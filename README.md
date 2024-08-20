@@ -44,6 +44,13 @@ The `Settlement` class represents a settlement on the board (inherits from `Piec
 ### Player Class (`Player`)
 Represents each player in the game, managing resources, actions, and development cards.
 
+## Relationships
+
+- The Board class contains the board elements (hexagons, edges, vertices), the pieces (rodas, settlements) and cards (25 of them). The Board also has pointers to the players and it manages the game state.
+- Each Hexagon holds a vector of pointers to its verteces (6 of them).
+- Each Edge holds a vector of pointers to its verteces (2 of them).
+- Each Vertex holds a vector of pointers to its edges (2/3 of them).
+
 ## Usage
 
 1. **Compile**: Compile the program using the provided Makefile.
